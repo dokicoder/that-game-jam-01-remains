@@ -3,6 +3,7 @@ class_name ExampleTool extends EditorScript
 
 var window: Window
 
+# equivalent with resource id: preload("uid://bkaugecspvgif")
 var gui: Resource = preload("res://tools/ExampleToolScene.tscn")
 
 func _run():	
@@ -14,8 +15,7 @@ func _run():
 	
 	gui_scene.submit.connect(_on_confirmed)
 	
-	EditorInterface.popup_dialog(window, Rect2i(100, 1200, 800, 600))
-	
+	EditorInterface.popup_dialog_centered(window, Vector2i(800, 600))
 	
 	window.close_requested.connect(
 		func():

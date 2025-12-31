@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddm8m6tm1g4x0"]
+
+[ext_resource type="PackedScene" uid="uid://bvvqr26g1pub1" path="res://game/BaseBoard.tscn" id="1_oa506"]
+[ext_resource type="Script" uid="uid://dsrdpc628v2ji" path="res://game/main.gd" id="1_xtpaf"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_xtpaf")
+
+[node name="BaseBoard" parent="." instance=ExtResource("1_oa506")]
+width = 4
+height = 7
+
+[node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2(360, 240)
+zoom = Vector2(8, 8)

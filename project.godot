@@ -11,5 +11,16 @@ config_version=5
 [application]
 
 config/name="ThatGameJam_01"
+run/main_scene="uid://ddm8m6tm1g4x0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=480
+window/size/resizable=false
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.3019608, 0.77254903, 0.3019608, 1)
