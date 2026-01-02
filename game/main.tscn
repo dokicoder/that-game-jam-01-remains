@@ -1,14 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddm8m6tm1g4x0"]
+[gd_scene load_steps=6 format=3 uid="uid://ddm8m6tm1g4x0"]
 
 [ext_resource type="PackedScene" uid="uid://bvvqr26g1pub1" path="res://game/BaseBoard.tscn" id="1_oa506"]
 [ext_resource type="Script" uid="uid://dsrdpc628v2ji" path="res://game/main.gd" id="1_xtpaf"]
+[ext_resource type="PackedScene" uid="uid://dkmdq68t3kapj" path="res://game/Socket.tscn" id="3_vop5m"]
+[ext_resource type="PackedScene" uid="uid://bhqj5loo3m5u6" path="res://game/GreenConnector.tscn" id="4_5un7r"]
+[ext_resource type="PackedScene" uid="uid://b5icf8744ut8b" path="res://game/RedConnector.tscn" id="5_5un7r"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_xtpaf")
 
 [node name="BaseBoard" parent="." instance=ExtResource("1_oa506")]
+Socket = ExtResource("3_vop5m")
+GreenConnector = ExtResource("4_5un7r")
+RedConnector = ExtResource("5_5un7r")
 width = 4
 height = 7
+green_positions = Array[Vector2i]([Vector2i(1, 5), Vector2i(2, 3)])
+red_positions = Array[Vector2i]([Vector2i(1, 1)])
 
 [node name="MainCamera" type="Camera2D" parent="."]
 position = Vector2(360, 240)

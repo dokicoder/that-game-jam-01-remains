@@ -1,29 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhqj5loo3m5u6"]
+[gd_scene load_steps=10 format=3 uid="uid://bhqj5loo3m5u6"]
 
-[ext_resource type="Texture2D" uid="uid://mnrn87fsqton" path="res://connector_green.png" id="1_tx4r0"]
+[ext_resource type="Texture2D" uid="uid://mnrn87fsqton" path="res://connector_green.png" id="1_2slud"]
+[ext_resource type="Script" uid="uid://cq5kgh6xm1rna" path="res://game/connector.gd" id="2_8wxm7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxxhn"]
-atlas = ExtResource("1_tx4r0")
+atlas = ExtResource("1_2slud")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fhf3d"]
-atlas = ExtResource("1_tx4r0")
+atlas = ExtResource("1_2slud")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r132m"]
-atlas = ExtResource("1_tx4r0")
+atlas = ExtResource("1_2slud")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r5ug4"]
-atlas = ExtResource("1_tx4r0")
+atlas = ExtResource("1_2slud")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_033g8"]
-atlas = ExtResource("1_tx4r0")
+atlas = ExtResource("1_2slud")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ga5dl"]
-atlas = ExtResource("1_tx4r0")
+atlas = ExtResource("1_2slud")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_trhhn"]
@@ -52,8 +53,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ContactTile" type="AnimatedSprite2D"]
+[node name="GreenConnector" type="AnimatedSprite2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_trhhn")
 animation = &"press"
-frame_progress = 0.66393834
+frame = 1
+script = ExtResource("2_8wxm7")
