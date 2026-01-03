@@ -1,18 +1,41 @@
+@tool
 extends Node2D
 
 @export var Socket: PackedScene
 @export var GreenConnector: PackedScene
 @export var RedConnector: PackedScene
 
-@export_range(1, 20) var width: int = 10
-@export_range(1, 20) var height: int = 10
+@export_range(1, 100) var width: int:
+	get:
+		return _width
+	set(value):
+		_width = value
+		#update_board()
+
+@export_range(1, 100) var height: int:
+	get:
+		return _height
+	set(value):
+		_height = value
+		#update_board()
 
 @export var green_positions: Array[Vector2i] = []
 @export var red_positions: Array[Vector2i] = []
 
-@onready var center_node = $CenterNode; 
+var _width: int = 10
+var _height: int = 10
 
 func _ready():
+	update_board()
+	
+func update_board():
+	print_debug("update_board")
+	
+	var center_node = $CenterNode;
+	
+	for node in center_node.get_children():
+		node.queue_free()
+		
 	# TODO: how to get size without instantiating?
 	var reference_socket: Node2D = Socket.instantiate()
 	
@@ -30,19 +53,26 @@ func _ready():
 			center_node.add_child(socket)
 			socket.position.x = x * sprite_width
 			socket.position.y = y * sprite_height
+
+			socket.owner = get_tree().edited_scene_root
 			
 	for connector_position in green_positions:
-		assert(connector_position.x < width)
-		assert(connector_position.y < height)
+		assert(connector_position.x < _width)
+		assert(connector_position.y < _height)
 		var connector: Node2D = GreenConnector.instantiate()
 		center_node.add_child(connector)
 		connector.position.x = connector_position.x * sprite_width
 		connector.position.y = connector_position.y * sprite_height
+
+		connector.owner = get_tree().edited_scene_root
 	
 	for connector_position in red_positions:
-		assert(connector_position.x < width)
-		assert(connector_position.y < height)
+		assert(connector_position.x < _width)
+		assert(connector_position.y < _height)
 		var connector: Node2D = RedConnector.instantiate()
 		center_node.add_child(connector)
 		connector.position.x = connector_position.x * sprite_width
 		connector.position.y = connector_position.y * sprite_height
+
+		connector.owner = get_tree().edited_scene_root
+	

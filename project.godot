@@ -15,11 +15,19 @@ run/main_scene="uid://ddm8m6tm1g4x0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+G="*res://game/Glob.gd"
+
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=480
 window/size/resizable=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
 [rendering]
 

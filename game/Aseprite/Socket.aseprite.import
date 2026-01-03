@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://knaqy607iy34"
+path="res://.godot/imported/Socket.aseprite-b795b614f967c9686e3adfc2d5dcb0c1.res"
+
+[deps]
+
+source_file="res://game/Aseprite/Socket.aseprite"
+dest_files=["res://.godot/imported/Socket.aseprite-b795b614f967c9686e3adfc2d5dcb0c1.res"]
+
+[params]
+

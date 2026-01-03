@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://cprto2r7dwfxa"]
+
+[ext_resource type="Texture2D" uid="uid://cgn4hotqyih4j" path="res://game/Aseprite/cable_segment_h.png" id="1_6wouq"]
+[ext_resource type="Texture2D" uid="uid://cslknpcg1mfme" path="res://game/Aseprite/cable_segment_h_half.png" id="2_ohu8i"]
+[ext_resource type="Texture2D" uid="uid://clf4tx1p30ql4" path="res://game/Aseprite/cable_junction2.png" id="2_uwsko"]
+[ext_resource type="Texture2D" uid="uid://dv6paq7rejr12" path="res://game/Aseprite/cable_junction.png" id="3_r2q48"]
+[ext_resource type="Texture2D" uid="uid://qjw67cv2xisq" path="res://game/Aseprite/cable_segment_v.png" id="5_fr5wq"]
+[ext_resource type="Texture2D" uid="uid://b4c8dt3wriycp" path="res://game/Aseprite/corner_bottom_to_left.png" id="6_rxbe7"]
+[ext_resource type="Texture2D" uid="uid://dq06c488tmidn" path="res://game/Aseprite/corner_bottom_to_right.png" id="7_t0n24"]
+[ext_resource type="Texture2D" uid="uid://c1gxbuj24ec63" path="res://game/Aseprite/corner_top_to_left.png" id="7_w5kd6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t0n24"]
+load_path = "res://.godot/imported/corner_top_to_right.png-39e7a33090833d7955b625039ee7b3d9.ctex"
+
+[node name="Cable" type="Node2D"]
+
+[node name="Junction_06" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(32, -96)
+texture = ExtResource("6_rxbe7")
+
+[node name="Segment_01" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_6wouq")
+
+[node name="Segment_02" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(32, 0)
+texture = ExtResource("2_uwsko")
+
+[node name="Segment_03" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(64, 0)
+texture = ExtResource("2_ohu8i")
+
+[node name="Junction_01" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-32, 0)
+texture = ExtResource("3_r2q48")
+
+[node name="Junction_02" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-32, -32)
+texture = ExtResource("3_r2q48")
+
+[node name="Segment_04" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("1_6wouq")
+
+[node name="Junction_03" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(32, -32)
+texture = ExtResource("3_r2q48")
+
+[node name="Junction_04" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-32, -64)
+texture = ExtResource("5_fr5wq")
+
+[node name="Junction_05" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(32, -64)
+texture = ExtResource("3_r2q48")
+
+[node name="Junction_05" type="Sprite2D" parent="Junction_05"]
+texture_filter = 1
+position = Vector2(32, 0)
+texture = ExtResource("6_rxbe7")
+
+[node name="Junction_05" type="Sprite2D" parent="Junction_05/Junction_05"]
+texture_filter = 1
+position = Vector2(0, 32)
+texture = ExtResource("7_w5kd6")
+
+[node name="Junction_07" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-32, -96)
+texture = ExtResource("2_uwsko")
+
+[node name="Junction_08" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -96)
+texture = ExtResource("3_r2q48")
+
+[node name="Junction_09" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -128)
+texture = ExtResource("6_rxbe7")
+
+[node name="Junction_10" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-32, -128)
+texture = ExtResource("7_t0n24")
+
+[node name="Junction_11" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -64)
+texture = SubResource("CompressedTexture2D_t0n24")
+
+[node name="Junction_12" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-64, -96)
+texture = ExtResource("2_uwsko")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnsh0a5p61uom"
-path="res://.godot/imported/Socket.png-671fb90ab77509252b086f84a39d94ea.ctex"
+path="res://.godot/imported/Socket.png-da717462b862728bf6f5c5f491d2b531.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/Socket.png"
-dest_files=["res://.godot/imported/Socket.png-671fb90ab77509252b086f84a39d94ea.ctex"]
+source_file="res://game/Aseprite/Socket.png"
+dest_files=["res://.godot/imported/Socket.png-da717462b862728bf6f5c5f491d2b531.ctex"]
 
 [params]
 

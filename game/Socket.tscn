@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dkmdq68t3kapj"]
 
-[ext_resource type="Texture2D" uid="uid://dnsh0a5p61uom" path="res://game/Socket.png" id="1_ocddt"]
+[ext_resource type="Texture2D" uid="uid://dnsh0a5p61uom" path="res://game/Aseprite/Socket.png" id="1_ocddt"]
 
 [node name="Tile" type="Sprite2D"]
 texture_filter = 1

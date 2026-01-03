@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ciuwci5wxsy0o"
+path="res://.godot/imported/connector_red.aseprite-5ad765768491491f34f58749f2bc76d2.res"
+
+[deps]
+
+source_file="res://addons/AsepriteWizard/connector_red.aseprite"
+dest_files=["res://.godot/imported/connector_red.aseprite-5ad765768491491f34f58749f2bc76d2.res"]
+
+[params]
+

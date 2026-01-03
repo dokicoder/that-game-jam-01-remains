@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuj3ngssd3ctj"
-path="res://.godot/imported/connector_red.png-dfbdad9e11aeeff4323fc09a0a62287f.ctex"
+uid="uid://c1gxbuj24ec63"
+path="res://.godot/imported/corner_top_to_left.png-314d71345be9a7d97506e41f55bc5d3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://connector_red.png"
-dest_files=["res://.godot/imported/connector_red.png-dfbdad9e11aeeff4323fc09a0a62287f.ctex"]
+source_file="res://game/Aseprite/corner_top_to_left.png"
+dest_files=["res://.godot/imported/corner_top_to_left.png-314d71345be9a7d97506e41f55bc5d3c.ctex"]
 
 [params]
 

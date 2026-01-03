@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mnrn87fsqton"
-path="res://.godot/imported/connector_green.png-c198199984fa513149a05a5b44099c3a.ctex"
+uid="uid://dv6paq7rejr12"
+path="res://.godot/imported/cable_junction.png-64ab3b021f14722b331d8aff3079a512.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://connector_green.png"
-dest_files=["res://.godot/imported/connector_green.png-c198199984fa513149a05a5b44099c3a.ctex"]
+source_file="res://game/Aseprite/cable_junction.png"
+dest_files=["res://.godot/imported/cable_junction.png-64ab3b021f14722b331d8aff3079a512.ctex"]
 
 [params]
 
