@@ -52,6 +52,8 @@ func _on_extensions_entered(extension_from_this_cable: Extension, other_extensio
 	print(extension_from_this_cable.name, " entered ", other_extension.name)
 	
 	if is_dragging and do_extensions_connect(extension_from_this_cable, other_extension):
+		extension_from_this_cable.hide_contacts()
+		other_extension.hide_contacts()
 		is_snapped = true
 		_snap_position = get_global_mouse_position()
 		scale = Vector2(1, 1)
@@ -59,4 +61,5 @@ func _on_extensions_entered(extension_from_this_cable: Extension, other_extensio
 		global_position = other_extension.global_position - extension_position_relative_to_cable
 	
 func _on_extensions_exited(extension_from_this_cable: Extension, other_extension: Extension) -> void:
-	pass # Replace with function body.
+	extension_from_this_cable.restore_contacts()
+	other_extension.restore_contacts()

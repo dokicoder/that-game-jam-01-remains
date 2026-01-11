@@ -18,11 +18,19 @@ signal other_intersection_exited(this: Extension, other: Extension)
 	get: return _with_contacts
 	set(value):
 		_with_contacts = value
-		
+		if not Engine.is_editor_hint():
+			return
 		$Root/Contacts.visible = value
 
 var _orientation: G.Orientation = G.Orientation.LEFT
 var _with_contacts: bool = false
+
+# hide contacts without changin visible, used e.g. for snapping
+func hide_contacts():
+	$Root/Contacts.visible = false
+	
+func restore_contacts():
+	$Root/Contacts.visible = _with_contacts
 
 func _ready():
 	# TODO: why is this needed?
