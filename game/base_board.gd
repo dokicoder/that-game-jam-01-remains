@@ -10,14 +10,16 @@ extends Node2D
 		return _width
 	set(value):
 		_width = value
-		#update_board()
+		if Engine.is_editor_hint():
+			update_board()
 
 @export_range(1, 100) var height: int:
 	get:
 		return _height
 	set(value):
 		_height = value
-		#update_board()
+		if Engine.is_editor_hint():
+			update_board()
 
 @export var green_positions: Array[Vector2i] = []
 @export var red_positions: Array[Vector2i] = []
@@ -31,7 +33,7 @@ func _ready():
 func update_board():
 	print_debug("update_board")
 	
-	var center_node = $CenterNode;
+	var center_node: Node2D = $CenterNode;
 	
 	for node in center_node.get_children():
 		node.queue_free()
@@ -42,8 +44,8 @@ func update_board():
 	var sprite_width = reference_socket.texture.get_width()
 	var sprite_height = reference_socket.texture.get_height()
 	
-	center_node.position.x = - (width - 1) * sprite_width / 2.0
-	center_node.position.y = - (height - 1) * sprite_height / 2.0
+	center_node.position.x = - (width / 2) * sprite_width
+	center_node.position.y = - (height / 2) * sprite_height
 	
 	reference_socket.queue_free()
 	
@@ -54,7 +56,7 @@ func update_board():
 			socket.position.x = x * sprite_width
 			socket.position.y = y * sprite_height
 
-			socket.owner = get_tree().edited_scene_root
+			#socket.owner = get_scene() # get_tree().edited_scene_root
 			
 	for connector_position in green_positions:
 		assert(connector_position.x < _width)
@@ -64,7 +66,7 @@ func update_board():
 		connector.position.x = connector_position.x * sprite_width
 		connector.position.y = connector_position.y * sprite_height
 
-		connector.owner = get_tree().edited_scene_root
+		#connector.owner = get_scene() # get_tree().edited_scene_root
 	
 	for connector_position in red_positions:
 		assert(connector_position.x < _width)
@@ -74,5 +76,5 @@ func update_board():
 		connector.position.x = connector_position.x * sprite_width
 		connector.position.y = connector_position.y * sprite_height
 
-		connector.owner = get_tree().edited_scene_root
+		#connector.owner = get_scene()  # get_tree().edited_scene_root
 	

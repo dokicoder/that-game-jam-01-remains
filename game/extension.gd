@@ -12,9 +12,15 @@ var toggle: G.Orientation = G.Orientation.LEFT
 @export var with_contacts: bool:
 	get: return $Root/Contacts.visible
 	set(value):
+		if not Engine.is_editor_hint():
+			return
 		$Root/Contacts.visible = value
 
 var _orientation: G.Orientation = G.Orientation.LEFT
+
+func _ready():
+	# TODO: why is this needed?
+	update_orientation()
 
 func update_orientation():
 	print_debug("update_orientation")

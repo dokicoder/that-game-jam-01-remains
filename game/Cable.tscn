@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://s0060x5bcsey"]
+[gd_scene load_steps=12 format=3 uid="uid://c5f17mbjjd812"]
 
 [ext_resource type="Texture2D" uid="uid://cgn4hotqyih4j" path="res://game/Aseprite/cable_segment_h.png" id="1_6wouq"]
+[ext_resource type="Script" uid="uid://cpelhir6g755d" path="res://game/DraggableCable.gd" id="1_mog11"]
 [ext_resource type="Texture2D" uid="uid://clf4tx1p30ql4" path="res://game/Aseprite/cable_junction2.png" id="2_uwsko"]
 [ext_resource type="Texture2D" uid="uid://dv6paq7rejr12" path="res://game/Aseprite/cable_junction.png" id="3_r2q48"]
+[ext_resource type="Texture2D" uid="uid://bhwx6mr62y27r" path="res://game/Aseprite/corner_top_to_right.png" id="3_w43f7"]
 [ext_resource type="Texture2D" uid="uid://qjw67cv2xisq" path="res://game/Aseprite/cable_segment_v.png" id="5_fr5wq"]
 [ext_resource type="Texture2D" uid="uid://b4c8dt3wriycp" path="res://game/Aseprite/corner_bottom_to_left.png" id="6_rxbe7"]
 [ext_resource type="Texture2D" uid="uid://dq06c488tmidn" path="res://game/Aseprite/corner_bottom_to_right.png" id="7_t0n24"]
@@ -12,30 +14,12 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t0n24"]
 
 [node name="Cable" type="Node2D"]
+script = ExtResource("1_mog11")
 
 [node name="Junction_06" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(32, -96)
+position = Vector2(0, -128)
 texture = ExtResource("6_rxbe7")
-
-[node name="Segment_01" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("1_6wouq")
-
-[node name="Segment_02" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(32, 0)
-texture = ExtResource("2_uwsko")
-
-[node name="Segment_03" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(64, 0)
-texture = ExtResource("6_rxbe7")
-
-[node name="Junction_01" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-32, 0)
-texture = ExtResource("3_r2q48")
 
 [node name="Junction_02" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -47,35 +31,15 @@ texture_filter = 1
 position = Vector2(0, -32)
 texture = ExtResource("1_6wouq")
 
-[node name="Junction_03" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(32, -32)
-texture = ExtResource("3_r2q48")
-
 [node name="Junction_04" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-32, -64)
 texture = ExtResource("5_fr5wq")
 
-[node name="Junction_05" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(32, -64)
-texture = ExtResource("3_r2q48")
-
 [node name="Junction_07" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-32, -96)
 texture = ExtResource("2_uwsko")
-
-[node name="Junction_08" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, -96)
-texture = ExtResource("3_r2q48")
-
-[node name="Junction_09" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, -128)
-texture = ExtResource("6_rxbe7")
 
 [node name="Junction_10" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -87,80 +51,68 @@ texture_filter = 1
 position = Vector2(0, -64)
 texture = SubResource("CompressedTexture2D_t0n24")
 
-[node name="Junction_12" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-64, -96)
-texture = ExtResource("2_uwsko")
-
-[node name="Extension" parent="." instance=ExtResource("9_w43f7")]
-position = Vector2(-64, -64)
-orientation = 3
-with_contacts = null
-
-[node name="Extension2" parent="." instance=ExtResource("9_w43f7")]
-position = Vector2(-64, -128)
-orientation = 2
-with_contacts = null
-
-[node name="Extension3" parent="." instance=ExtResource("9_w43f7")]
-z_index = 1
-position = Vector2(-64, -32)
-with_contacts = null
-
 [node name="Extension4" parent="." instance=ExtResource("9_w43f7")]
-position = Vector2(-96, -96)
-with_contacts = null
-
-[node name="Extension5" parent="." instance=ExtResource("9_w43f7")]
-position = Vector2(-64, -32)
-orientation = 1
-with_contacts = null
-
-[node name="Junction_13" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(64, -64)
-texture = ExtResource("6_rxbe7")
-
-[node name="Junction_14" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(32, 32)
-texture = SubResource("CompressedTexture2D_t0n24")
-
-[node name="Junction_15" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(64, -32)
-texture = ExtResource("7_w5kd6")
+position = Vector2(-64, -96)
+with_contacts = false
 
 [node name="Junction_16" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-96, -32)
 texture = SubResource("CompressedTexture2D_t0n24")
 
-[node name="Extension6" parent="." instance=ExtResource("9_w43f7")]
-position = Vector2(-96, -64)
-orientation = 2
-with_contacts = null
+[node name="Extension9" parent="." instance=ExtResource("9_w43f7")]
+position = Vector2(32, 0)
+orientation = 3
+
+[node name="Junction_12" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-96, -32)
+texture = ExtResource("7_t0n24")
+
+[node name="Junction_08" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-64, 0)
+texture = ExtResource("6_rxbe7")
+
+[node name="Junction_09" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -96)
+texture = ExtResource("7_w5kd6")
+
+[node name="Junction_13" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(32, -32)
+texture = ExtResource("6_rxbe7")
+
+[node name="Segment_05" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-64, -32)
+texture = ExtResource("1_6wouq")
+
+[node name="Junction_05" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-32, 0)
+texture = ExtResource("5_fr5wq")
+
+[node name="Junction_14" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-96, 0)
+texture = ExtResource("3_w43f7")
+
+[node name="Junction_15" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-32, 32)
+texture = ExtResource("7_w5kd6")
 
 [node name="Junction_17" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(64, 32)
-texture = ExtResource("7_w5kd6")
+position = Vector2(-64, 32)
+texture = ExtResource("3_w43f7")
 
-[node name="Extension8" parent="." instance=ExtResource("9_w43f7")]
-position = Vector2(-64, 0)
-with_contacts = null
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="Extension7" parent="." instance=ExtResource("9_w43f7")]
-position = Vector2(-64, -128)
-orientation = 3
-with_contacts = null
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(23, 5, 41, 5, 40, -30, 30, -40, -23, -40, -23, -88, 7, -88, 7, -127, -3, -136, -39, -136, -39, -105, -66, -105, -66, -87, -41, -87, -41, -41, -104, -40, -104, -2, -95, 7, -72, 7, -72, 33, -58, 40, -23, 39, -23, -24, 23, -24)
 
-[node name="Extension9" parent="." instance=ExtResource("9_w43f7")]
-position = Vector2(-32, 32)
-orientation = 3
-with_contacts = null
-
-[node name="Extension10" parent="." instance=ExtResource("9_w43f7")]
-position = Vector2(-64, -160)
-orientation = 2
-with_contacts = null
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
