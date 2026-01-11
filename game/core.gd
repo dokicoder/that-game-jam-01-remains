@@ -1,5 +1,5 @@
 @tool
-class_name Core extends Sprite2D
+class_name Core extends Node2D
 
 @export var left_slot: bool:
 	get: return $CableLeft.visible

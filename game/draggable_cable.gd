@@ -6,7 +6,7 @@ var is_snapped: bool = false
 var _offset: Vector2 = Vector2(0.0, 0.0) 
 var _snap_position: Vector2 = Vector2(0.0, 0.0) 
 
-const HIGHLIGHT_SCALE = 1.005
+const HIGHLIGHT_SCALE = 1.01
 
 const SNAP_DISTANCE = 50.0
 
@@ -41,10 +41,17 @@ func _on_area_2d_mouse_exited() -> void:
 		is_hovered = false
 		scale = Vector2(1, 1)
 
+func do_extensions_connect(a: Extension, b: Extension):
+	if( a.orientation == G.Orientation.LEFT && b.orientation == G.Orientation.RIGHT
+	or a.orientation == G.Orientation.RIGHT && b.orientation == G.Orientation.LEFT
+	or a.orientation == G.Orientation.TOP && b.orientation == G.Orientation.BOTTOM
+	or a.orientation == G.Orientation.BOTTOM && b.orientation == G.Orientation.TOP ):
+		return a.with_contacts != b.with_contacts
+
 func _on_extensions_entered(extension_from_this_cable: Extension, other_extension: Extension) -> void:
 	print(extension_from_this_cable.name, " entered ", other_extension.name)
 	
-	if is_dragging:
+	if is_dragging and do_extensions_connect(extension_from_this_cable, other_extension):
 		is_snapped = true
 		_snap_position = get_global_mouse_position()
 		scale = Vector2(1, 1)

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvvqr26g1pub1"]
+[gd_scene load_steps=2 format=3 uid="uid://bvvqr26g1pub1"]
 
 [ext_resource type="Script" uid="uid://difqkffxuuu11" path="res://game/base_board.gd" id="1_o8myx"]
-[ext_resource type="PackedScene" uid="uid://caurh7l0et8yg" path="res://game/Core.tscn" id="2_yiomc"]
 
 [node name="BaseBoard" type="Node2D"]
 script = ExtResource("1_o8myx")
@@ -9,6 +8,3 @@ width = 20
 height = 22
 
 [node name="CenterNode" type="Node2D" parent="."]
-
-[node name="Core" parent="." instance=ExtResource("2_yiomc")]
-script = null

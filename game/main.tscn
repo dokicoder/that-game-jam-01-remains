@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddm8m6tm1g4x0"]
+[gd_scene load_steps=7 format=3 uid="uid://ddm8m6tm1g4x0"]
 
 [ext_resource type="PackedScene" uid="uid://bvvqr26g1pub1" path="res://game/BaseBoard.tscn" id="1_oa506"]
 [ext_resource type="PackedScene" uid="uid://dkmdq68t3kapj" path="res://game/Socket.tscn" id="3_vop5m"]
 [ext_resource type="PackedScene" uid="uid://bhqj5loo3m5u6" path="res://game/GreenConnector.tscn" id="4_5un7r"]
 [ext_resource type="PackedScene" uid="uid://c5f17mbjjd812" path="res://game/Cable.tscn" id="5_5un7r"]
 [ext_resource type="PackedScene" uid="uid://dir5y8c3n14rv" path="res://game/RedConnector.tscn" id="5_dgpao"]
+[ext_resource type="PackedScene" uid="uid://caurh7l0et8yg" path="res://game/Core.tscn" id="6_dgpao"]
 
 [node name="Main" type="Node2D"]
 
@@ -19,6 +20,8 @@ red_positions = Array[Vector2i]([Vector2i(18, 6), Vector2i(22, 12), Vector2i(23,
 
 [node name="MainCamera" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="Core" parent="." instance=ExtResource("6_dgpao")]
 
 [node name="Cable" parent="." instance=ExtResource("5_5un7r")]
 position = Vector2(160, 192)

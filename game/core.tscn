@@ -4,10 +4,8 @@
 [ext_resource type="Script" uid="uid://cf20qhxm0ok7t" path="res://game/core.gd" id="2_7ljso"]
 [ext_resource type="PackedScene" uid="uid://chr8jbmvrtg1a" path="res://game/Extension.tscn" id="3_lhiyt"]
 
-[node name="Core" type="Sprite2D"]
-z_index = 1
+[node name="Core" type="Node2D"]
 texture_filter = 1
-texture = ExtResource("1_yi5g4")
 script = ExtResource("2_7ljso")
 left_slot = true
 right_slot = true
@@ -15,26 +13,28 @@ top_slot = true
 bottom_slot = true
 
 [node name="CableLeft" parent="." instance=ExtResource("3_lhiyt")]
-z_index = -1
 position = Vector2(-64, 0)
 scale = Vector2(1.2, 1)
+with_contacts = false
 
 [node name="CableRight" parent="." instance=ExtResource("3_lhiyt")]
-z_index = -1
 position = Vector2(64, 0)
 scale = Vector2(1.2, 1)
 orientation = 1
-with_contacts = true
+with_contacts = false
 
 [node name="CableTop" parent="." instance=ExtResource("3_lhiyt")]
-z_index = -1
 position = Vector2(0, -64)
 scale = Vector2(1, 1.2)
 orientation = 2
+with_contacts = true
 
 [node name="CableBottom" parent="." instance=ExtResource("3_lhiyt")]
-z_index = -1
 position = Vector2(0, 64)
 scale = Vector2(1, 1.2)
 orientation = 3
-with_contacts = true
+with_contacts = false
+
+[node name="EnergyCore" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_yi5g4")
