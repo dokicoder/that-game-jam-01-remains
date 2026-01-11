@@ -10,6 +10,7 @@ const tex_contacts_right: Texture2D = preload("res://game/Aseprite/contacts_righ
 const tex_cover_left: Texture2D = preload("res://game/Aseprite/cover_left.png")
 const tex_cover_right: Texture2D = preload("res://game/Aseprite/cover_right.png")
 
+var is_dragging: bool = false
 
 enum Orientation {
 	LEFT, 

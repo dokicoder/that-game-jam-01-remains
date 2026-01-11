@@ -1,8 +1,6 @@
 @tool
 class_name Extension extends Area2D
 
-var toggle: G.Orientation = G.Orientation.LEFT
-
 signal other_intersection_entered(this: Extension, other: Extension)
 signal other_intersection_exited(this: Extension, other: Extension)
 
@@ -21,6 +19,8 @@ signal other_intersection_exited(this: Extension, other: Extension)
 		if not Engine.is_editor_hint():
 			return
 		$Root/Contacts.visible = value
+
+var connected_extension: Extension = null
 
 var _orientation: G.Orientation = G.Orientation.LEFT
 var _with_contacts: bool = false

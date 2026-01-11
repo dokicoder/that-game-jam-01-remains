@@ -24,10 +24,13 @@ zoom = Vector2(3, 3)
 
 [node name="Core" parent="." instance=ExtResource("6_dgpao")]
 
-[node name="Cable" parent="." instance=ExtResource("5_5un7r")]
-position = Vector2(160, 192)
-
 [node name="Extension" parent="." instance=ExtResource("7_wjctj")]
 position = Vector2(-64, 64)
 orientation = 1
 with_contacts = true
+
+[node name="Cable" parent="." instance=ExtResource("5_5un7r")]
+position = Vector2(160, 192)
+
+[node name="Cable2" parent="." instance=ExtResource("5_5un7r")]
+position = Vector2(-128, 224)
