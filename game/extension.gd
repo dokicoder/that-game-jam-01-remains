@@ -1,7 +1,10 @@
 @tool
-class_name Extension extends Node2D
+class_name Extension extends Area2D
 
 var toggle: G.Orientation = G.Orientation.LEFT
+
+signal other_intersection_entered(this: Extension, other: Extension)
+signal other_intersection_exited(this: Extension, other: Extension)
 
 @export var orientation: G.Orientation:
 	get: return _orientation
@@ -49,4 +52,9 @@ func update_orientation():
 			$Root.rotation = PI * 0.5
 		G.Orientation.LEFT, G.Orientation.RIGHT:
 			$Root.rotation = 0
-			
+
+func _on_area_entered(other: Area2D) -> void:
+	other_intersection_entered.emit(self, other as Extension)
+
+func _on_area_exited(other: Area2D) -> void:
+	other_intersection_exited.emit(self, other as Extension)

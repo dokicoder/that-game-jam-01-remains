@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://chr8jbmvrtg1a"]
+[gd_scene load_steps=6 format=3 uid="uid://chr8jbmvrtg1a"]
 
 [ext_resource type="Script" uid="uid://ycrp5angxohu" path="res://game/extension.gd" id="1_palaa"]
 [ext_resource type="Texture2D" uid="uid://cejwea5f100s3" path="res://game/Aseprite/cover_right.png" id="1_ul3bv"]
 [ext_resource type="Texture2D" uid="uid://civ5ti3ys7ymu" path="res://game/Aseprite/crossing_right.png" id="3_06fh6"]
 [ext_resource type="Texture2D" uid="uid://b33ele13xi34t" path="res://game/Aseprite/contacts_left.png" id="3_6nw20"]
 
-[node name="Extension" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nw20"]
+size = Vector2(19, 14)
+
+[node name="Extension" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_palaa")
 with_contacts = true
 
@@ -23,3 +28,10 @@ texture = ExtResource("3_6nw20")
 [node name="Cable" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("3_06fh6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6.5, 0)
+shape = SubResource("RectangleShape2D_6nw20")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

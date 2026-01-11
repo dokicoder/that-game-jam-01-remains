@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c5f17mbjjd812"]
 
 [ext_resource type="Texture2D" uid="uid://cgn4hotqyih4j" path="res://game/Aseprite/cable_segment_h.png" id="1_6wouq"]
-[ext_resource type="Script" uid="uid://cpelhir6g755d" path="res://game/DraggableCable.gd" id="1_mog11"]
+[ext_resource type="Script" uid="uid://cp4u1vv5eesnl" path="res://game/draggable_cable.gd" id="1_mog11"]
 [ext_resource type="Texture2D" uid="uid://clf4tx1p30ql4" path="res://game/Aseprite/cable_junction2.png" id="2_uwsko"]
 [ext_resource type="Texture2D" uid="uid://dv6paq7rejr12" path="res://game/Aseprite/cable_junction.png" id="3_r2q48"]
 [ext_resource type="Texture2D" uid="uid://bhwx6mr62y27r" path="res://game/Aseprite/corner_top_to_right.png" id="3_w43f7"]
@@ -51,18 +51,18 @@ texture_filter = 1
 position = Vector2(0, -64)
 texture = SubResource("CompressedTexture2D_t0n24")
 
-[node name="Extension4" parent="." instance=ExtResource("9_w43f7")]
+[node name="Extension0" parent="." instance=ExtResource("9_w43f7")]
 position = Vector2(-64, -96)
 with_contacts = false
+
+[node name="Extension1" parent="." instance=ExtResource("9_w43f7")]
+position = Vector2(32, 0)
+orientation = 3
 
 [node name="Junction_16" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-96, -32)
 texture = SubResource("CompressedTexture2D_t0n24")
-
-[node name="Extension9" parent="." instance=ExtResource("9_w43f7")]
-position = Vector2(32, 0)
-orientation = 3
 
 [node name="Junction_12" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -114,5 +114,9 @@ texture = ExtResource("3_w43f7")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(23, 5, 41, 5, 40, -30, 30, -40, -23, -40, -23, -88, 7, -88, 7, -127, -3, -136, -39, -136, -39, -105, -66, -105, -66, -87, -41, -87, -41, -41, -104, -40, -104, -2, -95, 7, -72, 7, -72, 33, -58, 40, -23, 39, -23, -24, 23, -24)
 
+[connection signal="other_intersection_entered" from="Extension0" to="." method="_on_extensions_entered"]
+[connection signal="other_intersection_exited" from="Extension0" to="." method="_on_extensions_exited"]
+[connection signal="other_intersection_entered" from="Extension1" to="." method="_on_extensions_entered"]
+[connection signal="other_intersection_exited" from="Extension1" to="." method="_on_extensions_exited"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
