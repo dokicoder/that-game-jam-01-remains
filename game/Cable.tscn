@@ -58,7 +58,6 @@ with_contacts = true
 [node name="Extension1" parent="." instance=ExtResource("9_w43f7")]
 position = Vector2(32, 0)
 orientation = 3
-with_contacts = false
 
 [node name="Junction_16" type="Sprite2D" parent="."]
 texture_filter = 1

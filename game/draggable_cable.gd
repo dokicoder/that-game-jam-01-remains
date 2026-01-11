@@ -8,7 +8,7 @@ var _snap_position: Vector2 = Vector2(0.0, 0.0)
 
 const HIGHLIGHT_SCALE = 1.01
 
-const SNAP_DISTANCE = 50.0
+const SNAP_DISTANCE = 20.0
 
 func _input(event):
 	if event is InputEventMouseButton:

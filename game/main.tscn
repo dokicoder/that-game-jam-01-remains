@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddm8m6tm1g4x0"]
+[gd_scene load_steps=8 format=3 uid="uid://ddm8m6tm1g4x0"]
 
 [ext_resource type="PackedScene" uid="uid://bvvqr26g1pub1" path="res://game/BaseBoard.tscn" id="1_oa506"]
 [ext_resource type="PackedScene" uid="uid://dkmdq68t3kapj" path="res://game/Socket.tscn" id="3_vop5m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5f17mbjjd812" path="res://game/Cable.tscn" id="5_5un7r"]
 [ext_resource type="PackedScene" uid="uid://dir5y8c3n14rv" path="res://game/RedConnector.tscn" id="5_dgpao"]
 [ext_resource type="PackedScene" uid="uid://caurh7l0et8yg" path="res://game/Core.tscn" id="6_dgpao"]
+[ext_resource type="PackedScene" uid="uid://chr8jbmvrtg1a" path="res://game/Extension.tscn" id="7_wjctj"]
 
 [node name="Main" type="Node2D"]
 
@@ -25,3 +26,8 @@ zoom = Vector2(3, 3)
 
 [node name="Cable" parent="." instance=ExtResource("5_5un7r")]
 position = Vector2(160, 192)
+
+[node name="Extension" parent="." instance=ExtResource("7_wjctj")]
+position = Vector2(-64, 64)
+orientation = 1
+with_contacts = true
