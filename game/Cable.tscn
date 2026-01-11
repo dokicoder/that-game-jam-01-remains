@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5f17mbjjd812"]
+[gd_scene load_steps=13 format=3 uid="uid://c5f17mbjjd812"]
 
 [ext_resource type="Texture2D" uid="uid://cgn4hotqyih4j" path="res://game/Aseprite/cable_segment_h.png" id="1_6wouq"]
 [ext_resource type="Script" uid="uid://cp4u1vv5eesnl" path="res://game/draggable_cable.gd" id="1_mog11"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dq06c488tmidn" path="res://game/Aseprite/corner_bottom_to_right.png" id="7_t0n24"]
 [ext_resource type="Texture2D" uid="uid://c1gxbuj24ec63" path="res://game/Aseprite/corner_top_to_left.png" id="7_w5kd6"]
 [ext_resource type="PackedScene" uid="uid://chr8jbmvrtg1a" path="res://game/Extension.tscn" id="9_w43f7"]
+[ext_resource type="AudioStream" uid="uid://dgvojq6gmm2ve" path="res://game/Sounds/click5.ogg" id="11_eciaa"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t0n24"]
 
@@ -113,6 +114,10 @@ texture = ExtResource("3_w43f7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(23, 5, 41, 5, 40, -30, 30, -40, -23, -40, -23, -88, 7, -88, 7, -127, -3, -136, -39, -136, -39, -105, -66, -105, -66, -87, -41, -87, -41, -41, -104, -40, -104, -2, -95, 7, -72, 7, -72, 33, -58, 40, -23, 39, -23, -24, 23, -24)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_eciaa")
+volume_db = 20.0
 
 [connection signal="other_intersection_entered" from="Extension0" to="." method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="Extension0" to="." method="_on_extensions_exited"]

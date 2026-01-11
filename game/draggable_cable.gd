@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 var is_hovered: bool = false
 var is_dragging: bool = false
 var is_snapped: bool = false
@@ -66,6 +68,9 @@ func _on_extensions_entered(extension_from_this_cable: Extension, other_extensio
 		extension_from_this_cable.hide_contacts()
 		other_extension.hide_contacts()
 		is_snapped = true
+		
+		audio_stream_player.pitch_scale = 0.95 + 0.1 * randf()
+		audio_stream_player.play()
 		
 		# snap to position of extension
 		_snap_position = get_global_mouse_position()
