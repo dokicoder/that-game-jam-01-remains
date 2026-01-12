@@ -21,11 +21,43 @@ extends Node2D
 		if Engine.is_editor_hint():
 			update_board()
 
-@export var green_positions: Array[Vector2i] = []
-@export var red_positions: Array[Vector2i] = []
+#@export var green_positions: Array[Vector2i] = []
+#@export var red_positions: Array[Vector2i] = []
+
+@export var green_positions: Array[Vector2i]:
+	get: 
+		return []
+	set(value): 
+		return
+		
+@export var red_positions: Array[Vector2i]:
+	get: 
+		return []
+	set(value): 
+		return
+
+#@export var green_positions: Array[Vector2i]:
+#	set(value):
+#		_green_positions = value
+#		if Engine.is_editor_hint():
+#			update_board()
+#	get: 
+#		return [] # if green_positions == null else green_positions
+#@export var red_positions: Array[Vector2i]:
+#	set(value):
+#		_red_positions = value
+#		if Engine.is_editor_hint():
+#			update_board()
+#	get: 
+#		return [] # if _red_positions == null else _red_positions
+
+var _green_positions: Array[Vector2i] = []
+var _red_positions: Array[Vector2i] = []
 
 var _width: int = 10
 var _height: int = 10
+
+
 
 func _ready():
 	update_board()
@@ -56,7 +88,23 @@ func update_board():
 			socket.position.x = x * sprite_width
 			socket.position.y = y * sprite_height
 
-			#socket.owner = get_scene() # get_tree().edited_scene_root
+			socket.owner = get_tree().edited_scene_root
+
+	var green_positions_copy = green_positions.duplicate(false)
+	green_positions_copy.sort_custom(func(a, b): 
+		if a.x == b.x:
+			return a.y <= b.y
+		return a.x <= b.x
+	)
+	green_positions = green_positions_copy
+
+	var red_positions_copy = red_positions.duplicate(false)
+	red_positions_copy.sort_custom(func(a, b): 
+		if a.x == b.x:
+			return a.y <= b.y
+		return a.x <= b.x
+	)
+	red_positions = red_positions_copy
 			
 	for connector_position in green_positions:
 		assert(connector_position.x < _width)
@@ -66,7 +114,7 @@ func update_board():
 		connector.position.x = connector_position.x * sprite_width
 		connector.position.y = connector_position.y * sprite_height
 
-		#connector.owner = get_scene() # get_tree().edited_scene_root
+		connector.owner = get_tree().edited_scene_root
 	
 	for connector_position in red_positions:
 		assert(connector_position.x < _width)
@@ -76,5 +124,5 @@ func update_board():
 		connector.position.x = connector_position.x * sprite_width
 		connector.position.y = connector_position.y * sprite_height
 
-		#connector.owner = get_scene()  # get_tree().edited_scene_root
+		connector.owner = get_tree().edited_scene_root
 	

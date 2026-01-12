@@ -15,13 +15,11 @@ bottom_slot = true
 [node name="CableLeft" parent="." instance=ExtResource("3_lhiyt")]
 position = Vector2(-64, 0)
 scale = Vector2(1.2, 1)
-with_contacts = false
 
 [node name="CableRight" parent="." instance=ExtResource("3_lhiyt")]
 position = Vector2(64, 0)
 scale = Vector2(1.2, 1)
 orientation = 1
-with_contacts = false
 
 [node name="CableTop" parent="." instance=ExtResource("3_lhiyt")]
 position = Vector2(0, -64)
@@ -33,7 +31,6 @@ with_contacts = true
 position = Vector2(0, 64)
 scale = Vector2(1, 1.2)
 orientation = 3
-with_contacts = false
 
 [node name="EnergyCore" type="Sprite2D" parent="."]
 texture_filter = 1

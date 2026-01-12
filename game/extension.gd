@@ -39,7 +39,7 @@ func _ready():
 	$Root/Contacts.visible = _with_contacts
 
 func update_orientation():
-	print_debug("update_orientation")
+	#print_debug("update_orientation")
 
 	match _orientation:
 		G.Orientation.LEFT:
