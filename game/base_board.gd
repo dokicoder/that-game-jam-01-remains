@@ -21,43 +21,19 @@ extends Node2D
 		if Engine.is_editor_hint():
 			update_board()
 
-#@export var green_positions: Array[Vector2i] = []
-#@export var red_positions: Array[Vector2i] = []
+@export var green_positions: Array[Vector2i] = []
+@export var red_positions: Array[Vector2i] = []
 
-@export var green_positions: Array[Vector2i]:
-	get: 
-		return []
-	set(value): 
-		return
-		
-@export var red_positions: Array[Vector2i]:
-	get: 
-		return []
-	set(value): 
-		return
+@export_tool_button("Refresh", "Reload") var refresh_action = refresh
 
-#@export var green_positions: Array[Vector2i]:
-#	set(value):
-#		_green_positions = value
-#		if Engine.is_editor_hint():
-#			update_board()
-#	get: 
-#		return [] # if green_positions == null else green_positions
-#@export var red_positions: Array[Vector2i]:
-#	set(value):
-#		_red_positions = value
-#		if Engine.is_editor_hint():
-#			update_board()
-#	get: 
-#		return [] # if _red_positions == null else _red_positions
+func refresh():
+	update_board()
 
 var _green_positions: Array[Vector2i] = []
 var _red_positions: Array[Vector2i] = []
 
 var _width: int = 10
 var _height: int = 10
-
-
 
 func _ready():
 	update_board()

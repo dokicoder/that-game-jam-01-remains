@@ -48,6 +48,7 @@ func _on_area_2d_mouse_exited() -> void:
 		is_hovered = false
 		scale = Vector2(1, 1)
 
+# do connectors face in the opposite direction and have opposite connectors
 func do_extensions_connect(a: Extension, b: Extension):
 	if( a.orientation == G.Orientation.LEFT && b.orientation == G.Orientation.RIGHT
 	or a.orientation == G.Orientation.RIGHT && b.orientation == G.Orientation.LEFT
@@ -59,6 +60,7 @@ func _on_extensions_entered(extension_from_this_cable: Extension, other_extensio
 	print(extension_from_this_cable.name, " entered ", other_extension.name)
 	
 	if( is_dragging 
+		# only if connecters are free, i.e. not already connected to some other connector
 		and extension_from_this_cable.connected_extension == null
 		and other_extension.connected_extension == null
 		and do_extensions_connect(extension_from_this_cable, other_extension) 
