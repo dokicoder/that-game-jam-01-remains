@@ -35,7 +35,7 @@ func restore_contacts():
 func _ready():
 	# TODO: why is this needed?
 	update_orientation()
-	print("init with contatcs ", _with_contacts)
+	#print_debug("init with contatcs ", _with_contacts)
 	$Root/Contacts.visible = _with_contacts
 
 func update_orientation():

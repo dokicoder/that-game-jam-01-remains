@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5f17mbjjd812"]
+[gd_scene load_steps=16 format=4 uid="uid://c5f17mbjjd812"]
 
 [ext_resource type="Texture2D" uid="uid://cgn4hotqyih4j" path="res://game/Aseprite/cable_segment_h.png" id="1_6wouq"]
 [ext_resource type="Script" uid="uid://cp4u1vv5eesnl" path="res://game/draggable_cable.gd" id="1_mog11"]
+[ext_resource type="Script" uid="uid://e131gyojdd2l" path="res://tools/CableMap.gd" id="2_8dfyj"]
 [ext_resource type="Texture2D" uid="uid://clf4tx1p30ql4" path="res://game/Aseprite/cable_junction2.png" id="2_uwsko"]
 [ext_resource type="Texture2D" uid="uid://dv6paq7rejr12" path="res://game/Aseprite/cable_junction.png" id="3_r2q48"]
 [ext_resource type="Texture2D" uid="uid://bhwx6mr62y27r" path="res://game/Aseprite/corner_top_to_right.png" id="3_w43f7"]
@@ -12,10 +13,25 @@
 [ext_resource type="PackedScene" uid="uid://chr8jbmvrtg1a" path="res://game/Extension.tscn" id="9_w43f7"]
 [ext_resource type="AudioStream" uid="uid://dgvojq6gmm2ve" path="res://game/Sounds/click5.ogg" id="11_eciaa"]
 
+[sub_resource type="Image" id="Image_8dfyj"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAADMAADMAAAAAAAAAAAAzAAAAAAAAAAAAAAAAAAAAADMzAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="),
+"format": "Lum8",
+"height": 10,
+"mipmaps": false,
+"width": 10
+}
+
+[sub_resource type="Resource" id="Resource_8dfyj"]
+script = ExtResource("2_8dfyj")
+map_image = SubResource("Image_8dfyj")
+metadata/_custom_type_script = "uid://e131gyojdd2l"
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t0n24"]
 
 [node name="Cable" type="Node2D"]
 script = ExtResource("1_mog11")
+cable_map = SubResource("Resource_8dfyj")
 
 [node name="Junction_06" type="Sprite2D" parent="."]
 texture_filter = 1

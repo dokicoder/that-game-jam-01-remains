@@ -43,6 +43,10 @@ func update_board():
 	
 	var center_node: Node2D = $CenterNode;
 	
+	if not is_instance_valid(center_node):
+		printerr("update_board(): center_node not ready")
+		return
+	
 	for node in center_node.get_children():
 		node.queue_free()
 		

@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
+@export var cable_map: CableMap
+
 var is_hovered: bool = false
 var is_dragging: bool = false
 var is_snapped: bool = false
@@ -26,7 +28,7 @@ func _input(event):
 				z_index = 0
 				is_dragging = false
 				is_snapped = false
-
+				
 func _process(delta: float) -> void:
 	if is_dragging and not is_snapped:
 		global_position = get_global_mouse_position() - _offset
