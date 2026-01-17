@@ -15,14 +15,14 @@
 
 [sub_resource type="Image" id="Image_8dfyj"]
 data = {
-"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAADMAADMAAAAAAAAAAAAzAAAAAAAAAAAAAAAAAAAAADMzAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="),
-"format": "Lum8",
-"height": 10,
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAtD8qAAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AHs6tD8qAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAtD8qAAAAAAAAAAAAAAAAAAAAAAAA"),
+"format": "RGB8",
+"height": 12,
 "mipmaps": false,
-"width": 10
+"width": 4
 }
 
-[sub_resource type="Resource" id="Resource_8dfyj"]
+[sub_resource type="Resource" id="Resource_hsn3n"]
 script = ExtResource("2_8dfyj")
 map_image = SubResource("Image_8dfyj")
 metadata/_custom_type_script = "uid://e131gyojdd2l"
@@ -31,7 +31,7 @@ metadata/_custom_type_script = "uid://e131gyojdd2l"
 
 [node name="Cable" type="Node2D"]
 script = ExtResource("1_mog11")
-cable_map = SubResource("Resource_8dfyj")
+cable_map = SubResource("Resource_hsn3n")
 
 [node name="Junction_06" type="Sprite2D" parent="."]
 texture_filter = 1

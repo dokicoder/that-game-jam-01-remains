@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 	if is_dragging and not is_snapped:
 		global_position = get_global_mouse_position() - _offset
 	if is_dragging and is_snapped:
+		# unsnapping when moving out of a certain radius
 		if get_global_mouse_position().distance_to(_snap_position) > SNAP_DISTANCE:
 			is_snapped = false
 
