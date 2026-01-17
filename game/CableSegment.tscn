@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddnm2l30qxrn7"]
+
+[ext_resource type="Texture2D" uid="uid://b4c8dt3wriycp" path="res://game/Aseprite/corner_bottom_to_left.png" id="1_eutn1"]
+
+[node name="CableSegment" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_eutn1")

@@ -1,4 +1,5 @@
-extends Node2D
+@tool
+class_name DraggableCable extends Node2D
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 

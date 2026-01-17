@@ -22,12 +22,17 @@ func _on_select_color(color: String):
 
 func _ready() -> void:
 	cable_map = owner.cable_map
+	update_size.call_deferred()
+	
+	# no cable map assigned
+	if not is_instance_valid(cable_map):
+		return
 	
 	if not is_instance_valid(cable_map.map_image):
 		print_debug("resource had no image, initializing with default empty image")
 		cable_map.map_image = Image.create_empty(10, 10, false, Image.Format.FORMAT_RGB8)
 	
-	update_size.call_deferred()
+
 
 func update_size() -> void:
 	pixel_size = get_parent().size.x / float(cable_map.map_image.get_size().x)

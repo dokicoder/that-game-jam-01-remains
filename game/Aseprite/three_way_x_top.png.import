@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cslknpcg1mfme"
-path="res://.godot/imported/cable_segment_h_half.png-c06e9c89c04b72d68d113011600cd846.ctex"
+uid="uid://jk12qo4t78og"
+path="res://.godot/imported/three_way_x_top.png-c39f28bdf8ee59968bead9eb25139ac1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/Aseprite/cable_segment_h_half.png"
-dest_files=["res://.godot/imported/cable_segment_h_half.png-c06e9c89c04b72d68d113011600cd846.ctex"]
+source_file="res://game/Aseprite/three_way_x_top.png"
+dest_files=["res://.godot/imported/three_way_x_top.png-c39f28bdf8ee59968bead9eb25139ac1.ctex"]
 
 [params]
 

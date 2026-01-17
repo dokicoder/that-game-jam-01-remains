@@ -10,6 +10,22 @@ const tex_contacts_right: Texture2D = preload("res://game/Aseprite/contacts_righ
 const tex_cover_left: Texture2D = preload("res://game/Aseprite/cover_left.png")
 const tex_cover_right: Texture2D = preload("res://game/Aseprite/cover_right.png")
 
+const tex_cable_h: Texture2D = preload("res://game/Aseprite/cable_segment_h.png")
+const tex_cable_v: Texture2D = preload("res://game/Aseprite/cable_segment_v.png")
+const tex_cable_corner_top_left: Texture2D = preload("res://game/Aseprite/corner_top_to_left.png")
+const tex_cable_corner_top_right: Texture2D = preload("res://game/Aseprite/corner_top_to_right.png")
+const tex_cable_corner_bottom_left: Texture2D = preload("res://game/Aseprite/corner_bottom_to_left.png")
+const tex_cable_corner_bottom_right: Texture2D = preload("res://game/Aseprite/corner_bottom_to_right.png")
+
+const tex_cable_crossing: Texture2D = preload("res://game/Aseprite/cable_crossing.png")
+const tex_cable_junction_1: Texture2D = preload("res://game/Aseprite/cable_junction.png")
+const tex_cable_junction_2: Texture2D = preload("res://game/Aseprite/cable_junction2.png")
+
+const tex_crossing_x_left: Texture2D = preload("res://game/Aseprite/three_way_x_left.png")
+const tex_crossing_x_right: Texture2D = preload("res://game/Aseprite/three_way_x_right.png")
+const tex_crossing_x_top: Texture2D = preload("res://game/Aseprite/three_way_x_top.png")
+const tex_crossing_x_bottom: Texture2D = preload("res://game/Aseprite/three_way_x_bottom.png")
+
 var is_dragging: bool = false
 
 enum Orientation {

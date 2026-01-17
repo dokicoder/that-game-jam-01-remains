@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=4 uid="uid://dchuo6eveswkk"]
+
+[ext_resource type="Script" uid="uid://bfqmagewuk2u3" path="res://game/generated_cable.gd" id="1_3djp8"]
+[ext_resource type="Script" uid="uid://e131gyojdd2l" path="res://tools/CableMap.gd" id="2_la1gx"]
+[ext_resource type="AudioStream" uid="uid://dgvojq6gmm2ve" path="res://game/Sounds/click5.ogg" id="12_3i81j"]
+
+[sub_resource type="Image" id="Image_8dfyj"]
+data = {
+"data": PackedByteArray("AAAAtD8qAAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AHs6tD8qAAAAAHs6AAAAAAAAAAAAtD8qAAAAAAAAAAAAAAAAAAAAAAAA"),
+"format": "RGB8",
+"height": 10,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="Resource" id="Resource_hsn3n"]
+script = ExtResource("2_la1gx")
+map_image = SubResource("Image_8dfyj")
+metadata/_custom_type_script = "uid://e131gyojdd2l"
+
+[node name="Cable" type="Node2D"]
+script = ExtResource("1_3djp8")
+cable_map = SubResource("Resource_hsn3n")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_3i81j")
+volume_db = 20.0
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
