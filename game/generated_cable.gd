@@ -8,6 +8,8 @@ var Extension: PackedScene = preload("res://game/Extension.tscn")
 
 const COLOR_CONNECTOR: Color = Color("#b43f2a")
 const COLOR_CABLE: Color = Color("#007b3a")
+const COLOR_CABLE_HORIZONTAL: Color = Color("#00de0c")
+const COLOR_CABLE_VERTICAL: Color = Color("003124")
 const COLOR_BACKGROUND: Color = Color("#000000")
 
 func get_map_pixel(x: int, y: int):
@@ -92,35 +94,63 @@ func _generate_cable_from_map():
 					cable_segments_root.position.x += x * sprite_width
 					cable_segments_root.position.y += y * sprite_height
 					
-					var horizontal = (neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR) and (neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR)
-					var vertical = (neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR) and (neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR)
+					var horizontal = (neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR or neighbors[0] == COLOR_CABLE_HORIZONTAL) and (neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR or neighbors[1] == COLOR_CABLE_HORIZONTAL)
+					var vertical = (neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL) and (neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL)
 					
 					if horizontal:
 						if vertical:
 							cable.texture = [G.tex_cable_junction_1, G.tex_cable_junction_2].pick_random()
-						elif neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR:
+						elif neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL:
 							cable.texture = G.tex_crossing_x_bottom
-						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR:
+						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
 							cable.texture = G.tex_crossing_x_top
 						else:
 							cable.texture = G.tex_cable_h
 					elif vertical:
-						if neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR:
+						if neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR or neighbors[0] == COLOR_CABLE_HORIZONTAL:
 							cable.texture = G.tex_crossing_x_right
-						elif neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR:
+						elif neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR or neighbors[1] == COLOR_CABLE_HORIZONTAL:
 							cable.texture = G.tex_crossing_x_left
 						else:
 							cable.texture = G.tex_cable_v
-					elif neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR:
-						if neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR:
+					elif neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR or neighbors[0] == COLOR_CABLE_HORIZONTAL:
+						if neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL:
 							cable.texture = G.tex_cable_corner_top_left
-						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR:
+						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
 							cable.texture = G.tex_cable_corner_bottom_left
-					elif neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR:
-						if neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR:
+					elif neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR or neighbors[1] == COLOR_CABLE_HORIZONTAL:
+						if neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL:
 							cable.texture = G.tex_cable_corner_top_right
-						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR:
+						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
 							cable.texture = G.tex_cable_corner_bottom_right
+					
+					cable.owner = get_tree().edited_scene_root
+					
+					num_nodes += 1
+				COLOR_CABLE_HORIZONTAL:					#print( "Position %d %d - Cable" %  [x, y] )
+					var cable: Sprite2D = CableSegment.instantiate()
+					cable_segments_root.add_child(cable)
+					cable.position.x = x * sprite_width
+					cable.position.y = y * sprite_height
+					
+					cable_segments_root.position.x += x * sprite_width
+					cable_segments_root.position.y += y * sprite_height
+					
+					cable.texture = G.tex_cable_h
+					
+					cable.owner = get_tree().edited_scene_root
+					
+					num_nodes += 1
+				COLOR_CABLE_VERTICAL:					#print( "Position %d %d - Cable" %  [x, y] )
+					var cable: Sprite2D = CableSegment.instantiate()
+					cable_segments_root.add_child(cable)
+					cable.position.x = x * sprite_width
+					cable.position.y = y * sprite_height
+					
+					cable_segments_root.position.x += x * sprite_width
+					cable_segments_root.position.y += y * sprite_height
+					
+					cable.texture = G.tex_cable_v
 					
 					cable.owner = get_tree().edited_scene_root
 					

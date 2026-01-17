@@ -86,6 +86,44 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(3.0322374e-06, 0.48205447, 0.2260763, 1)
 
+[node name="Button_Cable_Horizontal" type="Button" parent="VBox/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Cable_Horizontal"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(2.7915835e-06, 0.8707363, 0.046039946, 1)
+
+[node name="Button_Cable_Vertical" type="Button" parent="VBox/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Cable_Vertical"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(3.7902967e-07, 0.19389257, 0.13971469, 1)
+
 [node name="Button_Erase" type="Button" parent="VBox/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
@@ -118,5 +156,7 @@ text = "Clear
 [connection signal="value_changed" from="VBox/Resizer/Y" to="." method="_on_size_changed" unbinds=1]
 [connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Connector" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#b43f2a"]]
 [connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Cable" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#007b3a"]]
+[connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Cable_Horizontal" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#00de0c"]]
+[connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Cable_Vertical" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#003124"]]
 [connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Erase" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#000000"]]
 [connection signal="pressed" from="VBox/Shortcuts/Clear" to="." method="_set_all_bits" binds= [false]]

@@ -6,11 +6,11 @@
 
 [sub_resource type="Image" id="Image_8dfyj"]
 data = {
-"data": PackedByteArray("AAAAtD8qAAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AHs6tD8qAAAAAHs6AAAAAAAAAAAAtD8qAAAAAAAAAAAAAAAAAAAAAAAA"),
+"data": PackedByteArray("AAAAAAAAAHs6AHs6AAAAAAAAtD8qAHs6AHs6AAAAAAAAAAAAAHs6AAAAAAAAAHs6AHs6AHs6AHs6AHs6AHs6AHs6AHs6AAAAtD8qAAAAAHs6AHs6AAAAAAAA"),
 "format": "RGB8",
-"height": 10,
+"height": 6,
 "mipmaps": false,
-"width": 4
+"width": 5
 }
 
 [sub_resource type="Resource" id="Resource_hsn3n"]
