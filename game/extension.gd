@@ -67,9 +67,7 @@ func update_orientation():
 			$Root.rotation = 0
 
 func _on_area_entered(other: Area2D) -> void:
-	print(self.name, " is emitting entered")
 	other_intersection_entered.emit(self, other as Extension)
 
 func _on_area_exited(other: Area2D) -> void:
-	print(self.name, " is emitting exited")
 	other_intersection_exited.emit(self, other as Extension)

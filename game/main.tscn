@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddm8m6tm1g4x0"]
+[gd_scene load_steps=24 format=3 uid="uid://ddm8m6tm1g4x0"]
 
 [ext_resource type="PackedScene" uid="uid://bvvqr26g1pub1" path="res://game/BaseBoard.tscn" id="1_oa506"]
 [ext_resource type="PackedScene" uid="uid://dkmdq68t3kapj" path="res://game/Socket.tscn" id="3_vop5m"]
@@ -8,10 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://caurh7l0et8yg" path="res://game/Core.tscn" id="6_dgpao"]
 [ext_resource type="PackedScene" uid="uid://chr8jbmvrtg1a" path="res://game/Extension.tscn" id="7_wjctj"]
 [ext_resource type="PackedScene" uid="uid://dchuo6eveswkk" path="res://game/GeneratedCable.tscn" id="8_xkbyp"]
-[ext_resource type="Script" uid="uid://ycrp5angxohu" path="res://game/extension.gd" id="9_dp3pf"]
 [ext_resource type="PackedScene" uid="uid://ddnm2l30qxrn7" path="res://game/CableSegment.tscn" id="10_ioaqv"]
 [ext_resource type="Texture2D" uid="uid://qjw67cv2xisq" path="res://game/Aseprite/cable_segment_v.png" id="11_ioaqv"]
-[ext_resource type="Texture2D" uid="uid://b4c8dt3wriycp" path="res://game/Aseprite/corner_bottom_to_left.png" id="11_li27q"]
 [ext_resource type="Texture2D" uid="uid://b2dthefw41bqa" path="res://game/Aseprite/three_way_x_right.png" id="12_frwyw"]
 [ext_resource type="Texture2D" uid="uid://cvmhdnnti51kv" path="res://game/Aseprite/three_way_x_left.png" id="12_g6fv7"]
 [ext_resource type="Texture2D" uid="uid://cgn4hotqyih4j" path="res://game/Aseprite/cable_segment_h.png" id="12_li27q"]
@@ -164,52 +162,38 @@ position = Vector2(-358, 309)
 [node name="CableSegmentsRoot" type="Node2D" parent="GeneratedCable2"]
 position = Vector2(0, -64)
 
-[node name="Extension" type="Area2D" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_dp3pf")
+[node name="Extension" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 with_contacts = true
 
-[node name="CableSegment" type="Sprite2D" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="CableSegment" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(0, 96)
 texture = ExtResource("19_le3en")
 
-[node name="@Sprite2D@177596" type="Sprite2D" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@177596" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(0, 128)
 texture = ExtResource("11_ioaqv")
 
-[node name="@Sprite2D@177597" type="Sprite2D" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@177597" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(0, 160)
 texture = ExtResource("20_rqwoc")
 
-[node name="@Sprite2D@177598" type="Sprite2D" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@177598" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(32, 0)
-texture = ExtResource("11_li27q")
 
-[node name="@Sprite2D@177599" type="Sprite2D" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@177599" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(32, 32)
 texture = ExtResource("11_ioaqv")
 
-[node name="@Sprite2D@177600" type="Sprite2D" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@177600" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(32, 64)
 texture = ExtResource("11_ioaqv")
 
-[node name="@Sprite2D@177601" type="Sprite2D" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@177601" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(32, 96)
 texture = ExtResource("17_tv0fx")
 
-[node name="@Area2D@177602" type="Area2D" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="@Area2D@177602" parent="GeneratedCable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(32, 160)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_dp3pf")
 orientation = 1
 
 [node name="GeneratedCable3" parent="." instance=ExtResource("8_xkbyp")]
@@ -218,92 +202,68 @@ position = Vector2(315, 250)
 [node name="CableSegmentsRoot" type="Node2D" parent="GeneratedCable3"]
 position = Vector2(-32, -64)
 
-[node name="CableSegment" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="CableSegment" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(0, 96)
 texture = ExtResource("19_le3en")
 
-[node name="@Sprite2D@173677" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173677" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(0, 128)
 texture = ExtResource("20_rqwoc")
 
-[node name="Extension" type="Area2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="Extension" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(32, 32)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_dp3pf")
 
-[node name="@Sprite2D@173678" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173678" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(32, 96)
 texture = ExtResource("12_li27q")
 
-[node name="@Sprite2D@173679" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173679" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(32, 128)
-texture = ExtResource("11_li27q")
 
-[node name="@Sprite2D@173680" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173680" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(32, 160)
 texture = ExtResource("20_rqwoc")
 
-[node name="@Sprite2D@173681" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173681" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(64, 0)
 texture = ExtResource("19_le3en")
 
-[node name="@Sprite2D@173682" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173682" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(64, 32)
 texture = ExtResource("14_frwyw")
 
-[node name="@Sprite2D@173683" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173683" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(64, 64)
 texture = ExtResource("11_ioaqv")
 
-[node name="@Sprite2D@173684" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173684" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(64, 96)
 texture = ExtResource("16_yyxey")
 
-[node name="@Sprite2D@173685" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173685" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(64, 128)
 texture = ExtResource("11_ioaqv")
 
-[node name="@Sprite2D@173686" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173686" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(64, 160)
 texture = ExtResource("17_tv0fx")
 
-[node name="@Sprite2D@173687" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173687" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(96, 0)
-texture = ExtResource("11_li27q")
 
-[node name="@Sprite2D@173688" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173688" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(96, 32)
 texture = ExtResource("17_tv0fx")
 
-[node name="@Sprite2D@173689" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173689" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(96, 96)
 texture = ExtResource("12_li27q")
 
-[node name="@Sprite2D@173690" type="Sprite2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@173690" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(128, 96)
-texture = ExtResource("11_li27q")
 
-[node name="@Area2D@173691" type="Area2D" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="@Area2D@173691" parent="GeneratedCable3/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(128, 128)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_dp3pf")
 orientation = 3
 
 [node name="GeneratedCable4" parent="." instance=ExtResource("8_xkbyp")]
@@ -313,75 +273,53 @@ cable_map = SubResource("Resource_2o2kd")
 [node name="CableSegmentsRoot" type="Node2D" parent="GeneratedCable4"]
 position = Vector2(-64, -32)
 
-[node name="Extension" type="Area2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="Extension" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(0, 32)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_dp3pf")
 
-[node name="@Area2D@180217" type="Area2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="@Area2D@180217" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(32, 0)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_dp3pf")
 orientation = 2
 
-[node name="CableSegment" type="Sprite2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="CableSegment" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(32, 32)
 texture = ExtResource("14_frwyw")
 
-[node name="@Sprite2D@180218" type="Sprite2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@180218" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(32, 64)
 texture = ExtResource("20_rqwoc")
 
-[node name="@Sprite2D@180219" type="Sprite2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@180219" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(64, 32)
 texture = ExtResource("12_li27q")
 
-[node name="@Sprite2D@180220" type="Sprite2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@180220" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(64, 64)
 texture = ExtResource("12_li27q")
 
-[node name="@Area2D@180221" type="Area2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="@Area2D@180221" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(96, 0)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_dp3pf")
 orientation = 2
 with_contacts = true
 
-[node name="@Sprite2D@180222" type="Sprite2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@180222" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(96, 32)
 texture = ExtResource("23_2o2kd")
 
-[node name="@Area2D@180223" type="Area2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="@Area2D@180223" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(96, 64)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_dp3pf")
 orientation = 1
 with_contacts = true
 
-[node name="@Sprite2D@180224" type="Sprite2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@180224" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(128, 32)
 texture = ExtResource("12_li27q")
 
-[node name="@Sprite2D@180225" type="Sprite2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-texture_filter = 1
+[node name="@Sprite2D@180225" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 position = Vector2(160, 32)
 texture = ExtResource("12_li27q")
 
-[node name="@Area2D@180226" type="Area2D" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="@Area2D@180226" parent="GeneratedCable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(192, 32)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_dp3pf")
 orientation = 1
 
 [connection signal="other_intersection_entered" from="GeneratedCable/CableSegmentsRoot/@Area2D@117547" to="GeneratedCable" method="_on_extensions_entered"]
@@ -396,39 +334,21 @@ orientation = 1
 [connection signal="other_intersection_exited" from="GeneratedCable/CableSegmentsRoot/@Area2D@117569" to="GeneratedCable" method="_on_extensions_exited"]
 [connection signal="other_intersection_entered" from="GeneratedCable/CableSegmentsRoot/@Area2D@117570" to="GeneratedCable" method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="GeneratedCable/CableSegmentsRoot/@Area2D@117570" to="GeneratedCable" method="_on_extensions_exited"]
-[connection signal="area_entered" from="GeneratedCable2/CableSegmentsRoot/Extension" to="GeneratedCable2/CableSegmentsRoot/Extension" method="_on_area_entered"]
-[connection signal="area_exited" from="GeneratedCable2/CableSegmentsRoot/Extension" to="GeneratedCable2/CableSegmentsRoot/Extension" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="GeneratedCable2/CableSegmentsRoot/Extension" to="GeneratedCable2" method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="GeneratedCable2/CableSegmentsRoot/Extension" to="GeneratedCable2" method="_on_extensions_exited"]
-[connection signal="area_entered" from="GeneratedCable2/CableSegmentsRoot/@Area2D@177602" to="GeneratedCable2/CableSegmentsRoot/@Area2D@177602" method="_on_area_entered"]
-[connection signal="area_exited" from="GeneratedCable2/CableSegmentsRoot/@Area2D@177602" to="GeneratedCable2/CableSegmentsRoot/@Area2D@177602" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="GeneratedCable2/CableSegmentsRoot/@Area2D@177602" to="GeneratedCable2" method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="GeneratedCable2/CableSegmentsRoot/@Area2D@177602" to="GeneratedCable2" method="_on_extensions_exited"]
-[connection signal="area_entered" from="GeneratedCable3/CableSegmentsRoot/Extension" to="GeneratedCable3/CableSegmentsRoot/Extension" method="_on_area_entered"]
-[connection signal="area_exited" from="GeneratedCable3/CableSegmentsRoot/Extension" to="GeneratedCable3/CableSegmentsRoot/Extension" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="GeneratedCable3/CableSegmentsRoot/Extension" to="GeneratedCable3" method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="GeneratedCable3/CableSegmentsRoot/Extension" to="GeneratedCable3" method="_on_extensions_exited"]
-[connection signal="area_entered" from="GeneratedCable3/CableSegmentsRoot/@Area2D@173691" to="GeneratedCable3/CableSegmentsRoot/@Area2D@173691" method="_on_area_entered"]
-[connection signal="area_exited" from="GeneratedCable3/CableSegmentsRoot/@Area2D@173691" to="GeneratedCable3/CableSegmentsRoot/@Area2D@173691" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="GeneratedCable3/CableSegmentsRoot/@Area2D@173691" to="GeneratedCable3" method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="GeneratedCable3/CableSegmentsRoot/@Area2D@173691" to="GeneratedCable3" method="_on_extensions_exited"]
-[connection signal="area_entered" from="GeneratedCable4/CableSegmentsRoot/Extension" to="GeneratedCable4/CableSegmentsRoot/Extension" method="_on_area_entered"]
-[connection signal="area_exited" from="GeneratedCable4/CableSegmentsRoot/Extension" to="GeneratedCable4/CableSegmentsRoot/Extension" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="GeneratedCable4/CableSegmentsRoot/Extension" to="GeneratedCable4" method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="GeneratedCable4/CableSegmentsRoot/Extension" to="GeneratedCable4" method="_on_extensions_exited"]
-[connection signal="area_entered" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180217" to="GeneratedCable4/CableSegmentsRoot/@Area2D@180217" method="_on_area_entered"]
-[connection signal="area_exited" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180217" to="GeneratedCable4/CableSegmentsRoot/@Area2D@180217" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180217" to="GeneratedCable4" method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180217" to="GeneratedCable4" method="_on_extensions_exited"]
-[connection signal="area_entered" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180221" to="GeneratedCable4/CableSegmentsRoot/@Area2D@180221" method="_on_area_entered"]
-[connection signal="area_exited" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180221" to="GeneratedCable4/CableSegmentsRoot/@Area2D@180221" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180221" to="GeneratedCable4" method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180221" to="GeneratedCable4" method="_on_extensions_exited"]
-[connection signal="area_entered" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180223" to="GeneratedCable4/CableSegmentsRoot/@Area2D@180223" method="_on_area_entered"]
-[connection signal="area_exited" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180223" to="GeneratedCable4/CableSegmentsRoot/@Area2D@180223" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180223" to="GeneratedCable4" method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180223" to="GeneratedCable4" method="_on_extensions_exited"]
-[connection signal="area_entered" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180226" to="GeneratedCable4/CableSegmentsRoot/@Area2D@180226" method="_on_area_entered"]
-[connection signal="area_exited" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180226" to="GeneratedCable4/CableSegmentsRoot/@Area2D@180226" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180226" to="GeneratedCable4" method="_on_extensions_entered"]
 [connection signal="other_intersection_exited" from="GeneratedCable4/CableSegmentsRoot/@Area2D@180226" to="GeneratedCable4" method="_on_extensions_exited"]
