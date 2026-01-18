@@ -20,7 +20,6 @@ func generate_collision_shape():
 		c.queue_free()
 
 	for polygon in polygons:
-		
 		if Geometry2D.is_polygon_clockwise(polygon):
 			print("=> Clockwise")
 			
@@ -38,8 +37,8 @@ func join_with_other_collider():
 	print("join_with_other_collider")
 	var c_this: CollisionPolygon2D = get_child(0)
 	
-	var polygon_this = get_parent().get_relative_transform_to_parent(get_parent().get_parent()) * c_this.polygon
-	var polygon_other = other_collider.get_parent().get_relative_transform_to_parent(get_parent().get_parent()) * other_collider.polygon
+	var polygon_this = get_parent().transform * c_this.polygon
+	var polygon_other = other_collider.get_parent().transform * other_collider.polygon
 	
 	var polygons = Geometry2D.merge_polygons(polygon_this, polygon_other)
 

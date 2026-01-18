@@ -25,6 +25,32 @@ var connected_extension: Extension = null
 var _orientation: G.Orientation = G.Orientation.LEFT
 var _with_contacts: bool = false
 
+func generate_collision_polygon(pass_transform: Transform2D):
+	var image = $Cable.texture.get_image()
+
+	var bitmap = BitMap.new()
+	bitmap.create_from_image_alpha(image)
+	bitmap.grow_mask(2, Rect2(Vector2(0, 0), bitmap.get_size()))
+	
+	var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()), 3)
+
+	for polygon in polygons:
+			if Geometry2D.is_polygon_clockwise(polygon):
+				#print("=> Clockwise")
+				
+				polygon = Transform2D(0, Vector2(-16.0, -16.0)) * polygon
+				
+				var collider = CollisionPolygon2D.new()
+				collider.polygon = polygon
+			
+				add_child(collider)
+				
+				collider.owner = get_tree().edited_scene_root
+				
+				return pass_transform * polygon
+				#print(": Counterclockwise")
+	return null
+
 # hide contacts without changin visible, used e.g. for snapping
 func hide_contacts():
 	$Root/Contacts.visible = false
@@ -66,8 +92,8 @@ func update_orientation():
 		G.Orientation.LEFT, G.Orientation.RIGHT:
 			$Root.rotation = 0
 
-func _on_area_entered(other: Area2D) -> void:
+func _on_area_entered(other: Extension) -> void:
 	other_intersection_entered.emit(self, other as Extension)
 
-func _on_area_exited(other: Area2D) -> void:
+func _on_area_exited(other: Extension) -> void:
 	other_intersection_exited.emit(self, other as Extension)

@@ -22,6 +22,43 @@ func get_neighbors(x: int, y: int):
 	# [left, right, top, bottom]
 	return [get_map_pixel(x - 1, y), get_map_pixel(x + 1, y), get_map_pixel(x, y - 1), get_map_pixel(x, y + 1)]
 
+func _generate_collision_shape():
+	var cable_segments_root: Node2D = $CableSegmentsRoot;
+
+	var merged_polygon = null
+	
+	for node in cable_segments_root.get_children():
+		print("type: ", node.get_class())
+		
+		if not is_instance_valid(node):
+			print("invalid instance - skipping")
+			continue
+		if not node.has_method("generate_collision_polygon"):
+			print("generate_collision_polygon() does not exist - skipping")
+			continue	
+		
+		print(node.transform)
+		
+		if merged_polygon == null:
+			print("initialize polygon")
+			merged_polygon = node.generate_collision_polygon(node.transform)
+			continue
+
+		var new_polygon = node.generate_collision_polygon(node.transform)
+
+		var polygons = Geometry2D.merge_polygons(merged_polygon, new_polygon)
+
+		for polygon in polygons:
+			#if Geometry2D.is_polygon_clockwise(polygon):
+			#	pass
+			#else:
+			print("Winding: ", Geometry2D.is_polygon_clockwise(polygon))
+			merged_polygon = polygon
+				
+				#break
+	
+	$Area2D/CollisionPolygon2D.polygon = merged_polygon
+
 func _generate_cable_from_map():
 	print("generate")
 	
@@ -161,3 +198,5 @@ func _generate_cable_from_map():
 	
 	cable_segments_root.position.x = x_center
 	cable_segments_root.position.y = y_center
+
+	_generate_collision_shape()
