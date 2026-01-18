@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://tfji20pnygh3"]
 
 [ext_resource type="Script" uid="uid://ycrp5angxohu" path="res://game/extension.gd" id="1_fldib"]
-[ext_resource type="Texture2D" uid="uid://dnd3ingeyjxwf" path="res://game/Aseprite/cable_crossing.png" id="2_jhvdm"]
 [ext_resource type="Texture2D" uid="uid://b33ele13xi34t" path="res://game/Aseprite/contacts_left.png" id="3_fgja8"]
 [ext_resource type="Script" uid="uid://bkvfm7sa1gt0y" path="res://game/test_collison_gen.gd" id="3_jhvdm"]
 [ext_resource type="Texture2D" uid="uid://b4c8dt3wriycp" path="res://game/Aseprite/corner_bottom_to_left.png" id="4_fgja8"]
 [ext_resource type="Texture2D" uid="uid://cejwea5f100s3" path="res://game/Aseprite/cover_right.png" id="4_x18iv"]
+[ext_resource type="Texture2D" uid="uid://civ5ti3ys7ymu" path="res://game/Aseprite/crossing_right.png" id="6_fgja8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nw20"]
 size = Vector2(10, 10)
@@ -37,19 +37,18 @@ texture = ExtResource("4_fgja8")
 script = ExtResource("3_jhvdm")
 metadata/_edit_group_ = true
 
-[node name="@CollisionPolygon2D@31681" type="CollisionPolygon2D" parent="Cable2"]
-position = Vector2(-16, -16)
-polygon = PackedVector2Array(0, 23, 9, 23, 9, 32, 23, 32, 20, 17, 20, 15, 12, 10, 12, 9, 0, 9)
+[node name="@CollisionPolygon2D@36734" type="CollisionPolygon2D" parent="Cable2"]
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
 
-[node name="Cable" type="Sprite2D" parent="."]
+[node name="Cable" type="Sprite2D" parent="." node_paths=PackedStringArray("other_collider")]
 texture_filter = 1
-texture = ExtResource("2_jhvdm")
+texture = ExtResource("6_fgja8")
 script = ExtResource("3_jhvdm")
+other_collider = NodePath("../Cable2/@CollisionPolygon2D@36734")
 metadata/_edit_group_ = true
 
-[node name="@CollisionPolygon2D@33094" type="CollisionPolygon2D" parent="Cable"]
-position = Vector2(-16, -16)
-polygon = PackedVector2Array(9, 9, 0, 9, 0, 23, 9, 23, 9, 32, 23, 32, 23, 23, 32, 23, 32, 9, 23, 9, 23, 0, 9, 0)
+[node name="@CollisionPolygon2D@37121" type="CollisionPolygon2D" parent="Cable"]
+polygon = PackedVector2Array(4, -6, 4, 7, 16, 7, 16, -7, 4, -7)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
