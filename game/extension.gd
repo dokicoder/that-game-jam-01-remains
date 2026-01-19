@@ -25,6 +25,29 @@ var connected_extension: Extension = null
 var _orientation: G.Orientation = G.Orientation.LEFT
 var _with_contacts: bool = false
 
+# relative to rotation
+func relative_orientation():
+	var rotation_offset: int = round( fmod(global_rotation, PI * 2) / (PI * 0.5) )
+	
+	var initial_index = {
+		G.Orientation.LEFT: 0,
+		G.Orientation.TOP: 1,
+		G.Orientation.RIGHT: 2,
+		G.Orientation.BOTTOM: 3,
+	}[orientation]
+
+	var index = (initial_index + rotation_offset + 4) % 4
+	var new_orientation = [G.Orientation.LEFT, G.Orientation.TOP, G.Orientation.RIGHT, G.Orientation.BOTTOM][index]
+
+	print("initial_value: ", G.Orientation.keys()[orientation])
+	print("initial_index: ", initial_index)
+	print("rotation_offset: ", rotation_offset)
+	print("index: ", index)
+
+	print("resulting in:", G.Orientation.keys()[new_orientation])
+
+	return new_orientation
+
 func generate_collision_polygon():
 	var image = $Cable.texture.get_image()
 

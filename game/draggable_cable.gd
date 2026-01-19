@@ -12,8 +12,9 @@ var _offset: Vector2 = Vector2(0.0, 0.0)
 var _snap_position: Vector2 = Vector2(0.0, 0.0) 
 
 const HIGHLIGHT_SCALE = 1.01
-
 const SNAP_DISTANCE = 20.0
+
+var _is_rotating: bool = false
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -29,6 +30,19 @@ func _input(event):
 				z_index = 0
 				is_dragging = false
 				is_snapped = false
+		if is_dragging && !_is_rotating && event.pressed && event.button_index == MOUSE_BUTTON_RIGHT:
+			var tween = get_tree().create_tween()
+
+			_is_rotating = true
+
+			tween.finished.connect(func():
+				_is_rotating = false
+			)
+			
+			tween.set_ease(Tween.EASE_IN_OUT)
+			tween.set_trans(Tween.TRANS_ELASTIC)
+			tween.tween_property(self, "rotation", rotation + PI * 0.5, 0.4)
+
 				
 func _process(delta: float) -> void:
 	if is_dragging and not is_snapped:
@@ -39,14 +53,14 @@ func _process(delta: float) -> void:
 			is_snapped = false
 
 func _on_area_2d_mouse_entered() -> void:
-	print_debug("entered")
+	#print_debug("entered")
 	
 	if not G.is_dragging:
 		is_hovered = true
 		scale = Vector2(HIGHLIGHT_SCALE, HIGHLIGHT_SCALE)
 		
 func _on_area_2d_mouse_exited() -> void:
-	print_debug("exited")
+	#print_debug("exited")
 	
 	if not is_dragging:
 		is_hovered = false
@@ -54,11 +68,12 @@ func _on_area_2d_mouse_exited() -> void:
 
 # do connectors face in the opposite direction and have opposite connectors
 func do_extensions_connect(a: Extension, b: Extension):
-	if( a.orientation == G.Orientation.LEFT && b.orientation == G.Orientation.RIGHT
-	or a.orientation == G.Orientation.RIGHT && b.orientation == G.Orientation.LEFT
-	or a.orientation == G.Orientation.TOP && b.orientation == G.Orientation.BOTTOM
-	or a.orientation == G.Orientation.BOTTOM && b.orientation == G.Orientation.TOP ):
-		return a.with_contacts != b.with_contacts
+	if a.with_contacts != b.with_contacts:
+		return ( a.relative_orientation() == G.Orientation.LEFT && b.relative_orientation() == G.Orientation.RIGHT
+			  or a.relative_orientation() == G.Orientation.RIGHT && b.relative_orientation() == G.Orientation.LEFT
+			  or a.relative_orientation() == G.Orientation.TOP && b.relative_orientation() == G.Orientation.BOTTOM
+			  or a.relative_orientation() == G.Orientation.BOTTOM && b.relative_orientation() == G.Orientation.TOP )
+		 
 
 func _on_extensions_entered(extension_from_this_cable: Extension, other_extension: Extension) -> void:
 	print(extension_from_this_cable.name, " entered ", other_extension.name)
