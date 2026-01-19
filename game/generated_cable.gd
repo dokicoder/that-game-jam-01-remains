@@ -14,6 +14,9 @@ const COLOR_CABLE_HORIZONTAL: Color = Color("#00de0c")
 const COLOR_CABLE_VERTICAL: Color = Color("003124")
 const COLOR_BACKGROUND: Color = Color("#000000")
 
+const sprite_width: float = 32
+const sprite_height: float = 32
+
 func update_owner(node: Node):
 	node.owner = get_tree().edited_scene_root
 
@@ -32,9 +35,19 @@ func _generate_collision_shape():
 	
 	var cable_segments_root: Node2D = $CableSegmentsRoot;
 	
-	update_owner($Area2D)
+	var area_2d: Area2D = $Area2D;
+
+	if not is_instance_valid(area_2d):
+		area_2d = Area2D.new()
+		area_2d.name = "Area2D"
+		self.add_child(area_2d)
+		
+		update_owner(area_2d)
+
+	area_2d.mouse_entered.connect( _on_area_2d_mouse_entered, ConnectFlags.CONNECT_PERSIST )
+	area_2d.mouse_exited.connect( _on_area_2d_mouse_exited, ConnectFlags.CONNECT_PERSIST )
 	
-	for node in $Area2D.get_children():
+	for node in area_2d.get_children():
 		node.queue_free()
 
 	for node in cable_segments_root.get_children():
@@ -51,11 +64,34 @@ func _generate_collision_shape():
 
 		var collider = CollisionPolygon2D.new()
 		collider.polygon = new_polygon
-		$Area2D.add_child(collider)
+		area_2d.add_child(collider)
 		
 		collider.global_position = node.global_position
 		
 		update_owner(collider)
+
+func create_cable_segment(position_x: float, position_y: float) -> CableSegment:
+	var cable_segments_root: Node2D = $CableSegmentsRoot;
+
+	if not is_instance_valid(cable_segments_root):
+		cable_segments_root = Node2D.new()
+		cable_segments_root.name = "CableSegmentsRoot"
+		self.add_child(cable_segments_root)
+
+		update_owner(cable_segments_root)
+		
+	var cable: Sprite2D = CableSegment.instantiate()
+	cable_segments_root.add_child(cable)
+	cable.name = "Cable"
+	cable.position.x = position_x
+	cable.position.y = position_y
+	
+	cable_segments_root.position.x += position_x
+	cable_segments_root.position.y += position_y
+
+	update_owner(cable)
+
+	return cable
 
 func _generate_cable_from_map():
 	print("_generate_cable_from_map")
@@ -64,11 +100,7 @@ func _generate_cable_from_map():
 		print("no cable map to generate from, skipping")
 		return
 	
-	# TODO: how to get size without instantiating?
-	var reference_socket: Node2D = CableSegment.instantiate()
-	
-	var sprite_width = reference_socket.texture.get_width()
-	var sprite_height = reference_socket.texture.get_height()
+
 
 	var num_nodes: int = 0
 	
@@ -98,6 +130,9 @@ func _generate_cable_from_map():
 					#print( "Position %d %d - Connector" %  [x, y] )
 					var extension: Extension = Extension.instantiate()
 					cable_segments_root.add_child(extension)
+					extension.name = "Extension"
+					cable_segments_root.move_child(extension, 0)
+					num_nodes += 1
 					
 					if neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR:
 						extension.orientation = G.Orientation.RIGHT
@@ -116,19 +151,13 @@ func _generate_cable_from_map():
 						
 					update_owner(extension)
 
-					extension.other_intersection_entered.connect(_on_extensions_entered, ConnectFlags.CONNECT_PERSIST )
-					extension.other_intersection_exited.connect(_on_extensions_exited, ConnectFlags.CONNECT_PERSIST )
+					extension.other_intersection_entered.connect( _on_extensions_entered, ConnectFlags.CONNECT_PERSIST )
+					extension.other_intersection_exited.connect( _on_extensions_exited, ConnectFlags.CONNECT_PERSIST )
 					
-					num_nodes += 1
 				COLOR_CABLE:
 					#print( "Position %d %d - Cable" %  [x, y] )
-					var cable: Sprite2D = CableSegment.instantiate()
-					cable_segments_root.add_child(cable)
-					cable.position.x = x * sprite_width
-					cable.position.y = y * sprite_height
-					
-					cable_segments_root.position.x += x * sprite_width
-					cable_segments_root.position.y += y * sprite_height
+					var cable = create_cable_segment( x * sprite_width, y * sprite_height)
+					num_nodes += 1
 					
 					var horizontal = (neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR or neighbors[0] == COLOR_CABLE_HORIZONTAL) and (neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR or neighbors[1] == COLOR_CABLE_HORIZONTAL)
 					var vertical = (neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL) and (neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL)
@@ -160,37 +189,17 @@ func _generate_cable_from_map():
 						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
 							cable.texture = G.tex_cable_corner_bottom_right
 					
-					update_owner(cable)
-					
+				COLOR_CABLE_HORIZONTAL:					
+					#print( "Position %d %d - Cable" %  [x, y] )
+					var cable = create_cable_segment( x * sprite_width, y * sprite_height)
 					num_nodes += 1
-				COLOR_CABLE_HORIZONTAL:					#print( "Position %d %d - Cable" %  [x, y] )
-					var cable: Sprite2D = CableSegment.instantiate()
-					cable_segments_root.add_child(cable)
-					cable.position.x = x * sprite_width
-					cable.position.y = y * sprite_height
-					
-					cable_segments_root.position.x += x * sprite_width
-					cable_segments_root.position.y += y * sprite_height
 					
 					cable.texture = G.tex_cable_h
-					
-					update_owner(cable)
-					
+				COLOR_CABLE_VERTICAL:					
+					var cable = create_cable_segment( x * sprite_width, y * sprite_height)
 					num_nodes += 1
-				COLOR_CABLE_VERTICAL:					#print( "Position %d %d - Cable" %  [x, y] )
-					var cable: Sprite2D = CableSegment.instantiate()
-					cable_segments_root.add_child(cable)
-					cable.position.x = x * sprite_width
-					cable.position.y = y * sprite_height
-					
-					cable_segments_root.position.x += x * sprite_width
-					cable_segments_root.position.y += y * sprite_height
 					
 					cable.texture = G.tex_cable_v
-					
-					update_owner(cable)
-					
-					num_nodes += 1
 	
 	var x_center = int(cable_segments_root.position.x * - (1.0 / num_nodes)) / 32 * 32.0
 	var y_center = int(cable_segments_root.position.y * - (1.0 / num_nodes)) / 32 * 32.0

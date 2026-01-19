@@ -39,14 +39,14 @@ func _process(delta: float) -> void:
 			is_snapped = false
 
 func _on_area_2d_mouse_entered() -> void:
-	#print_debug("entered")
+	print_debug("entered")
 	
 	if not G.is_dragging:
 		is_hovered = true
 		scale = Vector2(HIGHLIGHT_SCALE, HIGHLIGHT_SCALE)
 		
 func _on_area_2d_mouse_exited() -> void:
-	#print_debug("exited")
+	print_debug("exited")
 	
 	if not is_dragging:
 		is_hovered = false

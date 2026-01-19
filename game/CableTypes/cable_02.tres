@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CableMap" load_steps=3 format=3 uid="uid://d2dbwl4kh5qxj"]
+
+[ext_resource type="Script" uid="uid://e131gyojdd2l" path="res://tools/CableMap.gd" id="1_ing0g"]
+
+[sub_resource type="Image" id="Image_le3en"]
+data = {
+"data": PackedByteArray(0, 0, 0, 0, 0, 0, 180, 63, 42, 0, 0, 0, 0, 0, 0, 0, 123, 58, 0, 123, 58, 0, 123, 58, 0, 123, 58, 0, 123, 58, 180, 63, 42, 0, 0, 0, 180, 63, 42, 0, 0, 0, 180, 63, 42),
+"format": "RGB8",
+"height": 3,
+"mipmaps": false,
+"width": 5
+}
+
+[resource]
+script = ExtResource("1_ing0g")
+map_image = SubResource("Image_le3en")
+metadata/_custom_type_script = "uid://e131gyojdd2l"

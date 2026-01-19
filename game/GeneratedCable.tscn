@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://dchuo6eveswkk"]
+[gd_scene load_steps=6 format=3 uid="uid://dchuo6eveswkk"]
 
 [ext_resource type="Script" uid="uid://bfqmagewuk2u3" path="res://game/generated_cable.gd" id="1_3djp8"]
 [ext_resource type="Script" uid="uid://e131gyojdd2l" path="res://tools/CableMap.gd" id="2_la1gx"]
@@ -6,11 +6,11 @@
 
 [sub_resource type="Image" id="Image_8dfyj"]
 data = {
-"data": PackedByteArray("AAAAAAAAAHs6AHs6AAAAAAAAtD8qAHs6AHs6AAAAAAAAAAAAAHs6AAAAAAAAAHs6AN4MAHs6AHs6AHs6AHs6AHs6ADEkAAAAtD8qAAAAAHs6AHs6AAAAAAAA"),
+"data": PackedByteArray(180, 63, 42, 0, 123, 58, 0, 0, 0, 0, 0, 0, 0, 123, 58, 0, 123, 58, 0, 123, 58, 0, 222, 12, 0, 123, 58, 0, 123, 58, 0, 123, 58, 0, 0, 0, 0, 0, 0, 0, 123, 58, 0, 0, 0, 0, 0, 0, 0, 123, 58, 0, 0, 0, 0, 0, 0, 180, 63, 42, 0, 0, 0),
 "format": "RGB8",
-"height": 6,
+"height": 7,
 "mipmaps": false,
-"width": 5
+"width": 3
 }
 
 [sub_resource type="Resource" id="Resource_hsn3n"]
@@ -22,11 +22,6 @@ metadata/_custom_type_script = "uid://e131gyojdd2l"
 script = ExtResource("1_3djp8")
 cable_map = SubResource("Resource_hsn3n")
 
-[node name="Area2D" type="Area2D" parent="."]
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_3i81j")
 volume_db = 20.0
-
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
