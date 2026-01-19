@@ -1,7 +1,7 @@
 @tool
 class_name CableSegment extends Sprite2D
 
-func generate_collision_polygon(pass_transform: Transform2D):
+func generate_collision_polygon():
 	var bitmap = BitMap.new()
 	bitmap.create_from_image_alpha(texture.get_image())
 	bitmap.grow_mask(2, Rect2(Vector2(0, 0), bitmap.get_size()))
@@ -9,16 +9,6 @@ func generate_collision_polygon(pass_transform: Transform2D):
 	var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()), 3)
 
 	for polygon in polygons:
-			if Geometry2D.is_polygon_clockwise(polygon):
-				#print("=> Clockwise")
-				polygon = Transform2D(0, Vector2(-16.0, -16.0)) * polygon
-				
-				var collider = CollisionPolygon2D.new()
-				collider.polygon = polygon
-			
-				add_child(collider)
-				
-				collider.owner = get_tree().edited_scene_root
-
-				return pass_transform * polygon
+		if Geometry2D.is_polygon_clockwise(polygon):
+			return Transform2D(0, Vector2(-16.0, -16.0)) * polygon
 	return null

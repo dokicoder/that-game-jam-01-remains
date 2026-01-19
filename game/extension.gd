@@ -25,7 +25,7 @@ var connected_extension: Extension = null
 var _orientation: G.Orientation = G.Orientation.LEFT
 var _with_contacts: bool = false
 
-func generate_collision_polygon(pass_transform: Transform2D):
+func generate_collision_polygon():
 	var image = $Cable.texture.get_image()
 
 	var bitmap = BitMap.new()
@@ -35,21 +35,9 @@ func generate_collision_polygon(pass_transform: Transform2D):
 	var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()), 3)
 
 	for polygon in polygons:
-			if Geometry2D.is_polygon_clockwise(polygon):
-				#print("=> Clockwise")
-				
-				polygon = Transform2D(0, Vector2(-16.0, -16.0)) * polygon
-				
-				var collider = CollisionPolygon2D.new()
-				collider.polygon = polygon
-			
-				add_child(collider)
-				
-				collider.owner = get_tree().edited_scene_root
-				
-				return pass_transform * polygon
-				#print(": Counterclockwise")
-	return null
+		if Geometry2D.is_polygon_clockwise(polygon):
+			#print("=> Clockwise")
+			return Transform2D(0, Vector2(-16.0, -16.0)) * polygon
 
 # hide contacts without changin visible, used e.g. for snapping
 func hide_contacts():

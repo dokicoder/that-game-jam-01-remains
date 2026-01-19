@@ -6,11 +6,16 @@ var Extension: PackedScene = preload("res://game/Extension.tscn")
 
 @export_tool_button("Generate from Map", "Reload") var generate_action = _generate_cable_from_map
 
+@export_tool_button("Generate Collider", "Collider") var generate_collider = _generate_collision_shape
+
 const COLOR_CONNECTOR: Color = Color("#b43f2a")
 const COLOR_CABLE: Color = Color("#007b3a")
 const COLOR_CABLE_HORIZONTAL: Color = Color("#00de0c")
 const COLOR_CABLE_VERTICAL: Color = Color("003124")
 const COLOR_BACKGROUND: Color = Color("#000000")
+
+func update_owner(node: Node):
+	node.owner = get_tree().edited_scene_root
 
 func get_map_pixel(x: int, y: int):
 	if x < 0 or y < 0 or x >= cable_map.map_image.get_width() or y >= cable_map.map_image.get_height():
@@ -23,12 +28,17 @@ func get_neighbors(x: int, y: int):
 	return [get_map_pixel(x - 1, y), get_map_pixel(x + 1, y), get_map_pixel(x, y - 1), get_map_pixel(x, y + 1)]
 
 func _generate_collision_shape():
-	var cable_segments_root: Node2D = $CableSegmentsRoot;
-
-	var merged_polygon = null
+	print("_generate_collision_shape")
 	
+	var cable_segments_root: Node2D = $CableSegmentsRoot;
+	
+	update_owner($Area2D)
+	
+	for node in $Area2D.get_children():
+		node.queue_free()
+
 	for node in cable_segments_root.get_children():
-		print("type: ", node.get_class())
+		#print("type: ", node.get_class())
 		
 		if not is_instance_valid(node):
 			print("invalid instance - skipping")
@@ -36,31 +46,19 @@ func _generate_collision_shape():
 		if not node.has_method("generate_collision_polygon"):
 			print("generate_collision_polygon() does not exist - skipping")
 			continue	
+
+		var new_polygon = node.generate_collision_polygon()
+
+		var collider = CollisionPolygon2D.new()
+		collider.polygon = new_polygon
+		$Area2D.add_child(collider)
 		
-		print(node.transform)
+		collider.global_position = node.global_position
 		
-		if merged_polygon == null:
-			print("initialize polygon")
-			merged_polygon = node.generate_collision_polygon(node.transform)
-			continue
-
-		var new_polygon = node.generate_collision_polygon(node.transform)
-
-		var polygons = Geometry2D.merge_polygons(merged_polygon, new_polygon)
-
-		for polygon in polygons:
-			#if Geometry2D.is_polygon_clockwise(polygon):
-			#	pass
-			#else:
-			print("Winding: ", Geometry2D.is_polygon_clockwise(polygon))
-			merged_polygon = polygon
-				
-				#break
-	
-	$Area2D/CollisionPolygon2D.polygon = merged_polygon
+		update_owner(collider)
 
 func _generate_cable_from_map():
-	print("generate")
+	print("_generate_cable_from_map")
 	
 	if not is_instance_valid(cable_map) or not is_instance_valid(cable_map.map_image):
 		print("no cable map to generate from, skipping")
@@ -80,7 +78,8 @@ func _generate_cable_from_map():
 		cable_segments_root = Node2D.new()
 		cable_segments_root.name = "CableSegmentsRoot"
 		self.add_child(cable_segments_root)
-		cable_segments_root.owner = get_tree().edited_scene_root
+		
+	update_owner(cable_segments_root)
 	
 	cable_segments_root.position.x = 0
 	cable_segments_root.position.y = 0
@@ -115,7 +114,7 @@ func _generate_cable_from_map():
 					cable_segments_root.position.x += x * sprite_width
 					cable_segments_root.position.y += y * sprite_height
 						
-					extension.owner = get_tree().edited_scene_root
+					update_owner(extension)
 
 					extension.other_intersection_entered.connect(_on_extensions_entered, ConnectFlags.CONNECT_PERSIST )
 					extension.other_intersection_exited.connect(_on_extensions_exited, ConnectFlags.CONNECT_PERSIST )
@@ -161,7 +160,7 @@ func _generate_cable_from_map():
 						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
 							cable.texture = G.tex_cable_corner_bottom_right
 					
-					cable.owner = get_tree().edited_scene_root
+					update_owner(cable)
 					
 					num_nodes += 1
 				COLOR_CABLE_HORIZONTAL:					#print( "Position %d %d - Cable" %  [x, y] )
@@ -175,7 +174,7 @@ func _generate_cable_from_map():
 					
 					cable.texture = G.tex_cable_h
 					
-					cable.owner = get_tree().edited_scene_root
+					update_owner(cable)
 					
 					num_nodes += 1
 				COLOR_CABLE_VERTICAL:					#print( "Position %d %d - Cable" %  [x, y] )
@@ -189,7 +188,7 @@ func _generate_cable_from_map():
 					
 					cable.texture = G.tex_cable_v
 					
-					cable.owner = get_tree().edited_scene_root
+					update_owner(cable)
 					
 					num_nodes += 1
 	
@@ -199,4 +198,4 @@ func _generate_cable_from_map():
 	cable_segments_root.position.x = x_center
 	cable_segments_root.position.y = y_center
 
-	_generate_collision_shape()
+	#_generate_collision_shape()
