@@ -73,8 +73,6 @@ func do_connectors_connect(a: Connector, b: Connector):
 		 
 
 func _on_connectors_entered(connector_from_this_cable: Connector, other_connector: Connector) -> void:
-	print(connector_from_this_cable.name, " entered ", other_connector.name)
-	
 	if( is_dragging 
 		# only if connecters are free, i.e. not already connected to some other connector
 		and connector_from_this_cable.connected_connector == null

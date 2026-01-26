@@ -38,6 +38,9 @@ func _generate_collision_shape():
 	
 	var area_2d: Area2D = $Area2D;
 
+	# move Area2D to first position so hit shapes are in background
+	self.move_child(area_2d, 0)
+
 	if not is_instance_valid(area_2d):
 		area_2d = Area2D.new()
 		area_2d.name = "Area2D"

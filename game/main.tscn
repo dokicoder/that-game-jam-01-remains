@@ -55,6 +55,72 @@ zoom = Vector2(3, 3)
 position = Vector2(-161, 150)
 cable_map = ExtResource("7_8ymx4")
 
+[node name="Area2D" type="Area2D" parent="Cable1"]
+
+[node name="@CollisionPolygon2D@84769" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(96, 32)
+polygon = PackedVector2Array(-16, 7, -4, 5, -3, 5, -5, -6, -5, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@84770" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(32, -96)
+polygon = PackedVector2Array(-5, 4, -7, 16, 7, 16, 7, 5, -5, 3)
+
+[node name="@CollisionPolygon2D@84771" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(-32, -32)
+polygon = PackedVector2Array(4, -6, 4, 7, 16, 7, 16, -7, 4, -7)
+
+[node name="@CollisionPolygon2D@84772" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(-32, 32)
+polygon = PackedVector2Array(-3, -6, -7, -3, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -3, -7)
+
+[node name="@CollisionPolygon2D@84773" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(-32, 64)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@84774" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(0, -32)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@84775" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(0, 32)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@84776" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(0, 64)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@84777" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(0, 96)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@84778" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(32, -64)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@84779" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(32, -32)
+polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@84780" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(32, 0)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@84781" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(-7, -8, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -8, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@84782" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(32, 64)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@84783" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(32, 96)
+polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, 3, 7, 6, 3, 7, 3, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@84784" type="CollisionPolygon2D" parent="Cable1/Area2D"]
+position = Vector2(64, 32)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
 [node name="CableSegmentsRoot" type="Node2D" parent="Cable1"]
 position = Vector2(-32, -96)
 
@@ -135,7 +201,7 @@ script = ExtResource("12_c08u8")
 [node name="Cable23" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(64, 128)
-texture = ExtResource("14_frwyw")
+texture = ExtResource("24_c08u8")
 script = ExtResource("12_c08u8")
 
 [node name="Cable24" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
@@ -156,153 +222,159 @@ position = Vector2(96, 128)
 texture = ExtResource("12_li27q")
 script = ExtResource("12_c08u8")
 
-[node name="Area2D" type="Area2D" parent="Cable1"]
-
-[node name="@CollisionPolygon2D@77054" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(96, 32)
-polygon = PackedVector2Array(-16, 7, -4, 5, -3, 5, -5, -6, -5, -7, -16, -7)
-
-[node name="@CollisionPolygon2D@77055" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(32, -96)
-polygon = PackedVector2Array(-5, 4, -7, 16, 7, 16, 7, 5, -5, 3)
-
-[node name="@CollisionPolygon2D@77056" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(-32, -32)
-polygon = PackedVector2Array(4, -6, 4, 7, 16, 7, 16, -7, 4, -7)
-
-[node name="@CollisionPolygon2D@77057" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(-32, 32)
-polygon = PackedVector2Array(-3, -6, -7, -3, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -3, -7)
-
-[node name="@CollisionPolygon2D@77058" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(-32, 64)
-polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@77059" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(0, -32)
-polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
-
-[node name="@CollisionPolygon2D@77060" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(0, 32)
-polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
-
-[node name="@CollisionPolygon2D@77061" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(0, 64)
-polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
-
-[node name="@CollisionPolygon2D@77062" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(0, 96)
-polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@77063" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(32, -64)
-polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@77064" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(32, -32)
-polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@77065" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(32, 0)
-polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@77066" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(32, 32)
-polygon = PackedVector2Array(-7, -9, -16, -7, -16, 7, -7, 8, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@77067" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(32, 64)
-polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@77068" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(32, 96)
-polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, 3, 7, 6, 3, 7, 3, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@77069" type="CollisionPolygon2D" parent="Cable1/Area2D"]
-position = Vector2(64, 32)
-polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
-
 [node name="Cable2" parent="." instance=ExtResource("8_xkbyp")]
 position = Vector2(279, 209)
 cable_map = ExtResource("20_2o2kd")
 
-[node name="CableSegmentsRoot" type="Node2D" parent="Cable2"]
-position = Vector2(-64, -32)
-
-[node name="Connector4" parent="Cable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(128, 64)
-orientation = 3
-
-[node name="Connector3" parent="Cable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(64, 64)
-orientation = 3
-
-[node name="Connector2" parent="Cable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(64, 0)
-orientation = 2
-
-[node name="Connector" parent="Cable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(0, 64)
-orientation = 3
-
-[node name="Cable" parent="Cable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(0, 32)
-texture = ExtResource("19_le3en")
-
-[node name="Cable2" parent="Cable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(32, 32)
-texture = ExtResource("12_li27q")
-
-[node name="Cable3" parent="Cable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(64, 32)
-texture = ExtResource("14_frwyw")
-
-[node name="Cable4" parent="Cable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(96, 32)
-texture = ExtResource("12_li27q")
-
-[node name="Cable5" parent="Cable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(128, 32)
-
 [node name="Area2D" type="Area2D" parent="Cable2"]
 
-[node name="@CollisionPolygon2D@67289" type="CollisionPolygon2D" parent="Cable2/Area2D"]
+[node name="@CollisionPolygon2D@86224" type="CollisionPolygon2D" parent="Cable2/Area2D"]
 position = Vector2(64, 32)
 polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67290" type="CollisionPolygon2D" parent="Cable2/Area2D"]
+[node name="@CollisionPolygon2D@86225" type="CollisionPolygon2D" parent="Cable2/Area2D"]
 position = Vector2(0, 32)
 polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67291" type="CollisionPolygon2D" parent="Cable2/Area2D"]
+[node name="@CollisionPolygon2D@86226" type="CollisionPolygon2D" parent="Cable2/Area2D"]
 position = Vector2(0, -32)
 polygon = PackedVector2Array(-5, 4, -7, 16, 7, 16, 7, 5, -5, 3)
 
-[node name="@CollisionPolygon2D@67292" type="CollisionPolygon2D" parent="Cable2/Area2D"]
+[node name="@CollisionPolygon2D@86227" type="CollisionPolygon2D" parent="Cable2/Area2D"]
 position = Vector2(-64, 32)
 polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67293" type="CollisionPolygon2D" parent="Cable2/Area2D"]
+[node name="@CollisionPolygon2D@86228" type="CollisionPolygon2D" parent="Cable2/Area2D"]
 position = Vector2(-64, 0)
 polygon = PackedVector2Array(-3, -6, -7, -3, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -3, -7)
 
-[node name="@CollisionPolygon2D@67294" type="CollisionPolygon2D" parent="Cable2/Area2D"]
+[node name="@CollisionPolygon2D@86229" type="CollisionPolygon2D" parent="Cable2/Area2D"]
 position = Vector2(-32, 0)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67295" type="CollisionPolygon2D" parent="Cable2/Area2D"]
+[node name="@CollisionPolygon2D@86230" type="CollisionPolygon2D" parent="Cable2/Area2D"]
 polygon = PackedVector2Array(-7, -9, -16, -7, -16, 7, -7, 8, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67296" type="CollisionPolygon2D" parent="Cable2/Area2D"]
+[node name="@CollisionPolygon2D@86231" type="CollisionPolygon2D" parent="Cable2/Area2D"]
 position = Vector2(32, 0)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67297" type="CollisionPolygon2D" parent="Cable2/Area2D"]
+[node name="@CollisionPolygon2D@86232" type="CollisionPolygon2D" parent="Cable2/Area2D"]
 position = Vector2(64, 0)
 polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
 
+[node name="CableSegmentsRoot" type="Node2D" parent="Cable2"]
+position = Vector2(-64, -32)
+
+[node name="Connector8" type="Area2D" parent="Cable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(128, 64)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 3
+
+[node name="Connector7" type="Area2D" parent="Cable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(64, 64)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 3
+
+[node name="Connector6" type="Area2D" parent="Cable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(64, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 2
+
+[node name="Connector5" type="Area2D" parent="Cable2/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(0, 64)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 3
+
+[node name="Cable6" type="Sprite2D" parent="Cable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(0, 32)
+texture = ExtResource("19_le3en")
+script = ExtResource("12_c08u8")
+
+[node name="Cable7" type="Sprite2D" parent="Cable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(32, 32)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable8" type="Sprite2D" parent="Cable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(64, 32)
+texture = ExtResource("14_frwyw")
+script = ExtResource("12_c08u8")
+
+[node name="Cable9" type="Sprite2D" parent="Cable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(96, 32)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable10" type="Sprite2D" parent="Cable2/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(128, 32)
+texture = ExtResource("15_a5bbb")
+script = ExtResource("12_c08u8")
+
 [node name="Cable3" parent="." instance=ExtResource("8_xkbyp")]
 position = Vector2(31, 198)
+
+[node name="Area2D" type="Area2D" parent="Cable3"]
+
+[node name="@CollisionPolygon2D@85320" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(32, 128)
+polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@85321" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(0, -64)
+polygon = PackedVector2Array(4, -6, 4, 7, 16, 7, 16, -7, 4, -7)
+
+[node name="@CollisionPolygon2D@85322" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+polygon = PackedVector2Array(-3, -6, -7, -3, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -3, -7)
+
+[node name="@CollisionPolygon2D@85323" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(0, 32)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@85324" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(32, -64)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@85325" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(32, -32)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@85326" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(32, 0)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@85327" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@85328" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(32, 64)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@85329" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(32, 96)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@85330" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(64, -32)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@85331" type="CollisionPolygon2D" parent="Cable3/Area2D"]
+position = Vector2(64, 0)
+polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, 3, 7, 6, 3, 7, 3, 7, -16, -7, -16)
 
 [node name="Area2D2" type="Area2D" parent="Cable3"]
 
@@ -311,431 +383,509 @@ position = Vector2(31, 198)
 [node name="CableSegmentsRoot" type="Node2D" parent="Cable3"]
 position = Vector2(0, -64)
 
-[node name="Connector2" parent="Cable3/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="Connector4" type="Area2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(32, 192)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
 orientation = 3
 
-[node name="Connector" parent="Cable3/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="Connector3" type="Area2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
 
-[node name="Cable" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable10" type="Sprite2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
 position = Vector2(0, 64)
 texture = ExtResource("19_le3en")
+script = ExtResource("12_c08u8")
 
-[node name="Cable2" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable11" type="Sprite2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
 position = Vector2(0, 96)
 texture = ExtResource("20_rqwoc")
+script = ExtResource("12_c08u8")
 
-[node name="Cable3" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable12" type="Sprite2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
 position = Vector2(32, 0)
+texture = ExtResource("15_a5bbb")
+script = ExtResource("12_c08u8")
 
-[node name="Cable4" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable13" type="Sprite2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
 position = Vector2(32, 32)
 texture = ExtResource("20_rqwoc")
+script = ExtResource("12_c08u8")
 
-[node name="Cable5" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable14" type="Sprite2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
 position = Vector2(32, 64)
 texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
 
-[node name="Cable6" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable15" type="Sprite2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
 position = Vector2(32, 96)
+texture = ExtResource("15_a5bbb")
+script = ExtResource("12_c08u8")
 
-[node name="Cable7" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable16" type="Sprite2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+modulate = Color(1.3814759, 0.7387572, 0.7387572, 1)
+texture_filter = 1
 position = Vector2(32, 128)
 texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
+energy_level = -87.0
 
-[node name="Cable8" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable17" type="Sprite2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
 position = Vector2(32, 160)
 texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
 
-[node name="Cable9" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable18" type="Sprite2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
 position = Vector2(64, 32)
+texture = ExtResource("15_a5bbb")
+script = ExtResource("12_c08u8")
 
-[node name="Cable20" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable19" type="Sprite2D" parent="Cable3/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+modulate = Color(0.7362501, 0.7362501, 1.3841501, 1)
+texture_filter = 1
 position = Vector2(64, 64)
 texture = ExtResource("20_le3en")
-
-[node name="Area2D" type="Area2D" parent="Cable3"]
-
-[node name="@CollisionPolygon2D@62800" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(32, 128)
-polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@62801" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(0, -64)
-polygon = PackedVector2Array(4, -6, 4, 7, 16, 7, 16, -7, 4, -7)
-
-[node name="@CollisionPolygon2D@62802" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-polygon = PackedVector2Array(-3, -6, -7, -3, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -3, -7)
-
-[node name="@CollisionPolygon2D@62803" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(0, 32)
-polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@62804" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(32, -64)
-polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
-
-[node name="@CollisionPolygon2D@62805" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(32, -32)
-polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@62806" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(32, 0)
-polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
-
-[node name="@CollisionPolygon2D@62807" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(32, 32)
-polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
-
-[node name="@CollisionPolygon2D@62808" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(32, 64)
-polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@62809" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(32, 96)
-polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
-
-[node name="@CollisionPolygon2D@62810" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(64, -32)
-polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
-
-[node name="@CollisionPolygon2D@62811" type="CollisionPolygon2D" parent="Cable3/Area2D"]
-position = Vector2(64, 0)
-polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, 3, 7, 6, 3, 7, 3, 7, -16, -7, -16)
+script = ExtResource("12_c08u8")
+energy_level = 88.0
 
 [node name="Cable4" parent="." instance=ExtResource("8_xkbyp")]
 position = Vector2(320, 385)
 cable_map = SubResource("Resource_m8y2r")
 
-[node name="CableSegmentsRoot" type="Node2D" parent="Cable4"]
-position = Vector2(-192, -128)
-
-[node name="Connector8" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(320, 288)
-orientation = 1
-
-[node name="Connector7" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(320, 224)
-orientation = 1
-
-[node name="Connector6" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(320, 64)
-orientation = 1
-
-[node name="Connector5" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(288, 352)
-orientation = 3
-
-[node name="Connector4" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(256, 288)
-
-[node name="Connector3" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(256, 0)
-orientation = 2
-
-[node name="Connector2" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(64, 256)
-orientation = 3
-
-[node name="Connector" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
-position = Vector2(64, 32)
-orientation = 2
-
-[node name="Cable" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(64, 64)
-texture = ExtResource("20_m8y2r")
-
-[node name="Cable35" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(64, 96)
-texture = ExtResource("11_ioaqv")
-
-[node name="Cable36" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(64, 128)
-texture = ExtResource("11_ioaqv")
-
-[node name="Cable37" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(64, 160)
-texture = ExtResource("20_m8y2r")
-
-[node name="Cable38" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(64, 192)
-texture = ExtResource("11_ioaqv")
-
-[node name="Cable39" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(64, 224)
-texture = ExtResource("11_ioaqv")
-
-[node name="Cable40" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(96, 64)
-texture = ExtResource("12_li27q")
-
-[node name="Cable41" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(96, 160)
-texture = ExtResource("12_li27q")
-
-[node name="Cable42" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(128, 64)
-texture = ExtResource("12_li27q")
-
-[node name="Cable43" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(128, 160)
-texture = ExtResource("12_li27q")
-
-[node name="Cable44" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(160, 64)
-texture = ExtResource("12_li27q")
-
-[node name="Cable45" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(160, 128)
-texture = ExtResource("19_le3en")
-
-[node name="Cable46" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(160, 160)
-texture = ExtResource("18_m8y2r")
-
-[node name="Cable47" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(160, 192)
-texture = ExtResource("20_rqwoc")
-
-[node name="Cable48" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(192, 64)
-texture = ExtResource("12_li27q")
-
-[node name="Cable49" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(192, 128)
-texture = ExtResource("12_li27q")
-
-[node name="Cable50" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(192, 192)
-
-[node name="Cable51" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(192, 224)
-texture = ExtResource("20_rqwoc")
-
-[node name="Cable52" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(224, 64)
-texture = ExtResource("12_li27q")
-
-[node name="Cable53" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(224, 128)
-
-[node name="Cable54" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(224, 160)
-texture = ExtResource("20_rqwoc")
-
-[node name="Cable55" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(224, 224)
-texture = ExtResource("12_li27q")
-
-[node name="Cable56" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(256, 32)
-texture = ExtResource("11_ioaqv")
-
-[node name="Cable57" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(256, 64)
-texture = ExtResource("24_c08u8")
-
-[node name="Cable58" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(256, 96)
-texture = ExtResource("11_ioaqv")
-
-[node name="Cable59" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(256, 128)
-texture = ExtResource("11_ioaqv")
-
-[node name="Cable60" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(256, 160)
-texture = ExtResource("20_le3en")
-
-[node name="Cable61" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(256, 224)
-texture = ExtResource("12_li27q")
-
-[node name="Cable62" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(288, 64)
-texture = ExtResource("12_li27q")
-
-[node name="Cable63" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(288, 224)
-texture = ExtResource("24_a5bbb")
-
-[node name="Cable64" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(288, 256)
-texture = ExtResource("11_ioaqv")
-
-[node name="Cable65" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(288, 288)
-texture = ExtResource("24_c08u8")
-
-[node name="Cable66" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
-position = Vector2(288, 320)
-texture = ExtResource("11_ioaqv")
-
 [node name="Area2D" type="Area2D" parent="Cable4"]
 
-[node name="@CollisionPolygon2D@67611" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86779" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(128, 160)
 polygon = PackedVector2Array(-16, 7, -4, 5, -3, 5, -5, -6, -5, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67612" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86780" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(128, 96)
 polygon = PackedVector2Array(-16, 7, -4, 5, -3, 5, -5, -6, -5, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67613" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86781" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(128, -64)
 polygon = PackedVector2Array(-16, 7, -4, 5, -3, 5, -5, -6, -5, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67614" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86782" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(96, 224)
 polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67615" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86783" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(64, 160)
 polygon = PackedVector2Array(4, -6, 4, 7, 16, 7, 16, -7, 4, -7)
 
-[node name="@CollisionPolygon2D@67616" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86784" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(64, -128)
 polygon = PackedVector2Array(-5, 4, -7, 16, 7, 16, 7, 5, -5, 3)
 
-[node name="@CollisionPolygon2D@67617" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86785" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-128, 128)
 polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67618" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86786" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-128, -96)
 polygon = PackedVector2Array(-5, 4, -7, 16, 7, 16, 7, 5, -5, 3)
 
-[node name="@CollisionPolygon2D@67619" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86787" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-128, -64)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67620" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86788" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-128, -32)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67621" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86789" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-128, 0)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67622" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86790" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-128, 32)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67623" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86791" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-128, 64)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67624" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86792" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-128, 96)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67625" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86793" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-96, -64)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67626" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86794" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-96, 32)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67627" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86795" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-64, -64)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67628" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86796" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-64, 32)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67629" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86797" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-32, -64)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67630" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86798" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-32, 0)
 polygon = PackedVector2Array(-3, -6, -7, -3, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -3, -7)
 
-[node name="@CollisionPolygon2D@67631" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86799" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-32, 32)
 polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67632" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86800" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(-32, 64)
 polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67633" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86801" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(0, -64)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67634" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86802" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67635" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86803" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(0, 64)
 polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67636" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86804" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(0, 96)
 polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67637" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86805" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(32, -64)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67638" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86806" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(32, 0)
 polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67639" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86807" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(32, 32)
 polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67640" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86808" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(32, 96)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67641" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86809" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(64, -96)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67642" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86810" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(64, -64)
-polygon = PackedVector2Array(-7, -8, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -8, 7, -16, -7, -16)
+polygon = PackedVector2Array(-7, -9, -16, -7, -16, 7, -7, 8, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67643" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86811" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(64, -32)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67644" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86812" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(64, 0)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67645" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86813" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(64, 32)
 polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, 3, 7, 6, 3, 7, 3, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67646" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86814" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(64, 96)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67647" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86815" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(96, -64)
 polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67648" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86816" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(96, 96)
 polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -16, -7)
 
-[node name="@CollisionPolygon2D@67649" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86817" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(96, 128)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67650" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86818" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(96, 160)
-polygon = PackedVector2Array(-7, -8, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -8, 7, -16, -7, -16)
+polygon = PackedVector2Array(-7, -9, -16, -7, -16, 7, -7, 8, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
 
-[node name="@CollisionPolygon2D@67651" type="CollisionPolygon2D" parent="Cable4/Area2D"]
+[node name="@CollisionPolygon2D@86819" type="CollisionPolygon2D" parent="Cable4/Area2D"]
 position = Vector2(96, 192)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 
+[node name="CableSegmentsRoot" type="Node2D" parent="Cable4"]
+position = Vector2(-192, -128)
+
+[node name="Connector16" type="Area2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(320, 288)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 1
+
+[node name="Connector15" type="Area2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(320, 224)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 1
+
+[node name="Connector14" type="Area2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(320, 64)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 1
+
+[node name="Connector13" type="Area2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(288, 352)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 3
+
+[node name="Connector12" type="Area2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(256, 288)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+
+[node name="Connector11" type="Area2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(256, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 2
+
+[node name="Connector10" type="Area2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(64, 256)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 3
+
+[node name="Connector9" type="Area2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+position = Vector2(64, 32)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_rvc4y")
+orientation = 2
+
+[node name="Cable2" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(64, 64)
+texture = ExtResource("20_m8y2r")
+script = ExtResource("12_c08u8")
+
+[node name="Cable3" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(64, 96)
+texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
+
+[node name="Cable4" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(64, 128)
+texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
+
+[node name="Cable5" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(64, 160)
+texture = ExtResource("20_m8y2r")
+script = ExtResource("12_c08u8")
+
+[node name="Cable6" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(64, 192)
+texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
+
+[node name="Cable7" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(64, 224)
+texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
+
+[node name="Cable8" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(96, 64)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable9" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(96, 160)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable10" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(128, 64)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable11" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(128, 160)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable12" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(160, 64)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable13" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(160, 128)
+texture = ExtResource("19_le3en")
+script = ExtResource("12_c08u8")
+
+[node name="Cable14" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(160, 160)
+texture = ExtResource("18_m8y2r")
+script = ExtResource("12_c08u8")
+
+[node name="Cable15" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(160, 192)
+texture = ExtResource("20_rqwoc")
+script = ExtResource("12_c08u8")
+
+[node name="Cable16" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(192, 64)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable17" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(192, 128)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable18" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(192, 192)
+texture = ExtResource("15_a5bbb")
+script = ExtResource("12_c08u8")
+
+[node name="Cable19" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(192, 224)
+texture = ExtResource("20_rqwoc")
+script = ExtResource("12_c08u8")
+
+[node name="Cable20" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(224, 64)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable21" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(224, 128)
+texture = ExtResource("15_a5bbb")
+script = ExtResource("12_c08u8")
+
+[node name="Cable22" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(224, 160)
+texture = ExtResource("20_rqwoc")
+script = ExtResource("12_c08u8")
+
+[node name="Cable23" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(224, 224)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable24" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(256, 32)
+texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
+
+[node name="Cable25" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(256, 64)
+texture = ExtResource("14_frwyw")
+script = ExtResource("12_c08u8")
+
+[node name="Cable26" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(256, 96)
+texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
+
+[node name="Cable27" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(256, 128)
+texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
+
+[node name="Cable28" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(256, 160)
+texture = ExtResource("20_le3en")
+script = ExtResource("12_c08u8")
+
+[node name="Cable29" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(256, 224)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable30" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(288, 64)
+texture = ExtResource("12_li27q")
+script = ExtResource("12_c08u8")
+
+[node name="Cable31" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(288, 224)
+texture = ExtResource("24_a5bbb")
+script = ExtResource("12_c08u8")
+
+[node name="Cable32" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(288, 256)
+texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
+
+[node name="Cable33" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(288, 288)
+texture = ExtResource("14_frwyw")
+script = ExtResource("12_c08u8")
+
+[node name="Cable34" type="Sprite2D" parent="Cable4/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+texture_filter = 1
+position = Vector2(288, 320)
+texture = ExtResource("11_ioaqv")
+script = ExtResource("12_c08u8")
+
+[connection signal="mouse_entered" from="Cable1/Area2D" to="Cable1" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Cable1/Area2D" to="Cable1" method="_on_area_2d_mouse_exited"]
 [connection signal="area_entered" from="Cable1/CableSegmentsRoot/Connector6" to="Cable1/CableSegmentsRoot/Connector6" method="_on_area_entered"]
 [connection signal="area_exited" from="Cable1/CableSegmentsRoot/Connector6" to="Cable1/CableSegmentsRoot/Connector6" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="Cable1/CableSegmentsRoot/Connector6" to="Cable1" method="_on_connectors_entered"]
@@ -748,39 +898,65 @@ polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 [connection signal="area_exited" from="Cable1/CableSegmentsRoot/Connector4" to="Cable1/CableSegmentsRoot/Connector4" method="_on_area_exited"]
 [connection signal="other_intersection_entered" from="Cable1/CableSegmentsRoot/Connector4" to="Cable1" method="_on_connectors_entered"]
 [connection signal="other_intersection_exited" from="Cable1/CableSegmentsRoot/Connector4" to="Cable1" method="_on_connectors_exited"]
-[connection signal="mouse_entered" from="Cable1/Area2D" to="Cable1" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Cable1/Area2D" to="Cable1" method="_on_area_2d_mouse_exited"]
-[connection signal="other_intersection_entered" from="Cable2/CableSegmentsRoot/Connector4" to="Cable2" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable2/CableSegmentsRoot/Connector4" to="Cable2" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable2/CableSegmentsRoot/Connector3" to="Cable2" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable2/CableSegmentsRoot/Connector3" to="Cable2" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable2/CableSegmentsRoot/Connector2" to="Cable2" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable2/CableSegmentsRoot/Connector2" to="Cable2" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable2/CableSegmentsRoot/Connector" to="Cable2" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable2/CableSegmentsRoot/Connector" to="Cable2" method="_on_connectors_exited"]
 [connection signal="mouse_entered" from="Cable2/Area2D" to="Cable2" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Cable2/Area2D" to="Cable2" method="_on_area_2d_mouse_exited"]
-[connection signal="other_intersection_entered" from="Cable3/CableSegmentsRoot/Connector2" to="Cable3" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable3/CableSegmentsRoot/Connector2" to="Cable3" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable3/CableSegmentsRoot/Connector" to="Cable3" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable3/CableSegmentsRoot/Connector" to="Cable3" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable2/CableSegmentsRoot/Connector8" to="Cable2/CableSegmentsRoot/Connector8" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable2/CableSegmentsRoot/Connector8" to="Cable2/CableSegmentsRoot/Connector8" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable2/CableSegmentsRoot/Connector8" to="Cable2" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable2/CableSegmentsRoot/Connector8" to="Cable2" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable2/CableSegmentsRoot/Connector7" to="Cable2/CableSegmentsRoot/Connector7" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable2/CableSegmentsRoot/Connector7" to="Cable2/CableSegmentsRoot/Connector7" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable2/CableSegmentsRoot/Connector7" to="Cable2" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable2/CableSegmentsRoot/Connector7" to="Cable2" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable2/CableSegmentsRoot/Connector6" to="Cable2/CableSegmentsRoot/Connector6" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable2/CableSegmentsRoot/Connector6" to="Cable2/CableSegmentsRoot/Connector6" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable2/CableSegmentsRoot/Connector6" to="Cable2" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable2/CableSegmentsRoot/Connector6" to="Cable2" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable2/CableSegmentsRoot/Connector5" to="Cable2/CableSegmentsRoot/Connector5" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable2/CableSegmentsRoot/Connector5" to="Cable2/CableSegmentsRoot/Connector5" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable2/CableSegmentsRoot/Connector5" to="Cable2" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable2/CableSegmentsRoot/Connector5" to="Cable2" method="_on_connectors_exited"]
 [connection signal="mouse_entered" from="Cable3/Area2D" to="Cable3" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Cable3/Area2D" to="Cable3" method="_on_area_2d_mouse_exited"]
-[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector8" to="Cable4" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector8" to="Cable4" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector7" to="Cable4" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector7" to="Cable4" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector6" to="Cable4" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector6" to="Cable4" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector5" to="Cable4" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector5" to="Cable4" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector4" to="Cable4" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector4" to="Cable4" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector3" to="Cable4" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector3" to="Cable4" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector2" to="Cable4" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector2" to="Cable4" method="_on_connectors_exited"]
-[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector" to="Cable4" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector" to="Cable4" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable3/CableSegmentsRoot/Connector4" to="Cable3/CableSegmentsRoot/Connector4" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable3/CableSegmentsRoot/Connector4" to="Cable3/CableSegmentsRoot/Connector4" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable3/CableSegmentsRoot/Connector4" to="Cable3" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable3/CableSegmentsRoot/Connector4" to="Cable3" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable3/CableSegmentsRoot/Connector3" to="Cable3/CableSegmentsRoot/Connector3" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable3/CableSegmentsRoot/Connector3" to="Cable3/CableSegmentsRoot/Connector3" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable3/CableSegmentsRoot/Connector3" to="Cable3" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable3/CableSegmentsRoot/Connector3" to="Cable3" method="_on_connectors_exited"]
 [connection signal="mouse_entered" from="Cable4/Area2D" to="Cable4" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Cable4/Area2D" to="Cable4" method="_on_area_2d_mouse_exited"]
+[connection signal="area_entered" from="Cable4/CableSegmentsRoot/Connector16" to="Cable4/CableSegmentsRoot/Connector16" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable4/CableSegmentsRoot/Connector16" to="Cable4/CableSegmentsRoot/Connector16" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector16" to="Cable4" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector16" to="Cable4" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable4/CableSegmentsRoot/Connector15" to="Cable4/CableSegmentsRoot/Connector15" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable4/CableSegmentsRoot/Connector15" to="Cable4/CableSegmentsRoot/Connector15" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector15" to="Cable4" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector15" to="Cable4" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable4/CableSegmentsRoot/Connector14" to="Cable4/CableSegmentsRoot/Connector14" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable4/CableSegmentsRoot/Connector14" to="Cable4/CableSegmentsRoot/Connector14" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector14" to="Cable4" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector14" to="Cable4" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable4/CableSegmentsRoot/Connector13" to="Cable4/CableSegmentsRoot/Connector13" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable4/CableSegmentsRoot/Connector13" to="Cable4/CableSegmentsRoot/Connector13" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector13" to="Cable4" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector13" to="Cable4" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable4/CableSegmentsRoot/Connector12" to="Cable4/CableSegmentsRoot/Connector12" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable4/CableSegmentsRoot/Connector12" to="Cable4/CableSegmentsRoot/Connector12" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector12" to="Cable4" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector12" to="Cable4" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable4/CableSegmentsRoot/Connector11" to="Cable4/CableSegmentsRoot/Connector11" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable4/CableSegmentsRoot/Connector11" to="Cable4/CableSegmentsRoot/Connector11" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector11" to="Cable4" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector11" to="Cable4" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable4/CableSegmentsRoot/Connector10" to="Cable4/CableSegmentsRoot/Connector10" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable4/CableSegmentsRoot/Connector10" to="Cable4/CableSegmentsRoot/Connector10" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector10" to="Cable4" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector10" to="Cable4" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable4/CableSegmentsRoot/Connector9" to="Cable4/CableSegmentsRoot/Connector9" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable4/CableSegmentsRoot/Connector9" to="Cable4/CableSegmentsRoot/Connector9" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable4/CableSegmentsRoot/Connector9" to="Cable4" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable4/CableSegmentsRoot/Connector9" to="Cable4" method="_on_connectors_exited"]
