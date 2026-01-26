@@ -127,6 +127,8 @@ func _generate_cable_from_map():
 	
 	cable_segments_root.position.x = 0
 	cable_segments_root.position.y = 0
+
+	var cable_dict = {}
 	
 	for node in cable_segments_root.get_children():
 		node.queue_free()
@@ -170,6 +172,8 @@ func _generate_cable_from_map():
 
 					connector.other_intersection_entered.connect( _on_connectors_entered, ConnectFlags.CONNECT_PERSIST )
 					connector.other_intersection_exited.connect( _on_connectors_exited, ConnectFlags.CONNECT_PERSIST )
+
+					cable_dict["%d-%d" % [x, y]] = connector
 					
 				COLOR_CABLE:
 					#print( "Position %d %d - Cable" %  [x, y] )
@@ -184,6 +188,18 @@ func _generate_cable_from_map():
 					
 					var horizontal = match_left and match_right
 					var vertical = match_top and match_bottom
+					
+					if match_left:
+						var left_neighbor_instance: CableSegment = cable_dict[("%d-%d" % [x-1, y])]
+						
+						left_neighbor_instance.adjacent_segments.push_back(cable_segment)
+						cable_segment.adjacent_segments.push_back(left_neighbor_instance)
+						
+					if match_top:
+						var top_neighbor_instance: CableSegment = cable_dict[("%d-%d" % [x, y-1])]
+						
+						top_neighbor_instance.adjacent_segments.push_back(cable_segment)
+						cable_segment.adjacent_segments.push_back(top_neighbor_instance)
 					
 					if horizontal:
 						if vertical:
@@ -213,6 +229,8 @@ func _generate_cable_from_map():
 							cable_segment.texture = G.tex_cable_corner_top_right
 						elif match_bottom:
 							cable_segment.texture = G.tex_cable_corner_bottom_right
+
+					cable_dict["%d-%d" % [x, y]] = cable_segment
 					
 				COLOR_CABLE_HORIZONTAL:					
 					#print( "Position %d %d - Cable" %  [x, y] )
@@ -220,11 +238,29 @@ func _generate_cable_from_map():
 					num_nodes += 1
 					
 					cable_segment.texture = G.tex_cable_h
+
+					if x >= 0:
+						var left_neighbor_instance: CableSegment = cable_dict[("%d-%d" % [x-1, y])]
+						
+						left_neighbor_instance.adjacent_segments.push_back(cable_segment)
+						cable_segment.adjacent_segments.push_back(left_neighbor_instance)
+
+					cable_dict["%d-%d" % [x, y]] = cable_segment
+					
 				COLOR_CABLE_VERTICAL:					
 					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height )
 					num_nodes += 1
 					
 					cable_segment.texture = G.tex_cable_v
+
+					if y >= 0:
+						var top_neighbor_instance: CableSegment = cable_dict[("%d-%d" % [x, y-1])]
+						
+						top_neighbor_instance.adjacent_segments.push_back(cable_segment)
+						cable_segment.adjacent_segments.push_back(top_neighbor_instance)
+						
+					cable_dict["%d-%d" % [x, y]] = cable_segment
+
 	
 	# TODO: is this calculation correct and the centering still needed?
 	@warning_ignore("integer_division")
