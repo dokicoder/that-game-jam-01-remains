@@ -20,10 +20,33 @@ signal other_intersection_exited(this: Extension, other: Extension)
 			return
 		$Root/Contacts.visible = value
 
+@export_range(-100, 100, 1, "or_less", "or_greater") var energy_level: float = 0:
+	get: return _energy_level
+	set(value): 
+		_energy_level = value
+		$Cable.modulate = _energy_level_to_color(value)
+
+func _energy_level_to_color(energy_level: float) -> Color:
+	var amount = abs(energy_level) / 100 + 1
+	
+	var color_vector = Vector3(
+		amount if energy_level < 0 else 1,
+		1,
+		amount if energy_level >= 0 else 1,
+		 )
+		
+	color_vector = color_vector.normalized() * sqrt(3.0)
+	
+	return Color(color_vector.x, color_vector.y, color_vector.z)
+
+
+	
 var connected_extension: Extension = null
 
 var _orientation: G.Orientation = G.Orientation.LEFT
 var _with_contacts: bool = false
+
+var _energy_level: float = 0
 
 # relative to rotation
 func relative_orientation():
