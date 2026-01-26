@@ -29,7 +29,14 @@ func get_map_pixel(x: int, y: int):
 	
 func get_neighbors(x: int, y: int):
 	# [left, right, top, bottom]
-	return [get_map_pixel(x - 1, y), get_map_pixel(x + 1, y), get_map_pixel(x, y - 1), get_map_pixel(x, y + 1)]
+	return {
+		"left": get_map_pixel(x - 1, y), 
+		"right": get_map_pixel(x + 1, y), 
+		"top": get_map_pixel(x, y - 1), 
+		"bottom": get_map_pixel(x, y + 1),
+	}
+
+const SOME_CABLE = [COLOR_CABLE, COLOR_CONNECTOR]
 
 func _generate_collision_shape():
 	print("_generate_collision_shape")
@@ -97,6 +104,9 @@ func create_cable_segment(position_x: float, position_y: float) -> CableSegment:
 
 	return cable_segment
 
+static func matches(val, colors: Array) -> bool:
+	return colors.has(val)
+
 func _generate_cable_from_map():
 	print_debug("_generate_cable_from_map")
 	
@@ -126,6 +136,11 @@ func _generate_cable_from_map():
 			var pixel_color = cable_map.map_image.get_pixel(x, y)
 			
 			var neighbors = get_neighbors(x, y)
+			
+			var left_neighbor = neighbors["left"]
+			var right_neighbor = neighbors["right"]
+			var top_neighbor = neighbors["top"]
+			var bottom_neighbor = neighbors["bottom"]
 	
 			match pixel_color:
 				COLOR_CONNECTOR:	
@@ -136,13 +151,13 @@ func _generate_cable_from_map():
 					cable_segments_root.move_child(connector, 0)
 					num_nodes += 1
 					
-					if neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR:
+					if matches(left_neighbor, SOME_CABLE):
 						connector.orientation = G.Orientation.RIGHT
-					elif neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR:
+					elif matches(right_neighbor, SOME_CABLE):
 						connector.orientation = G.Orientation.LEFT
-					elif neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR:
+					elif matches(top_neighbor, SOME_CABLE):
 						connector.orientation = G.Orientation.BOTTOM
-					elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR:
+					elif matches(bottom_neighbor, SOME_CABLE):
 						connector.orientation = G.Orientation.TOP
 						
 					connector.position.x = x * sprite_width
@@ -158,47 +173,55 @@ func _generate_cable_from_map():
 					
 				COLOR_CABLE:
 					#print( "Position %d %d - Cable" %  [x, y] )
-					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height)
+					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height )
 					num_nodes += 1
 					
-					var horizontal = (neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR or neighbors[0] == COLOR_CABLE_HORIZONTAL) and (neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR or neighbors[1] == COLOR_CABLE_HORIZONTAL)
-					var vertical = (neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL) and (neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL)
+					var match_left = matches(left_neighbor, [COLOR_CABLE, COLOR_CONNECTOR, COLOR_CABLE_HORIZONTAL])
+					var match_right = matches(right_neighbor, [COLOR_CABLE, COLOR_CONNECTOR, COLOR_CABLE_HORIZONTAL])
+					
+					var match_top =  matches(top_neighbor, [COLOR_CABLE, COLOR_CONNECTOR, COLOR_CABLE_VERTICAL])
+					var match_bottom = matches(bottom_neighbor, [COLOR_CABLE, COLOR_CONNECTOR, COLOR_CABLE_VERTICAL])
+					
+					var horizontal = match_left and match_right
+					var vertical = match_top and match_bottom
 					
 					if horizontal:
 						if vertical:
+							# choose at random which cable goes on top
+							# TODO: define actual 4-way crossing
 							cable_segment.texture = [G.tex_cable_junction_1, G.tex_cable_junction_2].pick_random()
-						elif neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL:
+						elif match_top:
 							cable_segment.texture = G.tex_crossing_x_bottom
-						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
+						elif match_bottom:
 							cable_segment.texture = G.tex_crossing_x_top
 						else:
 							cable_segment.texture = G.tex_cable_h
 					elif vertical:
-						if neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR or neighbors[0] == COLOR_CABLE_HORIZONTAL:
+						if match_left:
 							cable_segment.texture = G.tex_crossing_x_right
-						elif neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR or neighbors[1] == COLOR_CABLE_HORIZONTAL:
+						elif match_right:
 							cable_segment.texture = G.tex_crossing_x_left
 						else:
 							cable_segment.texture = G.tex_cable_v
-					elif neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR or neighbors[0] == COLOR_CABLE_HORIZONTAL:
-						if neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL:
+					elif match_left:
+						if match_top:
 							cable_segment.texture = G.tex_cable_corner_top_left
-						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
+						elif match_bottom:
 							cable_segment.texture = G.tex_cable_corner_bottom_left
-					elif neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR or neighbors[1] == COLOR_CABLE_HORIZONTAL:
-						if neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL:
+					elif match_right:
+						if match_top:
 							cable_segment.texture = G.tex_cable_corner_top_right
-						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
+						elif match_bottom:
 							cable_segment.texture = G.tex_cable_corner_bottom_right
 					
 				COLOR_CABLE_HORIZONTAL:					
 					#print( "Position %d %d - Cable" %  [x, y] )
-					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height)
+					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height )
 					num_nodes += 1
 					
 					cable_segment.texture = G.tex_cable_h
 				COLOR_CABLE_VERTICAL:					
-					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height)
+					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height )
 					num_nodes += 1
 					
 					cable_segment.texture = G.tex_cable_v
