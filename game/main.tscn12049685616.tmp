@@ -58,99 +58,99 @@ cable_map = ExtResource("7_8ymx4")
 [node name="CableSegmentsRoot" type="Node2D" parent="Cable1"]
 position = Vector2(-32, -96)
 
-[node name="Connector6" type="Area2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="Connector3" type="Area2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(128, 128)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("9_rvc4y")
 orientation = 1
 
-[node name="Connector5" type="Area2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="Connector2" type="Area2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(64, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("9_rvc4y")
 orientation = 2
 
-[node name="Connector4" type="Area2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
+[node name="Connector" type="Area2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("7_wjctj")]
 position = Vector2(0, 64)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("9_rvc4y")
 
-[node name="Cable14" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(0, 128)
 texture = ExtResource("19_le3en")
 script = ExtResource("12_c08u8")
 
-[node name="Cable15" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable2" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(0, 160)
 texture = ExtResource("20_rqwoc")
 script = ExtResource("12_c08u8")
 
-[node name="Cable16" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable3" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(32, 64)
 texture = ExtResource("12_li27q")
 script = ExtResource("12_c08u8")
 
-[node name="Cable17" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable4" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(32, 128)
 texture = ExtResource("12_li27q")
 script = ExtResource("12_c08u8")
 
-[node name="Cable18" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable5" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(32, 160)
 texture = ExtResource("15_a5bbb")
 script = ExtResource("12_c08u8")
 
-[node name="Cable19" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable6" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(32, 192)
 texture = ExtResource("20_rqwoc")
 script = ExtResource("12_c08u8")
 
-[node name="Cable20" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable7" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(64, 32)
 texture = ExtResource("11_ioaqv")
 script = ExtResource("12_c08u8")
 
-[node name="Cable21" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable8" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(64, 64)
 texture = ExtResource("18_m8y2r")
 script = ExtResource("12_c08u8")
 
-[node name="Cable22" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable9" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(64, 96)
 texture = ExtResource("11_ioaqv")
 script = ExtResource("12_c08u8")
 
-[node name="Cable23" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable10" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(64, 128)
 texture = ExtResource("14_frwyw")
 script = ExtResource("12_c08u8")
 
-[node name="Cable24" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable11" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(64, 160)
 texture = ExtResource("11_ioaqv")
 script = ExtResource("12_c08u8")
 
-[node name="Cable25" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable12" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(64, 192)
 texture = ExtResource("20_le3en")
 script = ExtResource("12_c08u8")
 
-[node name="Cable26" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
+[node name="Cable13" type="Sprite2D" parent="Cable1/CableSegmentsRoot" instance=ExtResource("10_ioaqv")]
 texture_filter = 1
 position = Vector2(96, 128)
 texture = ExtResource("12_li27q")
@@ -736,18 +736,18 @@ polygon = PackedVector2Array(-7, -8, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, 7
 position = Vector2(96, 192)
 polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
 
-[connection signal="area_entered" from="Cable1/CableSegmentsRoot/Connector6" to="Cable1/CableSegmentsRoot/Connector6" method="_on_area_entered"]
-[connection signal="area_exited" from="Cable1/CableSegmentsRoot/Connector6" to="Cable1/CableSegmentsRoot/Connector6" method="_on_area_exited"]
-[connection signal="other_intersection_entered" from="Cable1/CableSegmentsRoot/Connector6" to="Cable1" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable1/CableSegmentsRoot/Connector6" to="Cable1" method="_on_connectors_exited"]
-[connection signal="area_entered" from="Cable1/CableSegmentsRoot/Connector5" to="Cable1/CableSegmentsRoot/Connector5" method="_on_area_entered"]
-[connection signal="area_exited" from="Cable1/CableSegmentsRoot/Connector5" to="Cable1/CableSegmentsRoot/Connector5" method="_on_area_exited"]
-[connection signal="other_intersection_entered" from="Cable1/CableSegmentsRoot/Connector5" to="Cable1" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable1/CableSegmentsRoot/Connector5" to="Cable1" method="_on_connectors_exited"]
-[connection signal="area_entered" from="Cable1/CableSegmentsRoot/Connector4" to="Cable1/CableSegmentsRoot/Connector4" method="_on_area_entered"]
-[connection signal="area_exited" from="Cable1/CableSegmentsRoot/Connector4" to="Cable1/CableSegmentsRoot/Connector4" method="_on_area_exited"]
-[connection signal="other_intersection_entered" from="Cable1/CableSegmentsRoot/Connector4" to="Cable1" method="_on_connectors_entered"]
-[connection signal="other_intersection_exited" from="Cable1/CableSegmentsRoot/Connector4" to="Cable1" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable1/CableSegmentsRoot/Connector3" to="Cable1/CableSegmentsRoot/Connector3" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable1/CableSegmentsRoot/Connector3" to="Cable1/CableSegmentsRoot/Connector3" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable1/CableSegmentsRoot/Connector3" to="Cable1" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable1/CableSegmentsRoot/Connector3" to="Cable1" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable1/CableSegmentsRoot/Connector2" to="Cable1/CableSegmentsRoot/Connector2" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable1/CableSegmentsRoot/Connector2" to="Cable1/CableSegmentsRoot/Connector2" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable1/CableSegmentsRoot/Connector2" to="Cable1" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable1/CableSegmentsRoot/Connector2" to="Cable1" method="_on_connectors_exited"]
+[connection signal="area_entered" from="Cable1/CableSegmentsRoot/Connector" to="Cable1/CableSegmentsRoot/Connector" method="_on_area_entered"]
+[connection signal="area_exited" from="Cable1/CableSegmentsRoot/Connector" to="Cable1/CableSegmentsRoot/Connector" method="_on_area_exited"]
+[connection signal="other_intersection_entered" from="Cable1/CableSegmentsRoot/Connector" to="Cable1" method="_on_connectors_entered"]
+[connection signal="other_intersection_exited" from="Cable1/CableSegmentsRoot/Connector" to="Cable1" method="_on_connectors_exited"]
 [connection signal="mouse_entered" from="Cable1/Area2D" to="Cable1" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Cable1/Area2D" to="Cable1" method="_on_area_2d_mouse_exited"]
 [connection signal="other_intersection_entered" from="Cable2/CableSegmentsRoot/Connector4" to="Cable2" method="_on_connectors_entered"]

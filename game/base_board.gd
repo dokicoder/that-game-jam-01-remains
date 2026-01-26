@@ -2,8 +2,9 @@
 extends Node2D
 
 @export var Socket: PackedScene
-@export var GreenConnector: PackedScene
-@export var RedConnector: PackedScene
+
+var GreenSlot: PackedScene = preload("uid://bhqj5loo3m5u6")
+var RedSlot: PackedScene = preload("uid://dir5y8c3n14rv")
 
 @export_range(1, 100) var width: int:
 	get:
@@ -29,9 +30,6 @@ extends Node2D
 func refresh():
 	update_board()
 
-var _green_positions: Array[Vector2i] = []
-var _red_positions: Array[Vector2i] = []
-
 var _width: int = 10
 var _height: int = 10
 
@@ -56,7 +54,9 @@ func update_board():
 	var sprite_width = reference_socket.texture.get_width()
 	var sprite_height = reference_socket.texture.get_height()
 	
+	@warning_ignore("integer_division")
 	center_node.position.x = - (width / 2) * sprite_width
+	@warning_ignore("integer_division")
 	center_node.position.y = - (height / 2) * sprite_height
 	
 	reference_socket.queue_free()
@@ -89,7 +89,7 @@ func update_board():
 	for connector_position in green_positions:
 		assert(connector_position.x < _width)
 		assert(connector_position.y < _height)
-		var connector: Node2D = GreenConnector.instantiate()
+		var connector: Node2D = GreenSlot.instantiate()
 		center_node.add_child(connector)
 		connector.position.x = connector_position.x * sprite_width
 		connector.position.y = connector_position.y * sprite_height
@@ -99,7 +99,7 @@ func update_board():
 	for connector_position in red_positions:
 		assert(connector_position.x < _width)
 		assert(connector_position.y < _height)
-		var connector: Node2D = RedConnector.instantiate()
+		var connector: Node2D = RedSlot.instantiate()
 		center_node.add_child(connector)
 		connector.position.x = connector_position.x * sprite_width
 		connector.position.y = connector_position.y * sprite_height

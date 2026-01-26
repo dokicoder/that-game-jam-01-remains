@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dir5y8c3n14rv"]
+[gd_scene load_steps=9 format=3 uid="uid://dir5y8c3n14rv"]
 
-[ext_resource type="Texture2D" uid="uid://dgxwcm8nd3t6b" path="res://game/Aseprite/connector_red.png" id="1_gkqeg"]
-[ext_resource type="Script" uid="uid://cq5kgh6xm1rna" path="res://game/connector.gd" id="2_gkqeg"]
+[ext_resource type="Texture2D" uid="uid://cmbn1u5dac53j" path="res://game/Aseprite/connector_red.png" id="1_gkqeg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhy5v"]
 atlas = ExtResource("1_gkqeg")
@@ -53,12 +52,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="RedConnector" type="AnimatedSprite2D"]
+[node name="RedSlot" type="AnimatedSprite2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_54lnd")
 animation = &"press"
 frame_progress = 0.36707884
-script = ExtResource("2_gkqeg")
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": false,
 "pending_changes": {}

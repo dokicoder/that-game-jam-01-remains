@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhqj5loo3m5u6"]
+[gd_scene load_steps=9 format=3 uid="uid://bhqj5loo3m5u6"]
 
 [ext_resource type="Texture2D" uid="uid://ccy63fa7b217a" path="res://game/Aseprite/connector_green.png" id="1_8wxm7"]
-[ext_resource type="Script" uid="uid://cq5kgh6xm1rna" path="res://game/connector.gd" id="2_8wxm7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_itk24"]
 atlas = ExtResource("1_8wxm7")
@@ -53,11 +52,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="GreenConnector" type="AnimatedSprite2D"]
+[node name="GreenSlot" type="AnimatedSprite2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_trhhn")
 animation = &"press"
 frame_progress = 0.9913771
-script = ExtResource("2_8wxm7")
 
 [node name="Contacts" type="Sprite2D" parent="."]

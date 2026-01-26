@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d0h81xp51q1bo" path="res://game/Aseprite/the_core.png" id="1_yi5g4"]
 [ext_resource type="Script" uid="uid://cf20qhxm0ok7t" path="res://game/core.gd" id="2_7ljso"]
-[ext_resource type="PackedScene" uid="uid://chr8jbmvrtg1a" path="res://game/Extension.tscn" id="3_lhiyt"]
+[ext_resource type="PackedScene" uid="uid://chr8jbmvrtg1a" path="res://game/Connector.tscn" id="3_lhiyt"]
 
 [node name="Core" type="Node2D"]
 texture_filter = 1

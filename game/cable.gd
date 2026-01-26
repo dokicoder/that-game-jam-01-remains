@@ -1,9 +1,7 @@
 @tool
-class_name DraggableCable extends Node2D
+class_name Cable extends Node2D
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-
-@export var cable_map: CableMap
 
 var is_hovered: bool = false
 var is_dragging: bool = false
@@ -54,7 +52,6 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	#print_debug("entered")
-	
 	if not G.is_dragging:
 		is_hovered = true
 		scale = Vector2(HIGHLIGHT_SCALE, HIGHLIGHT_SCALE)
@@ -67,7 +64,7 @@ func _on_area_2d_mouse_exited() -> void:
 		scale = Vector2(1, 1)
 
 # do connectors face in the opposite direction and have opposite connectors
-func do_extensions_connect(a: Extension, b: Extension):
+func do_connectors_connect(a: Connector, b: Connector):
 	if a.with_contacts != b.with_contacts:
 		return ( a.relative_orientation() == G.Orientation.LEFT && b.relative_orientation() == G.Orientation.RIGHT
 			  or a.relative_orientation() == G.Orientation.RIGHT && b.relative_orientation() == G.Orientation.LEFT
@@ -75,34 +72,34 @@ func do_extensions_connect(a: Extension, b: Extension):
 			  or a.relative_orientation() == G.Orientation.BOTTOM && b.relative_orientation() == G.Orientation.TOP )
 		 
 
-func _on_extensions_entered(extension_from_this_cable: Extension, other_extension: Extension) -> void:
-	print(extension_from_this_cable.name, " entered ", other_extension.name)
+func _on_connectors_entered(connector_from_this_cable: Connector, other_connector: Connector) -> void:
+	print(connector_from_this_cable.name, " entered ", other_connector.name)
 	
 	if( is_dragging 
 		# only if connecters are free, i.e. not already connected to some other connector
-		and extension_from_this_cable.connected_extension == null
-		and other_extension.connected_extension == null
-		and do_extensions_connect(extension_from_this_cable, other_extension) 
+		and connector_from_this_cable.connected_connector == null
+		and other_connector.connected_connector == null
+		and do_connectors_connect(connector_from_this_cable, other_connector) 
 	):
-		extension_from_this_cable.connected_extension = other_extension
-		other_extension.connected_extension = extension_from_this_cable
-		extension_from_this_cable.hide_contacts()
-		other_extension.hide_contacts()
+		connector_from_this_cable.connected_connector = other_connector
+		other_connector.connected_connector = connector_from_this_cable
+		connector_from_this_cable.hide_contacts()
+		other_connector.hide_contacts()
 		is_snapped = true
 		
 		audio_stream_player.pitch_scale = 0.95 + 0.1 * randf()
 		audio_stream_player.play()
 		
-		# snap to position of extension
+		# snap to position of connector
 		_snap_position = get_global_mouse_position()
 		scale = Vector2(1, 1)
-		var extension_position_relative_to_cable = extension_from_this_cable.global_position - global_position
-		global_position = other_extension.global_position - extension_position_relative_to_cable
+		var connector_position_relative_to_cable = connector_from_this_cable.global_position - global_position
+		global_position = other_connector.global_position - connector_position_relative_to_cable
 	
-func _on_extensions_exited(extension_from_this_cable: Extension, other_extension: Extension) -> void:
+func _on_connectors_exited(connector_from_this_cable: Connector, other_connector: Connector) -> void:
 	# clear connection information, show contacts again
-	if extension_from_this_cable.connected_extension == other_extension:
-		extension_from_this_cable.connected_extension = null
-		other_extension.connected_extension = null
-		extension_from_this_cable.restore_contacts()
-		other_extension.restore_contacts()
+	if connector_from_this_cable.connected_connector == other_connector:
+		connector_from_this_cable.connected_connector = null
+		other_connector.connected_connector = null
+		connector_from_this_cable.restore_contacts()
+		other_connector.restore_contacts()

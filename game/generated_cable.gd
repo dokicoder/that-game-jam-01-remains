@@ -1,12 +1,13 @@
 @tool
-class_name GeneratedCable extends DraggableCable
-
-var CableSegment: PackedScene = preload("res://game/CableSegment.tscn")
-var Extension: PackedScene = preload("res://game/Extension.tscn")
+class_name GeneratedCable extends Cable
 
 @export_tool_button("Generate from Map", "Reload") var generate_action = _generate_cable_from_map
-
 @export_tool_button("Generate Collider", "Collider") var generate_collider = _generate_collision_shape
+
+@export var cable_map: CableMap
+
+var CableSegment: PackedScene = preload("uid://ddnm2l30qxrn7")
+var Connector: PackedScene = preload("uid://chr8jbmvrtg1a")
 
 const COLOR_CONNECTOR: Color = Color("#b43f2a")
 const COLOR_CABLE: Color = Color("#007b3a")
@@ -80,28 +81,26 @@ func create_cable_segment(position_x: float, position_y: float) -> CableSegment:
 
 		update_owner(cable_segments_root)
 		
-	var cable: Sprite2D = CableSegment.instantiate()
-	cable_segments_root.add_child(cable)
-	cable.name = "Cable"
-	cable.position.x = position_x
-	cable.position.y = position_y
+	var cable_segment: Node2D = CableSegment.instantiate()
+	cable_segments_root.add_child(cable_segment)
+	cable_segment.name = "Cable"
+	cable_segment.position.x = position_x
+	cable_segment.position.y = position_y
 	
 	cable_segments_root.position.x += position_x
 	cable_segments_root.position.y += position_y
 
-	update_owner(cable)
+	update_owner(cable_segment)
 
-	return cable
+	return cable_segment
 
 func _generate_cable_from_map():
-	print("_generate_cable_from_map")
+	print_debug("_generate_cable_from_map")
 	
 	if not is_instance_valid(cable_map) or not is_instance_valid(cable_map.map_image):
 		print("no cable map to generate from, skipping")
 		return
 	
-
-
 	var num_nodes: int = 0
 	
 	var cable_segments_root: Node2D = $CableSegmentsRoot;
@@ -128,35 +127,35 @@ func _generate_cable_from_map():
 			match pixel_color:
 				COLOR_CONNECTOR:	
 					#print( "Position %d %d - Connector" %  [x, y] )
-					var extension: Extension = Extension.instantiate()
-					cable_segments_root.add_child(extension)
-					extension.name = "Extension"
-					cable_segments_root.move_child(extension, 0)
+					var connector: Connector = Connector.instantiate()
+					cable_segments_root.add_child(connector)
+					connector.name = "Connector"
+					cable_segments_root.move_child(connector, 0)
 					num_nodes += 1
 					
 					if neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR:
-						extension.orientation = G.Orientation.RIGHT
+						connector.orientation = G.Orientation.RIGHT
 					elif neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR:
-						extension.orientation = G.Orientation.LEFT
+						connector.orientation = G.Orientation.LEFT
 					elif neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR:
-						extension.orientation = G.Orientation.BOTTOM
+						connector.orientation = G.Orientation.BOTTOM
 					elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR:
-						extension.orientation = G.Orientation.TOP
+						connector.orientation = G.Orientation.TOP
 						
-					extension.position.x = x * sprite_width
-					extension.position.y = y * sprite_height
+					connector.position.x = x * sprite_width
+					connector.position.y = y * sprite_height
 				
 					cable_segments_root.position.x += x * sprite_width
 					cable_segments_root.position.y += y * sprite_height
 						
-					update_owner(extension)
+					update_owner(connector)
 
-					extension.other_intersection_entered.connect( _on_extensions_entered, ConnectFlags.CONNECT_PERSIST )
-					extension.other_intersection_exited.connect( _on_extensions_exited, ConnectFlags.CONNECT_PERSIST )
+					connector.other_intersection_entered.connect( _on_connectors_entered, ConnectFlags.CONNECT_PERSIST )
+					connector.other_intersection_exited.connect( _on_connectors_exited, ConnectFlags.CONNECT_PERSIST )
 					
 				COLOR_CABLE:
 					#print( "Position %d %d - Cable" %  [x, y] )
-					var cable = create_cable_segment( x * sprite_width, y * sprite_height)
+					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height)
 					num_nodes += 1
 					
 					var horizontal = (neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR or neighbors[0] == COLOR_CABLE_HORIZONTAL) and (neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR or neighbors[1] == COLOR_CABLE_HORIZONTAL)
@@ -164,44 +163,47 @@ func _generate_cable_from_map():
 					
 					if horizontal:
 						if vertical:
-							cable.texture = [G.tex_cable_junction_1, G.tex_cable_junction_2].pick_random()
+							cable_segment.texture = [G.tex_cable_junction_1, G.tex_cable_junction_2].pick_random()
 						elif neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL:
-							cable.texture = G.tex_crossing_x_bottom
+							cable_segment.texture = G.tex_crossing_x_bottom
 						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
-							cable.texture = G.tex_crossing_x_top
+							cable_segment.texture = G.tex_crossing_x_top
 						else:
-							cable.texture = G.tex_cable_h
+							cable_segment.texture = G.tex_cable_h
 					elif vertical:
 						if neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR or neighbors[0] == COLOR_CABLE_HORIZONTAL:
-							cable.texture = G.tex_crossing_x_right
+							cable_segment.texture = G.tex_crossing_x_right
 						elif neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR or neighbors[1] == COLOR_CABLE_HORIZONTAL:
-							cable.texture = G.tex_crossing_x_left
+							cable_segment.texture = G.tex_crossing_x_left
 						else:
-							cable.texture = G.tex_cable_v
+							cable_segment.texture = G.tex_cable_v
 					elif neighbors[0] == COLOR_CABLE or neighbors[0] == COLOR_CONNECTOR or neighbors[0] == COLOR_CABLE_HORIZONTAL:
 						if neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL:
-							cable.texture = G.tex_cable_corner_top_left
+							cable_segment.texture = G.tex_cable_corner_top_left
 						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
-							cable.texture = G.tex_cable_corner_bottom_left
+							cable_segment.texture = G.tex_cable_corner_bottom_left
 					elif neighbors[1] == COLOR_CABLE or neighbors[1] == COLOR_CONNECTOR or neighbors[1] == COLOR_CABLE_HORIZONTAL:
 						if neighbors[2] == COLOR_CABLE or neighbors[2] == COLOR_CONNECTOR or neighbors[2] == COLOR_CABLE_VERTICAL:
-							cable.texture = G.tex_cable_corner_top_right
+							cable_segment.texture = G.tex_cable_corner_top_right
 						elif neighbors[3] == COLOR_CABLE or neighbors[3] == COLOR_CONNECTOR or neighbors[3] == COLOR_CABLE_VERTICAL:
-							cable.texture = G.tex_cable_corner_bottom_right
+							cable_segment.texture = G.tex_cable_corner_bottom_right
 					
 				COLOR_CABLE_HORIZONTAL:					
 					#print( "Position %d %d - Cable" %  [x, y] )
-					var cable = create_cable_segment( x * sprite_width, y * sprite_height)
+					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height)
 					num_nodes += 1
 					
-					cable.texture = G.tex_cable_h
+					cable_segment.texture = G.tex_cable_h
 				COLOR_CABLE_VERTICAL:					
-					var cable = create_cable_segment( x * sprite_width, y * sprite_height)
+					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height)
 					num_nodes += 1
 					
-					cable.texture = G.tex_cable_v
+					cable_segment.texture = G.tex_cable_v
 	
+	# TODO: is this calculation correct and the centering still needed?
+	@warning_ignore("integer_division")
 	var x_center = int(cable_segments_root.position.x * - (1.0 / num_nodes)) / 32 * 32.0
+	@warning_ignore("integer_division")
 	var y_center = int(cable_segments_root.position.y * - (1.0 / num_nodes)) / 32 * 32.0
 	
 	cable_segments_root.position.x = x_center
