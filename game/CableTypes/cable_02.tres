@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CableMap" load_steps=3 format=3 uid="uid://d2dbwl4kh5qxj"]
+[gd_resource type="Resource" script_class="CableMap" format=3 uid="uid://d2dbwl4kh5qxj"]
 
 [ext_resource type="Script" uid="uid://e131gyojdd2l" path="res://tools/CableMap.gd" id="1_ing0g"]
 
