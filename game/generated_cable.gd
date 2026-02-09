@@ -174,6 +174,17 @@ func _generate_cable_from_map():
 					connector.other_intersection_exited.connect( _on_connectors_exited, ConnectFlags.CONNECT_PERSIST )
 
 					cable_dict["%d-%d" % [x, y]] = connector
+
+					if x >= 0 && connector.orientation == G.Orientation.RIGHT:
+						var left_neighbor_instance: CableSegment = cable_dict[("%d-%d" % [x-1, y])]
+						
+						left_neighbor_instance.adjacent_segments.push_back(connector)
+						connector.adjacent_segments.push_back(left_neighbor_instance)
+					if y >= 0 && connector.orientation == G.Orientation.BOTTOM:
+						var top_neighbor_instance: CableSegment = cable_dict[("%d-%d" % [x, y-1])]
+						
+						top_neighbor_instance.adjacent_segments.push_back(connector)
+						connector.adjacent_segments.push_back(top_neighbor_instance)
 					
 				COLOR_CABLE:
 					#print( "Position %d %d - Cable" %  [x, y] )
