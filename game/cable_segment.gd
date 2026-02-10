@@ -3,10 +3,16 @@ class_name CableSegment extends Node2D
 
 @export_tool_button("Flow Energy", "OmniLight3D") var flow_action = flow_energy
 
-@export_range(0, 10) var energy_level: float = 0:
+@export_range(-5, 5) var energy_level: float = 0:
 	get: return _energy_level
 	set(value): 
-		var clamped_value = clamp(value, -1, 3)
+		var clamped_value = clamp(value, -5, 5)
+		#if source_drain_amount == 0:
+		#	clamped_value = clamp(value, -5, 5)
+		#if source_drain_amount > 0:
+		#	clamped_value = clamp(value, 0, source_drain_amount)
+		#if source_drain_amount < 0:
+		#	clamped_value = clamp(value, source_drain_amount, 2)
 		_energy_level = clamped_value
 		_get_sprite().modulate = _energy_level_to_color(clamped_value)
 
@@ -19,7 +25,7 @@ var _energy_level: float = 0
 var adjacent_segments: Array[CableSegment] = []
 
 var _t: float = 0.0
-const FLOW_ENRGY_INTERVAL: float = 0.05
+const FLOW_ENRGY_INTERVAL: float = 0.03
 
 func flow_energy():
 	energy_level += source_drain_amount
