@@ -3,34 +3,55 @@ class_name CableSegment extends Node2D
 
 @export_tool_button("Flow Energy", "OmniLight3D") var flow_action = flow_energy
 
-@export_range(-100, 100, 1, "or_less", "or_greater") var energy_level: float = 0:
+@export_range(0, 10) var energy_level: float = 0:
 	get: return _energy_level
 	set(value): 
-		_energy_level = value
-		_get_sprite().modulate = _energy_level_to_color(value)
+		var clamped_value = clamp(value, -1, 3)
+		_energy_level = clamped_value
+		_get_sprite().modulate = _energy_level_to_color(clamped_value)
+
+@export var source_drain_amount: float
+
+var energy_color_curve: Curve = preload("uid://bojq15sjqlojl")
 
 var _energy_level: float = 0
 
 var adjacent_segments: Array[CableSegment] = []
 
-func flow_energy():
-	var num_lower_energy_segments = 0
-	
-	for segment in adjacent_segments:
-		if segment.energy_level < energy_level:
-			num_lower_energy_segments += 1
-	for segment in adjacent_segments:
-		if segment.energy_level < energy_level:
-			segment.energy_level = energy_level / num_lower_energy_segments
-			
+var _t: float = 0.0
+const FLOW_ENRGY_INTERVAL: float = 0.05
 
-static func _energy_level_to_color(energy_level: float) -> Color:
-	var amount = pow(abs(energy_level), 1.3) / 100 + 1
+func flow_energy():
+	energy_level += source_drain_amount
+
+	var num_lower_energy_segments = 0
+	var total_energy = energy_level
 	
+	for segment in adjacent_segments:
+		if segment.energy_level < energy_level:
+			total_energy += segment.energy_level
+			num_lower_energy_segments += 1
+
+	var average_energy = total_energy / (num_lower_energy_segments + 1)
+
+	for segment in adjacent_segments:
+		if segment.energy_level < energy_level:
+			segment.energy_level = average_energy
+
+	energy_level = average_energy
+
+func _process(delta) -> void:
+	_t += delta
+	if _t >= FLOW_ENRGY_INTERVAL:
+		_t -= FLOW_ENRGY_INTERVAL
+
+		flow_energy()
+ 
+func _energy_level_to_color(energy_level: float) -> Color:	
 	var color_vector = Vector3(
-		amount if energy_level < 0 else 1,
 		1,
-		amount if energy_level >= 0 else 1,
+		1,
+		energy_color_curve.sample(energy_level) + 1,
 	)
 		
 	color_vector = color_vector.normalized() * sqrt(3.0)
