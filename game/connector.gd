@@ -22,6 +22,14 @@ signal other_intersection_exited(this: Connector, other: Connector)
 
 var connected_connector: Connector = null
 
+func get_adjacent_segments():
+	if connected_connector: 
+		var neighbors_including_connected_connector = [connected_connector]
+		neighbors_including_connected_connector.append_array(adjacent_segments)
+		return neighbors_including_connected_connector
+
+	return adjacent_segments
+
 var _orientation: G.Orientation = G.Orientation.LEFT
 var _with_contacts: bool = false
 

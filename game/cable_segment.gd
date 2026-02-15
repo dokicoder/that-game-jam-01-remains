@@ -6,10 +6,10 @@ class_name CableSegment extends Node2D
 func _add_energy():
 	source_drain_amount += 0.1
 
-@export_range(-5, 5) var energy_level: float = 0:
+@export_range(0, 2) var energy_level: float = 0:
 	get: return _energy_level
 	set(value): 
-		var clamped_value = clamp(value, -1, 5)
+		var clamped_value = clamp(value, 0, 2)
 		_energy_level = clamped_value
 
 		#print("modulate")
@@ -17,8 +17,7 @@ func _add_energy():
 		_get_sprite().modulate = _energy_level_to_color(clamped_value)
 
 @export var source_drain_amount: float
-# neighbors should be serialized, but no use showing them in the editor
-var adjacent_segments: Array[CableSegment] = []
+@export var adjacent_segments: Array[CableSegment] = []
 
 var energy_color_curve: Curve = preload("uid://bojq15sjqlojl")
 
@@ -26,25 +25,30 @@ var _energy_level: float = 0
 
 
 var _t: float = 0.0
-const FLOW_ENRGY_INTERVAL: float = 0.5
+const FLOW_ENRGY_INTERVAL: float = 0.05
+
+func get_adjacent_segments():
+	return adjacent_segments
 
 func flow_energy():
+	if Engine.is_editor_hint():
+		return
+
 	energy_level += source_drain_amount
 
 	var num_lower_energy_segments = 0
 	var total_energy = energy_level
 
-	#print("ok")
-	#print(adjacent_segments.size())
+	var neighbors = get_adjacent_segments()
 	
-	for segment in adjacent_segments:
+	for segment in neighbors:
 		if segment.energy_level < energy_level:
 			total_energy += segment.energy_level
 			num_lower_energy_segments += 1
 
 	var average_energy = total_energy / (num_lower_energy_segments + 1)
 
-	for segment in adjacent_segments:
+	for segment in neighbors:
 		if segment.energy_level < energy_level:
 			segment.energy_level = average_energy
 

@@ -42,6 +42,8 @@ func update_size() -> void:
 	queue_redraw()
 
 func _draw() -> void:	
+	print(mouse_at)
+
 	for x: int in cable_map.map_image.get_size().x:
 		for y: int in cable_map.map_image.get_size().y:
 			var pixel_color = cable_map.map_image.get_pixel(x, y)
@@ -67,6 +69,9 @@ func _gui_input(event: InputEvent) -> void:
 		is_painting = event.pressed
 		queue_redraw()
 	if event is InputEventMouseMotion:
+		# TODO: may be used to calculate if user moved mouse out of Rect
+		#print("relative", event.relative)
+		#print("screen_relative", event.screen_relative)
 		mouse_at = event.position / pixel_size
 		if is_painting:
 			_set_bit_under_mouse(event)

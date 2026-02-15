@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://caurh7l0et8yg"]
+[gd_scene format=3 uid="uid://caurh7l0et8yg"]
 
 [ext_resource type="Texture2D" uid="uid://d0h81xp51q1bo" path="res://game/Aseprite/the_core.png" id="1_yi5g4"]
 [ext_resource type="Script" uid="uid://cf20qhxm0ok7t" path="res://game/core.gd" id="2_7ljso"]
 [ext_resource type="PackedScene" uid="uid://chr8jbmvrtg1a" path="res://game/Connector.tscn" id="3_lhiyt"]
 
-[node name="Core" type="Node2D"]
+[node name="Core" type="Node2D" unique_id=1875888362]
 texture_filter = 1
 script = ExtResource("2_7ljso")
 left_slot = true
@@ -12,26 +12,37 @@ right_slot = true
 top_slot = true
 bottom_slot = true
 
-[node name="CableLeft" parent="." instance=ExtResource("3_lhiyt")]
+[node name="CableLeft" parent="." unique_id=1270385715 instance=ExtResource("3_lhiyt")]
 position = Vector2(-64, 0)
 scale = Vector2(1.2, 1)
+with_contacts = true
+energy_level = 2.0
+source_drain_amount = 0.1
 
-[node name="CableRight" parent="." instance=ExtResource("3_lhiyt")]
+[node name="CableRight" parent="." unique_id=1120431152 instance=ExtResource("3_lhiyt")]
 position = Vector2(64, 0)
 scale = Vector2(1.2, 1)
 orientation = 1
+with_contacts = true
+energy_level = 2.0
+source_drain_amount = 0.1
 
-[node name="CableTop" parent="." instance=ExtResource("3_lhiyt")]
+[node name="CableTop" parent="." unique_id=1884380555 instance=ExtResource("3_lhiyt")]
 position = Vector2(0, -64)
 scale = Vector2(1, 1.2)
 orientation = 2
 with_contacts = true
+energy_level = 2.0
+source_drain_amount = 0.1
 
-[node name="CableBottom" parent="." instance=ExtResource("3_lhiyt")]
+[node name="CableBottom" parent="." unique_id=984380202 instance=ExtResource("3_lhiyt")]
 position = Vector2(0, 64)
 scale = Vector2(1, 1.2)
 orientation = 3
+with_contacts = true
+energy_level = 2.0
+source_drain_amount = 0.1
 
-[node name="EnergyCore" type="Sprite2D" parent="."]
+[node name="EnergyCore" type="Sprite2D" parent="." unique_id=509304318]
 texture_filter = 1
 texture = ExtResource("1_yi5g4")

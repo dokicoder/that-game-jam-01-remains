@@ -21,9 +21,6 @@ const sprite_height: float = 32
 func update_owner(node: Node):
 	node.owner = get_tree().edited_scene_root
 
-func _init():
-	_generate_cable_from_map()
-
 func get_map_pixel(x: int, y: int):
 	if x < 0 or y < 0 or x >= cable_map.map_image.get_width() or y >= cable_map.map_image.get_height():
 		return null
