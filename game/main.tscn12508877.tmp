@@ -1,0 +1,550 @@
+[gd_scene format=4 uid="uid://ddm8m6tm1g4x0"]
+
+[ext_resource type="PackedScene" uid="uid://bvvqr26g1pub1" path="res://game/BaseBoard.tscn" id="1_oa506"]
+[ext_resource type="PackedScene" uid="uid://dkmdq68t3kapj" path="res://game/Socket.tscn" id="3_vop5m"]
+[ext_resource type="PackedScene" uid="uid://caurh7l0et8yg" path="res://game/Core.tscn" id="6_dgpao"]
+[ext_resource type="Resource" uid="uid://ewvrujdan4os" path="res://game/CableTypes/cable_01.tres" id="7_8ymx4"]
+[ext_resource type="PackedScene" uid="uid://chr8jbmvrtg1a" path="res://game/Connector.tscn" id="7_wjctj"]
+[ext_resource type="PackedScene" uid="uid://dchuo6eveswkk" path="res://game/GeneratedCable.tscn" id="8_xkbyp"]
+[ext_resource type="PackedScene" uid="uid://ddnm2l30qxrn7" path="res://game/CableSegment.tscn" id="10_ioaqv"]
+[ext_resource type="Texture2D" uid="uid://qjw67cv2xisq" path="res://game/Aseprite/cable_segment_v.png" id="11_ioaqv"]
+[ext_resource type="Texture2D" uid="uid://cgn4hotqyih4j" path="res://game/Aseprite/cable_segment_h.png" id="12_li27q"]
+[ext_resource type="Script" uid="uid://ycrp5angxohu" path="res://game/connector.gd" id="17_rqwoc"]
+[ext_resource type="Texture2D" uid="uid://cvmhdnnti51kv" path="res://game/Aseprite/three_way_x_left.png" id="18_le3en"]
+[ext_resource type="Texture2D" uid="uid://b2dthefw41bqa" path="res://game/Aseprite/three_way_x_right.png" id="18_m8y2r"]
+[ext_resource type="Script" uid="uid://di480wijdqsq6" path="res://game/cable_segment.gd" id="19_2o2kd"]
+[ext_resource type="Texture2D" uid="uid://dq06c488tmidn" path="res://game/Aseprite/corner_bottom_to_right.png" id="19_le3en"]
+[ext_resource type="Resource" uid="uid://d2dbwl4kh5qxj" path="res://game/CableTypes/cable_02.tres" id="20_2o2kd"]
+[ext_resource type="Texture2D" uid="uid://c1gxbuj24ec63" path="res://game/Aseprite/corner_top_to_left.png" id="20_le3en"]
+[ext_resource type="Texture2D" uid="uid://bhwx6mr62y27r" path="res://game/Aseprite/corner_top_to_right.png" id="20_rqwoc"]
+[ext_resource type="Texture2D" uid="uid://b4c8dt3wriycp" path="res://game/Aseprite/corner_bottom_to_left.png" id="20_rvc4y"]
+[ext_resource type="Texture2D" uid="uid://jk12qo4t78og" path="res://game/Aseprite/three_way_x_top.png" id="21_rqwoc"]
+[ext_resource type="Script" uid="uid://e131gyojdd2l" path="res://tools/CableMap.gd" id="22_rqwoc"]
+[ext_resource type="Texture2D" uid="uid://clf4tx1p30ql4" path="res://game/Aseprite/cable_junction2.png" id="24_c08u8"]
+
+[sub_resource type="Image" id="Image_8dfyj"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtD8qAAAAAAAAAAAAAAAAAAAAtD8qAAAAAAAAAAAAAAAAAAAAAHs6AAAAAAAAAAAAAAAAAAAAAHs6AHs6AHs6AHs6AHs6AHs6AHs6AHs6tD8qAAAAAAAAAAAAAHs6AAAAAAAAAAAAAAAAAAAAAHs6AAAAAAAAAAAAAAAAAAAAAHs6AAAAAAAAAHs6AHs6AHs6ADEkAAAAAAAAAAAAAAAAAAAAAHs6AHs6AHs6AHs6AAAAAHs6AHs6AAAAAAAAAAAAAAAAAAAAAHs6AAAAAAAAAHs6AHs6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHs6AAAAAAAAAAAAAHs6AHs6AHs6AHs6tD8qAAAAAAAAAAAAtD8qAAAAAAAAAAAAAAAAAAAAAAAAAHs6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtD8qAHs6tD8qAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHs6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtD8qAAAAAAAA"),
+"format": "RGB8",
+"height": 12,
+"mipmaps": false,
+"width": 12
+}
+
+[sub_resource type="Resource" id="Resource_m8y2r"]
+script = ExtResource("22_rqwoc")
+map_image = SubResource("Image_8dfyj")
+metadata/_custom_type_script = "uid://e131gyojdd2l"
+
+[node name="Main" type="Node2D" unique_id=62684435]
+
+[node name="BaseBoard" parent="." unique_id=727737035 instance=ExtResource("1_oa506")]
+Socket = ExtResource("3_vop5m")
+width = 29
+height = 27
+green_positions = Array[Vector2i]([Vector2i(1, 3), Vector2i(1, 5), Vector2i(2, 1), Vector2i(2, 7), Vector2i(2, 11), Vector2i(4, 12), Vector2i(6, 15), Vector2i(7, 3), Vector2i(9, 1), Vector2i(12, 3)])
+red_positions = Array[Vector2i]([Vector2i(4, 3), Vector2i(6, 9), Vector2i(7, 13), Vector2i(11, 5), Vector2i(12, 1), Vector2i(16, 6), Vector2i(18, 6), Vector2i(22, 12), Vector2i(23, 7), Vector2i(25, 8)])
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=307390877]
+zoom = Vector2(3, 3)
+
+[node name="Core" parent="." unique_id=1644048759 instance=ExtResource("6_dgpao")]
+
+[node name="Cable1" parent="." unique_id=950915641 instance=ExtResource("8_xkbyp")]
+position = Vector2(-161, 150)
+cable_map = ExtResource("7_8ymx4")
+
+[node name="Area2D" type="Area2D" parent="Cable1" unique_id=502525909]
+
+[node name="@CollisionPolygon2D@31296" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=1919813010]
+position = Vector2(96, 32)
+polygon = PackedVector2Array(-16, 7, -4, 5, -3, 5, -5, -6, -5, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@31297" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=16337304]
+position = Vector2(32, -96)
+polygon = PackedVector2Array(-5, 4, -7, 16, 7, 16, 7, 5, -5, 3)
+
+[node name="@CollisionPolygon2D@31298" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=552055419]
+position = Vector2(-32, -32)
+polygon = PackedVector2Array(4, -6, 4, 7, 16, 7, 16, -7, 4, -7)
+
+[node name="@CollisionPolygon2D@31299" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=981899789]
+position = Vector2(-32, 32)
+polygon = PackedVector2Array(-3, -6, -7, -3, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -3, -7)
+
+[node name="@CollisionPolygon2D@31300" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=2112663816]
+position = Vector2(-32, 64)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@31301" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=1143587047]
+position = Vector2(0, -32)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@31302" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=2073538389]
+position = Vector2(0, 32)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@31303" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=1892101568]
+position = Vector2(0, 64)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@31304" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=985524752]
+position = Vector2(0, 96)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@31305" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=632014639]
+position = Vector2(32, -64)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@31306" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=1318549716]
+position = Vector2(32, -32)
+polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@31307" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=1083876170]
+position = Vector2(32, 0)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@31308" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=1769247334]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(-7, -8, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -8, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@31309" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=1276770617]
+position = Vector2(32, 64)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@31310" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=1334419756]
+position = Vector2(32, 96)
+polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, 3, 7, 6, 3, 7, 3, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@31311" type="CollisionPolygon2D" parent="Cable1/Area2D" unique_id=2014572823]
+position = Vector2(64, 32)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="CableSegmentsRoot" type="Node2D" parent="Cable1" unique_id=328204317]
+position = Vector2(-32, -96)
+
+[node name="Connector3" parent="Cable1/CableSegmentsRoot" unique_id=1136671608 instance=ExtResource("7_wjctj")]
+position = Vector2(128, 128)
+orientation = 1
+
+[node name="Connector2" parent="Cable1/CableSegmentsRoot" unique_id=1640613887 instance=ExtResource("7_wjctj")]
+position = Vector2(64, 0)
+orientation = 2
+
+[node name="Connector" parent="Cable1/CableSegmentsRoot" unique_id=1669375670 instance=ExtResource("7_wjctj")]
+position = Vector2(0, 64)
+
+[node name="Cable" parent="Cable1/CableSegmentsRoot" unique_id=431223782 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(0, 128)
+texture = ExtResource("19_le3en")
+
+[node name="Cable2" parent="Cable1/CableSegmentsRoot" unique_id=1345794632 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(0, 160)
+texture = ExtResource("20_rqwoc")
+
+[node name="Cable3" parent="Cable1/CableSegmentsRoot" unique_id=914728955 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 64)
+texture = ExtResource("12_li27q")
+
+[node name="Cable4" parent="Cable1/CableSegmentsRoot" unique_id=1501709720 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 128)
+texture = ExtResource("12_li27q")
+
+[node name="Cable5" parent="Cable1/CableSegmentsRoot" unique_id=635388362 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 160)
+
+[node name="Cable6" parent="Cable1/CableSegmentsRoot" unique_id=981385933 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 192)
+texture = ExtResource("20_rqwoc")
+
+[node name="Cable7" parent="Cable1/CableSegmentsRoot" unique_id=1085579700 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(64, 32)
+texture = ExtResource("11_ioaqv")
+
+[node name="Cable8" parent="Cable1/CableSegmentsRoot" unique_id=2013233537 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(64, 64)
+texture = ExtResource("18_m8y2r")
+
+[node name="Cable9" parent="Cable1/CableSegmentsRoot" unique_id=690025304 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(64, 96)
+texture = ExtResource("11_ioaqv")
+
+[node name="Cable10" parent="Cable1/CableSegmentsRoot" unique_id=630603441 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(64, 128)
+texture = ExtResource("24_c08u8")
+
+[node name="Cable11" parent="Cable1/CableSegmentsRoot" unique_id=427202813 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(64, 160)
+texture = ExtResource("11_ioaqv")
+
+[node name="Cable12" parent="Cable1/CableSegmentsRoot" unique_id=369971455 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(64, 192)
+texture = ExtResource("20_le3en")
+
+[node name="Cable13" parent="Cable1/CableSegmentsRoot" unique_id=1290662420 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(96, 128)
+texture = ExtResource("12_li27q")
+
+[node name="Cable2" parent="." unique_id=270445192 instance=ExtResource("8_xkbyp")]
+position = Vector2(279, 209)
+cable_map = ExtResource("20_2o2kd")
+
+[node name="Area2D" type="Area2D" parent="Cable2" unique_id=1991246921]
+
+[node name="@CollisionPolygon2D@70707" type="CollisionPolygon2D" parent="Cable2/Area2D" unique_id=909326462]
+position = Vector2(64, 32)
+polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@70708" type="CollisionPolygon2D" parent="Cable2/Area2D" unique_id=536016031]
+position = Vector2(0, 32)
+polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@70709" type="CollisionPolygon2D" parent="Cable2/Area2D" unique_id=1262591838]
+position = Vector2(0, -32)
+polygon = PackedVector2Array(-5, 4, -7, 16, 7, 16, 7, 5, -5, 3)
+
+[node name="@CollisionPolygon2D@70710" type="CollisionPolygon2D" parent="Cable2/Area2D" unique_id=925335175]
+position = Vector2(-64, 32)
+polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@70711" type="CollisionPolygon2D" parent="Cable2/Area2D" unique_id=1444087712]
+position = Vector2(-64, 0)
+polygon = PackedVector2Array(-3, -6, -7, -3, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -3, -7)
+
+[node name="@CollisionPolygon2D@70712" type="CollisionPolygon2D" parent="Cable2/Area2D" unique_id=939752569]
+position = Vector2(-32, 0)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@70713" type="CollisionPolygon2D" parent="Cable2/Area2D" unique_id=1450696410]
+polygon = PackedVector2Array(-7, -9, -16, -7, -16, 7, -7, 8, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@70714" type="CollisionPolygon2D" parent="Cable2/Area2D" unique_id=219617214]
+position = Vector2(32, 0)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@70715" type="CollisionPolygon2D" parent="Cable2/Area2D" unique_id=1034070372]
+position = Vector2(64, 0)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="CableSegmentsRoot" type="Node2D" parent="Cable2" unique_id=536960506]
+position = Vector2(-64, -32)
+
+[node name="Connector8" parent="Cable2/CableSegmentsRoot" unique_id=654539522 instance=ExtResource("7_wjctj")]
+position = Vector2(128, 64)
+orientation = 3
+
+[node name="Connector7" parent="Cable2/CableSegmentsRoot" unique_id=1701893867 instance=ExtResource("7_wjctj")]
+position = Vector2(64, 64)
+orientation = 3
+
+[node name="Connector6" parent="Cable2/CableSegmentsRoot" unique_id=1093569794 instance=ExtResource("7_wjctj")]
+position = Vector2(64, 0)
+orientation = 2
+
+[node name="Connector5" parent="Cable2/CableSegmentsRoot" unique_id=2027448601 instance=ExtResource("7_wjctj")]
+position = Vector2(0, 64)
+orientation = 3
+
+[node name="Cable6" parent="Cable2/CableSegmentsRoot" unique_id=1876392484 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(0, 32)
+texture = ExtResource("19_le3en")
+
+[node name="Cable7" parent="Cable2/CableSegmentsRoot" unique_id=2052252469 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 32)
+texture = ExtResource("12_li27q")
+
+[node name="Cable8" parent="Cable2/CableSegmentsRoot" unique_id=466148813 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(64, 32)
+texture = ExtResource("24_c08u8")
+
+[node name="Cable9" parent="Cable2/CableSegmentsRoot" unique_id=200933988 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(96, 32)
+texture = ExtResource("12_li27q")
+
+[node name="Cable10" parent="Cable2/CableSegmentsRoot" unique_id=755432679 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(128, 32)
+
+[node name="Cable3" parent="." unique_id=2108774279 instance=ExtResource("8_xkbyp")]
+position = Vector2(31, 198)
+
+[node name="Area2D" type="Area2D" parent="Cable3" unique_id=1903041749]
+
+[node name="@CollisionPolygon2D@35545" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=1894564132]
+position = Vector2(32, 128)
+polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@35546" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=253302364]
+position = Vector2(0, -64)
+polygon = PackedVector2Array(4, -6, 4, 7, 16, 7, 16, -7, 4, -7)
+
+[node name="@CollisionPolygon2D@35547" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=408098741]
+polygon = PackedVector2Array(-3, -6, -7, -3, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -3, -7)
+
+[node name="@CollisionPolygon2D@35548" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=1647462637]
+position = Vector2(0, 32)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@35549" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=1581467892]
+position = Vector2(32, -64)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@35550" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=1805376163]
+position = Vector2(32, -32)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@35551" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=520447296]
+position = Vector2(32, 0)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@35552" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=1999539495]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@35553" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=1850527820]
+position = Vector2(32, 64)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@35554" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=1722085921]
+position = Vector2(32, 96)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@35555" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=1718347372]
+position = Vector2(64, -32)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@35556" type="CollisionPolygon2D" parent="Cable3/Area2D" unique_id=307272646]
+position = Vector2(64, 0)
+polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, 3, 7, 6, 3, 7, 3, 7, -16, -7, -16)
+
+[node name="Area2D2" type="Area2D" parent="Cable3" unique_id=730583520]
+
+[node name="Area2D3" type="Area2D" parent="Cable3" unique_id=532370934]
+
+[node name="CableSegmentsRoot" type="Node2D" parent="Cable3" unique_id=240947669]
+position = Vector2(0, -64)
+
+[node name="Connector4" parent="Cable3/CableSegmentsRoot" unique_id=1906671678 instance=ExtResource("7_wjctj")]
+position = Vector2(32, 192)
+orientation = 3
+
+[node name="Connector3" parent="Cable3/CableSegmentsRoot" unique_id=2080825881 instance=ExtResource("7_wjctj")]
+
+[node name="Cable10" parent="Cable3/CableSegmentsRoot" unique_id=1360850253 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(0, 64)
+texture = ExtResource("19_le3en")
+
+[node name="Cable11" parent="Cable3/CableSegmentsRoot" unique_id=4944032 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(0, 96)
+texture = ExtResource("20_rqwoc")
+
+[node name="Cable12" parent="Cable3/CableSegmentsRoot" unique_id=1101368608 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 0)
+
+[node name="Cable13" parent="Cable3/CableSegmentsRoot" unique_id=1553575695 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 32)
+texture = ExtResource("20_rqwoc")
+
+[node name="Cable14" parent="Cable3/CableSegmentsRoot" unique_id=1613639563 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 64)
+texture = ExtResource("12_li27q")
+
+[node name="Cable15" parent="Cable3/CableSegmentsRoot" unique_id=523505730 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 96)
+
+[node name="Cable16" parent="Cable3/CableSegmentsRoot" unique_id=1910632958 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 128)
+texture = ExtResource("11_ioaqv")
+
+[node name="Cable17" parent="Cable3/CableSegmentsRoot" unique_id=602715541 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(32, 160)
+texture = ExtResource("11_ioaqv")
+
+[node name="Cable18" parent="Cable3/CableSegmentsRoot" unique_id=1632872768 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(64, 32)
+
+[node name="Cable19" parent="Cable3/CableSegmentsRoot" unique_id=1056786244 instance=ExtResource("10_ioaqv")]
+modulate = Color(0.99999994, 0.99999994, 0.99999994, 1)
+position = Vector2(64, 64)
+texture = ExtResource("20_le3en")
+
+[node name="Cable4" parent="." unique_id=2028278722 instance=ExtResource("8_xkbyp")]
+position = Vector2(320, 385)
+cable_map = SubResource("Resource_m8y2r")
+
+[node name="Area2D" type="Area2D" parent="Cable4" unique_id=992257213]
+
+[node name="@CollisionPolygon2D@27590" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1654342263]
+position = Vector2(128, 160)
+polygon = PackedVector2Array(-16, 7, -4, 5, -3, 5, -5, -6, -5, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27591" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1875385951]
+position = Vector2(128, 96)
+polygon = PackedVector2Array(-16, 7, -4, 5, -3, 5, -5, -6, -5, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27592" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1133186281]
+position = Vector2(128, -64)
+polygon = PackedVector2Array(-16, 7, -4, 5, -3, 5, -5, -6, -5, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27593" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1631322867]
+position = Vector2(96, 224)
+polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27594" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=484593154]
+position = Vector2(64, 160)
+polygon = PackedVector2Array(4, -6, 4, 7, 16, 7, 16, -7, 4, -7)
+
+[node name="@CollisionPolygon2D@27595" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1566781111]
+position = Vector2(64, -128)
+polygon = PackedVector2Array(-5, 4, -7, 16, 7, 16, 7, 5, -5, 3)
+
+[node name="@CollisionPolygon2D@27596" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1031825810]
+position = Vector2(-128, 128)
+polygon = PackedVector2Array(-7, -5, 6, -5, 7, -5, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27597" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1932394688]
+position = Vector2(-128, -96)
+polygon = PackedVector2Array(-5, 4, -7, 16, 7, 16, 7, 5, -5, 3)
+
+[node name="@CollisionPolygon2D@27598" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=989598739]
+position = Vector2(-128, -64)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27599" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1659324187]
+position = Vector2(-128, -32)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27600" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=14019206]
+position = Vector2(-128, 0)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27601" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=766631527]
+position = Vector2(-128, 32)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27602" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=942363282]
+position = Vector2(-128, 64)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27603" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=930269288]
+position = Vector2(-128, 96)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27604" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1686036908]
+position = Vector2(-96, -64)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27605" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1324939298]
+position = Vector2(-96, 32)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27606" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1972485306]
+position = Vector2(-64, -64)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27607" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=181821192]
+position = Vector2(-64, 32)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27608" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1763749444]
+position = Vector2(-32, -64)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27609" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=126528872]
+position = Vector2(-32, 0)
+polygon = PackedVector2Array(-3, -6, -7, -3, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, -3, -7)
+
+[node name="@CollisionPolygon2D@27610" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=732463987]
+position = Vector2(-32, 32)
+polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27611" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1310249218]
+position = Vector2(-32, 64)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27612" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=809757107]
+position = Vector2(0, -64)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27613" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=78084412]
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27614" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=430807249]
+position = Vector2(0, 64)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27615" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=786187385]
+position = Vector2(0, 96)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27616" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=844741590]
+position = Vector2(32, -64)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27617" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=268298676]
+position = Vector2(32, 0)
+polygon = PackedVector2Array(-16, 7, -7, 7, -7, 16, 7, 16, 4, 1, 4, -1, -4, -6, -4, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27618" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1014129135]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(-7, -3, 4, 7, 16, 7, 16, -7, 7, -7, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27619" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=746096538]
+position = Vector2(32, 96)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27620" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=356617741]
+position = Vector2(64, -96)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27621" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=17924428]
+position = Vector2(64, -64)
+polygon = PackedVector2Array(-7, -8, -16, -7, -16, 7, -7, 7, -7, 16, 7, 16, 7, 7, 16, 7, 16, -7, 7, -8, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27622" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=411605825]
+position = Vector2(64, -32)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27623" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=1825676249]
+position = Vector2(64, 0)
+polygon = PackedVector2Array(-7, 16, 7, 16, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27624" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=501580561]
+position = Vector2(64, 32)
+polygon = PackedVector2Array(-7, -7, -16, -7, -16, 7, 3, 7, 6, 3, 7, 3, 7, -16, -7, -16)
+
+[node name="@CollisionPolygon2D@27625" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=491589307]
+position = Vector2(64, 96)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@27626" type="CollisionPolygon2D" parent="Cable4/Area2D" unique_id=151168886]
+position = Vector2(96, -64)
+polygon = PackedVector2Array(-16, 7, 16, 7, 16, -7, -16, -7)
+
+[node name="@CollisionPolygon2D@2

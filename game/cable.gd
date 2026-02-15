@@ -40,7 +40,6 @@ func _input(event):
 			tween.set_ease(Tween.EASE_IN_OUT)
 			tween.set_trans(Tween.TRANS_ELASTIC)
 			tween.tween_property(self, "rotation", rotation + PI * 0.5, 0.4)
-
 				
 func _process(delta: float) -> void:
 	if is_dragging and not is_snapped:
@@ -70,7 +69,22 @@ func do_connectors_connect(a: Connector, b: Connector):
 			  or a.relative_orientation() == G.Orientation.RIGHT && b.relative_orientation() == G.Orientation.LEFT
 			  or a.relative_orientation() == G.Orientation.TOP && b.relative_orientation() == G.Orientation.BOTTOM
 			  or a.relative_orientation() == G.Orientation.BOTTOM && b.relative_orientation() == G.Orientation.TOP )
-		 
+
+func snap_connectors_together(connector_from_this_cable: Connector, other_connector: Connector):
+	connector_from_this_cable.connected_connector = other_connector
+	other_connector.connected_connector = connector_from_this_cable
+	connector_from_this_cable.hide_contacts()
+	other_connector.hide_contacts()
+	is_snapped = true
+	
+	audio_stream_player.pitch_scale = 0.95 + 0.1 * randf()
+	audio_stream_player.play()
+	
+	# snap to position of connector
+	_snap_position = get_global_mouse_position()
+	scale = Vector2(1, 1)
+	var connector_position_relative_to_cable = connector_from_this_cable.global_position - global_position
+	global_position = other_connector.global_position - connector_position_relative_to_cable
 
 func _on_connectors_entered(connector_from_this_cable: Connector, other_connector: Connector) -> void:
 	if( is_dragging 
@@ -79,20 +93,8 @@ func _on_connectors_entered(connector_from_this_cable: Connector, other_connecto
 		and other_connector.connected_connector == null
 		and do_connectors_connect(connector_from_this_cable, other_connector) 
 	):
-		connector_from_this_cable.connected_connector = other_connector
-		other_connector.connected_connector = connector_from_this_cable
-		connector_from_this_cable.hide_contacts()
-		other_connector.hide_contacts()
-		is_snapped = true
+		snap_connectors_together(connector_from_this_cable, other_connector)
 		
-		audio_stream_player.pitch_scale = 0.95 + 0.1 * randf()
-		audio_stream_player.play()
-		
-		# snap to position of connector
-		_snap_position = get_global_mouse_position()
-		scale = Vector2(1, 1)
-		var connector_position_relative_to_cable = connector_from_this_cable.global_position - global_position
-		global_position = other_connector.global_position - connector_position_relative_to_cable
 	
 func _on_connectors_exited(connector_from_this_cable: Connector, other_connector: Connector) -> void:
 	# clear connection information, show contacts again

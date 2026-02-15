@@ -1,37 +1,41 @@
 @tool
 class_name CableSegment extends Node2D
 
-@export_tool_button("Flow Energy", "OmniLight3D") var flow_action = flow_energy
+@export_tool_button("Add Energy", "OmniLight3D") var flow_action = _add_energy
+
+func _add_energy():
+	source_drain_amount += 0.1
 
 @export_range(-5, 5) var energy_level: float = 0:
 	get: return _energy_level
 	set(value): 
-		var clamped_value = clamp(value, -5, 5)
-		#if source_drain_amount == 0:
-		#	clamped_value = clamp(value, -5, 5)
-		#if source_drain_amount > 0:
-		#	clamped_value = clamp(value, 0, source_drain_amount)
-		#if source_drain_amount < 0:
-		#	clamped_value = clamp(value, source_drain_amount, 2)
+		var clamped_value = clamp(value, -1, 5)
 		_energy_level = clamped_value
+
+		#print("modulate")
+
 		_get_sprite().modulate = _energy_level_to_color(clamped_value)
 
 @export var source_drain_amount: float
+# neighbors should be serialized, but no use showing them in the editor
+var adjacent_segments: Array[CableSegment] = []
 
 var energy_color_curve: Curve = preload("uid://bojq15sjqlojl")
 
 var _energy_level: float = 0
 
-var adjacent_segments: Array[CableSegment] = []
 
 var _t: float = 0.0
-const FLOW_ENRGY_INTERVAL: float = 0.03
+const FLOW_ENRGY_INTERVAL: float = 0.5
 
 func flow_energy():
 	energy_level += source_drain_amount
 
 	var num_lower_energy_segments = 0
 	var total_energy = energy_level
+
+	#print("ok")
+	#print(adjacent_segments.size())
 	
 	for segment in adjacent_segments:
 		if segment.energy_level < energy_level:

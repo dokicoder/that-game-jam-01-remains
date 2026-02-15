@@ -21,6 +21,9 @@ const sprite_height: float = 32
 func update_owner(node: Node):
 	node.owner = get_tree().edited_scene_root
 
+func _init():
+	_generate_cable_from_map()
+
 func get_map_pixel(x: int, y: int):
 	if x < 0 or y < 0 or x >= cable_map.map_image.get_width() or y >= cable_map.map_image.get_height():
 		return null
@@ -74,6 +77,9 @@ func _generate_collision_shape():
 		var new_polygon = node.generate_collision_polygon()
 
 		var collider = CollisionPolygon2D.new()
+
+		collider.name = node.name + "_collider"
+
 		collider.polygon = new_polygon
 		area_2d.add_child(collider)
 		
