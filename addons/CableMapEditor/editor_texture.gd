@@ -13,7 +13,8 @@ var selected_color: Color = COLOR_CABLE
 
 var is_painting: bool = false
 
-const COLOR_CONNECTOR: Color = Color("#b43f2a")
+const COLOR_CONNECTOR_FEMALE: Color = Color("#b43f2a")
+const COLOR_CONNECTOR_MALE: Color = Color("#b4842a")
 const COLOR_CABLE: Color = Color("#007b3a")
 const COLOR_CABLE_HORIZONTAL: Color = Color("#00de0c")
 const COLOR_CABLE_VERTICAL: Color = Color("003124")

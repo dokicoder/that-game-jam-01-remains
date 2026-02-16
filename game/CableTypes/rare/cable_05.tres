@@ -4,7 +4,7 @@
 
 [sub_resource type="Image" id="Image_le3en"]
 data = {
-"data": PackedByteArray("AAAAtD8qAAAAAAAAAHs6AHs6AHs6AAAAAHs6AAAAAHs6AAAAAHs6AHs6AHs6AAAAAHs6AAAAAHs6tD8qtD8qAAAAAAAAAAAA"),
+"data": PackedByteArray("AAAAtD8qAAAAAAAAAHs6AHs6AHs6AAAAAHs6AAAAAHs6AAAAAHs6AHs6AHs6AAAAAHs6AAAAAHs6tIQqtD8qAAAAAAAAAAAA"),
 "format": "RGB8",
 "height": 6,
 "mipmaps": false,

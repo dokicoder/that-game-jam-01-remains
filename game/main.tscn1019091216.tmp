@@ -45,15 +45,8 @@ script = ExtResource("3_yyxey")
 
 [node name="Core" parent="." unique_id=1644048759 instance=ExtResource("6_dgpao")]
 
-[node name="CableDispenser_common" parent="." unique_id=472457204 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("5_tv0fx")]
-position = Vector2(-335, 282)
-spawn_parent = NodePath("..")
-base_path = "res://game/CableTypes/common"
-
-[node name="CableDispenser_rare" parent="." unique_id=1014745644 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("5_tv0fx")]
-position = Vector2(-165, 286)
-spawn_parent = NodePath("..")
-base_path = "res://game/CableTypes/rare"
+[node name="CableDispenser" parent="." unique_id=472457204 instance=ExtResource("5_tv0fx")]
+position = Vector2(-209, 333)
 
 [node name="Cable1" parent="." unique_id=2091762493 instance=ExtResource("8_xkbyp")]
 position = Vector2(153, 86)
@@ -114,7 +107,6 @@ position = Vector2(0, -32)
 position = Vector2(32, 32)
 orientation = 1
 with_contacts = true
-source_drain_amount = -0.4
 adjacent_segments = [NodePath("../Cable")]
 
 [node name="Connector2" parent="Cable1/CableSegmentsRoot" unique_id=1770907453 node_paths=PackedStringArray("adjacent_segments") instance=ExtResource("5_g6fv7")]

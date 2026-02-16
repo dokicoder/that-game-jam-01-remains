@@ -1,59 +1,59 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfvil05c2giuc"]
+[gd_scene format=3 uid="uid://dfvil05c2giuc"]
 
 [ext_resource type="Script" uid="uid://cbrpg0w6v04mm" path="res://addons/CableMapEditor/editor.gd" id="1_jbnsg"]
 [ext_resource type="Script" uid="uid://eu0uayjsixre" path="res://addons/CableMapEditor/editor_texture.gd" id="2_d1hw2"]
 
-[node name="Editor" type="PanelContainer"]
+[node name="Editor" type="PanelContainer" unique_id=2140476901]
 offset_right = 54.0
 offset_bottom = 30.0
 script = ExtResource("1_jbnsg")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1312771487]
 layout_mode = 2
 
-[node name="Resizer" type="HBoxContainer" parent="VBox"]
+[node name="Resizer" type="HBoxContainer" parent="VBox" unique_id=1624933654]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBox/Resizer"]
+[node name="Label" type="Label" parent="VBox/Resizer" unique_id=1482306676]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 text = "Size"
 
-[node name="X" type="SpinBox" parent="VBox/Resizer"]
+[node name="X" type="SpinBox" parent="VBox/Resizer" unique_id=1153678610]
 layout_mode = 2
 size_flags_horizontal = 3
 prefix = "x:"
 select_all_on_focus = true
 
-[node name="Y" type="SpinBox" parent="VBox/Resizer"]
+[node name="Y" type="SpinBox" parent="VBox/Resizer" unique_id=1240769545]
 layout_mode = 2
 size_flags_horizontal = 3
 prefix = "y:"
 select_all_on_focus = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox" unique_id=1509301031]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Texture" type="ColorRect" parent="VBox/HBoxContainer"]
+[node name="Texture" type="ColorRect" parent="VBox/HBoxContainer" unique_id=843711024]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("2_d1hw2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBox/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBox/HBoxContainer" unique_id=1198873340]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 4
 
-[node name="Button_Connector" type="Button" parent="VBox/HBoxContainer/VBoxContainer"]
+[node name="Button_Connector_Female" type="Button" parent="VBox/HBoxContainer/VBoxContainer" unique_id=592431196]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Connector"]
+[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Connector_Female" unique_id=647861327]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -67,12 +67,32 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0.7060288, 0.24834052, 0.16640747, 1)
 
-[node name="Button_Cable" type="Button" parent="VBox/HBoxContainer/VBoxContainer"]
+[node name="Button_Connector_Male" type="Button" parent="VBox/HBoxContainer/VBoxContainer" unique_id=131672876]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Connector_Male" unique_id=584355094]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.7058824, 0.5176471, 0.16470589, 1)
+
+[node name="Button_Cable" type="Button" parent="VBox/HBoxContainer/VBoxContainer" unique_id=549678142]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Cable"]
+[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Cable" unique_id=277576261]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -86,12 +106,12 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(3.0322374e-06, 0.48205447, 0.2260763, 1)
 
-[node name="Button_Cable_Horizontal" type="Button" parent="VBox/HBoxContainer/VBoxContainer"]
+[node name="Button_Cable_Horizontal" type="Button" parent="VBox/HBoxContainer/VBoxContainer" unique_id=1308638992]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Cable_Horizontal"]
+[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Cable_Horizontal" unique_id=1536195505]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -105,12 +125,12 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(2.7915835e-06, 0.8707363, 0.046039946, 1)
 
-[node name="Button_Cable_Vertical" type="Button" parent="VBox/HBoxContainer/VBoxContainer"]
+[node name="Button_Cable_Vertical" type="Button" parent="VBox/HBoxContainer/VBoxContainer" unique_id=1796300565]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Cable_Vertical"]
+[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Cable_Vertical" unique_id=254667900]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -124,12 +144,12 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(3.7902967e-07, 0.19389257, 0.13971469, 1)
 
-[node name="Button_Erase" type="Button" parent="VBox/HBoxContainer/VBoxContainer"]
+[node name="Button_Erase" type="Button" parent="VBox/HBoxContainer/VBoxContainer" unique_id=2141248797]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Erase"]
+[node name="ColorRect" type="ColorRect" parent="VBox/HBoxContainer/VBoxContainer/Button_Erase" unique_id=1421592810]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -143,10 +163,10 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
-[node name="Shortcuts" type="HBoxContainer" parent="VBox"]
+[node name="Shortcuts" type="HBoxContainer" parent="VBox" unique_id=548418883]
 layout_mode = 2
 
-[node name="Clear" type="Button" parent="VBox/Shortcuts"]
+[node name="Clear" type="Button" parent="VBox/Shortcuts" unique_id=326399091]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Clear
@@ -154,7 +174,8 @@ text = "Clear
 
 [connection signal="value_changed" from="VBox/Resizer/X" to="." method="_on_size_changed" unbinds=1]
 [connection signal="value_changed" from="VBox/Resizer/Y" to="." method="_on_size_changed" unbinds=1]
-[connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Connector" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#b43f2a"]]
+[connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Connector_Female" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#b43f2a"]]
+[connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Connector_Male" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#b4842a"]]
 [connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Cable" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#007b3a"]]
 [connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Cable_Horizontal" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#00de0c"]]
 [connection signal="pressed" from="VBox/HBoxContainer/VBoxContainer/Button_Cable_Vertical" to="VBox/HBoxContainer/Texture" method="_on_select_color" binds= ["#003124"]]

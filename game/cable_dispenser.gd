@@ -1,5 +1,8 @@
 extends AnimatedSprite2D
 
+@export var spawn_parent: Node2D 
+
+@export var base_path: String 
 
 var GeneratedCable: PackedScene = preload("uid://dchuo6eveswkk")
 
@@ -16,14 +19,17 @@ func _on_area_2d_mouse_exited() -> void:
 	self_modulate = Color(1.0, 1.0, 1.0)
 
 func dispense_cable():
-	var generated_cable: GeneratedCable = GeneratedCable.instantiate()
-	
-	var cable_types_folder := DirAccess.open("res://game/CableTypes")
+	var generated_cable: GeneratedCable = GeneratedCable.instantiate()	
+	var cable_types_folder = DirAccess.open(base_path)
 	
 	if cable_types_folder == null: printerr("Could not open folder"); return
 
-	generated_cable.cable_map = load(cable_types_folder.get_current_dir() + "/" + Array(cable_types_folder.get_files()).pick_random())
+	generated_cable.cable_map = load(base_path + "/" + Array(cable_types_folder.get_files()).pick_random())
 	generated_cable._generate_cable_from_map()
 	
-	$TargetPosition.add_child(generated_cable)
+	spawn_parent.add_child(generated_cable)
+
+	generated_cable.global_position = $TargetPosition.global_position
+
+	
 	

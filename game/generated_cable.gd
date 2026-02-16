@@ -8,7 +8,8 @@ class_name GeneratedCable extends DraggableSnappable
 var CableSegment: PackedScene = preload("uid://ddnm2l30qxrn7")
 var Connector: PackedScene = preload("uid://chr8jbmvrtg1a")
 
-const COLOR_CONNECTOR: Color = Color("#b43f2a")
+const COLOR_CONNECTOR_FEMALE: Color = Color("#b43f2a")
+const COLOR_CONNECTOR_MALE: Color = Color("#b4842a")
 const COLOR_CABLE: Color = Color("#007b3a")
 const COLOR_CABLE_HORIZONTAL: Color = Color("#00de0c")
 const COLOR_CABLE_VERTICAL: Color = Color("003124")
@@ -36,9 +37,12 @@ func get_neighbors(x: int, y: int):
 		"bottom": get_map_pixel(x, y + 1),
 	}
 
-const SOME_CABLE = [COLOR_CABLE, COLOR_CONNECTOR]
+const SOME_CABLE = [COLOR_CABLE, COLOR_CONNECTOR_FEMALE, COLOR_CONNECTOR_MALE]
 
 func _generate_cable_from_map():
+	_generate_cable_segments()
+	_generate_collision_shape()
+	# TODO: why needed two times?
 	_generate_cable_segments()
 	_generate_collision_shape()
 
@@ -150,11 +154,13 @@ func _generate_cable_segments():
 			var right_neighbor = neighbors["right"]
 			var top_neighbor = neighbors["top"]
 			var bottom_neighbor = neighbors["bottom"]
+			
+			var connector: Connector
 	
 			match pixel_color:
-				COLOR_CONNECTOR:	
+				COLOR_CONNECTOR_FEMALE, COLOR_CONNECTOR_MALE:
 					#print( "Position %d %d - Connector" %  [x, y] )
-					var connector: Connector = Connector.instantiate()
+					connector = Connector.instantiate()
 					cable_segments_root.add_child(connector)
 					connector.name = "Connector"
 					cable_segments_root.move_child(connector, 0)
@@ -198,11 +204,11 @@ func _generate_cable_segments():
 					var cable_segment = create_cable_segment( x * sprite_width, y * sprite_height )
 					num_nodes += 1
 					
-					var match_left = matches(left_neighbor, [COLOR_CABLE, COLOR_CONNECTOR, COLOR_CABLE_HORIZONTAL])
-					var match_right = matches(right_neighbor, [COLOR_CABLE, COLOR_CONNECTOR, COLOR_CABLE_HORIZONTAL])
+					var match_left = matches(left_neighbor, [COLOR_CABLE, COLOR_CONNECTOR_FEMALE, COLOR_CONNECTOR_MALE,  COLOR_CABLE_HORIZONTAL])
+					var match_right = matches(right_neighbor, [COLOR_CABLE, COLOR_CONNECTOR_FEMALE, COLOR_CONNECTOR_MALE, COLOR_CABLE_HORIZONTAL])
 					
-					var match_top =  matches(top_neighbor, [COLOR_CABLE, COLOR_CONNECTOR, COLOR_CABLE_VERTICAL])
-					var match_bottom = matches(bottom_neighbor, [COLOR_CABLE, COLOR_CONNECTOR, COLOR_CABLE_VERTICAL])
+					var match_top =  matches(top_neighbor, [COLOR_CABLE, COLOR_CONNECTOR_FEMALE, COLOR_CONNECTOR_MALE, COLOR_CABLE_VERTICAL])
+					var match_bottom = matches(bottom_neighbor, [COLOR_CABLE, COLOR_CONNECTOR_FEMALE, COLOR_CONNECTOR_MALE, COLOR_CABLE_VERTICAL])
 					
 					var horizontal = match_left and match_right
 					var vertical = match_top and match_bottom
@@ -278,6 +284,9 @@ func _generate_cable_segments():
 						cable_segment.adjacent_segments.push_back(top_neighbor_instance)
 						
 					cable_dict["%d-%d" % [x, y]] = cable_segment
+			match pixel_color:
+				COLOR_CONNECTOR_MALE:
+					connector.with_contacts = true
 
 	
 	# TODO: is this calculation correct and the centering still needed?
