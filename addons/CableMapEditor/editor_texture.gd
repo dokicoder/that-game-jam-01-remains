@@ -41,9 +41,7 @@ func update_size() -> void:
 	custom_minimum_size = Vector2(cable_map.map_image.get_size()) * pixel_size
 	queue_redraw()
 
-func _draw() -> void:	
-	print(mouse_at)
-
+func _draw() -> void:
 	for x: int in cable_map.map_image.get_size().x:
 		for y: int in cable_map.map_image.get_size().y:
 			var pixel_color = cable_map.map_image.get_pixel(x, y)

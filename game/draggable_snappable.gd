@@ -1,5 +1,5 @@
 @tool
-class_name Cable extends Node2D
+class_name DraggableSnappable extends Node2D
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
@@ -14,6 +14,9 @@ const SNAP_DISTANCE = 20.0
 
 var _is_rotating: bool = false
 
+# sometimes after rotating we want to keep drag even though cursor was moved out of bounds of hit shape. but we need to drag that state
+var _keeping_drag_after_rotating = false
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if is_hovered and event.button_index == MOUSE_BUTTON_LEFT:
@@ -23,11 +26,21 @@ func _input(event):
 				# globally store this so there can only be one dragged object at once
 				G.is_dragging = true
 				_offset = get_global_mouse_position() - global_position
-			elif is_dragging and not event.pressed:
-				G.is_dragging = false
-				z_index = 0
-				is_dragging = false
-				is_snapped = false
+				print("dragged")
+		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+			is_dragging = false
+
+			# this is a special case: after the draggable is rotated the mouse position may be moved out of hit shape
+			# yet we want to reamin dragging in this instance. However, we no longer can rely on _on_area_2d_mouse_exited() 
+			# to be triggered since we may already be outside. Instead, we track that state deparately and toggle hover state off
+			# the next time the mouse button is released. this is what happens here
+			if _keeping_drag_after_rotating:
+				is_hovered = false
+				_keeping_drag_after_rotating = false
+			G.is_dragging = false
+			z_index = 0
+			is_snapped = false
+			print("undragged")
 		if is_dragging && !_is_rotating && event.pressed && event.button_index == MOUSE_BUTTON_RIGHT:
 			var tween = get_tree().create_tween()
 
@@ -53,12 +66,14 @@ func _on_area_2d_mouse_entered() -> void:
 	#print_debug("entered")
 	if not G.is_dragging:
 		is_hovered = true
+		_keeping_drag_after_rotating = false
 		scale = Vector2(HIGHLIGHT_SCALE, HIGHLIGHT_SCALE)
 		
 func _on_area_2d_mouse_exited() -> void:
 	#print_debug("exited")
-	
-	if not is_dragging:
+	if _is_rotating:
+		_keeping_drag_after_rotating = true
+	else:
 		is_hovered = false
 		scale = Vector2(1, 1)
 

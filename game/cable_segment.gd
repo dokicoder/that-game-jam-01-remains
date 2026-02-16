@@ -25,7 +25,11 @@ var _energy_level: float = 0
 
 
 var _t: float = 0.0
+
+# flow energy ticks per second
 const FLOW_ENRGY_INTERVAL: float = 0.05
+# energy being lost per tick due to cable 
+const CABLE_DEPLETION_CONSTANT: float = 0.01
 
 func get_adjacent_segments():
 	return adjacent_segments
@@ -54,12 +58,21 @@ func flow_energy():
 
 	energy_level = average_energy
 
+func deplete_energy():
+	if Engine.is_editor_hint():
+		return
+
+	energy_level -= CABLE_DEPLETION_CONSTANT
+
 func _process(delta) -> void:
 	_t += delta
 	if _t >= FLOW_ENRGY_INTERVAL:
 		_t -= FLOW_ENRGY_INTERVAL
-
+		
 		flow_energy()
+		deplete_energy()
+
+
  
 func _energy_level_to_color(energy_level: float) -> Color:	
 	var color_vector = Vector3(

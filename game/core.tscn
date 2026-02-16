@@ -17,7 +17,7 @@ position = Vector2(-64, 0)
 scale = Vector2(1.2, 1)
 with_contacts = true
 energy_level = 2.0
-source_drain_amount = 0.1
+source_drain_amount = 1.0
 
 [node name="CableRight" parent="." unique_id=1120431152 instance=ExtResource("3_lhiyt")]
 position = Vector2(64, 0)
@@ -25,7 +25,7 @@ scale = Vector2(1.2, 1)
 orientation = 1
 with_contacts = true
 energy_level = 2.0
-source_drain_amount = 0.1
+source_drain_amount = 0.2
 
 [node name="CableTop" parent="." unique_id=1884380555 instance=ExtResource("3_lhiyt")]
 position = Vector2(0, -64)
@@ -41,7 +41,7 @@ scale = Vector2(1, 1.2)
 orientation = 3
 with_contacts = true
 energy_level = 2.0
-source_drain_amount = 0.1
+source_drain_amount = 0.5
 
 [node name="EnergyCore" type="Sprite2D" parent="." unique_id=509304318]
 texture_filter = 1

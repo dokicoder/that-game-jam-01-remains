@@ -1,8 +1,7 @@
 @tool
-class_name GeneratedCable extends Cable
+class_name GeneratedCable extends DraggableSnappable
 
 @export_tool_button("Generate from Map", "Reload") var generate_action = _generate_cable_from_map
-@export_tool_button("Generate Collider", "Collider") var generate_collider = _generate_collision_shape
 
 @export var cable_map: CableMap
 
@@ -37,6 +36,10 @@ func get_neighbors(x: int, y: int):
 	}
 
 const SOME_CABLE = [COLOR_CABLE, COLOR_CONNECTOR]
+
+func _generate_cable_from_map():
+	_generate_cable_segments()
+	_generate_collision_shape()
 
 func _generate_collision_shape():
 	print("_generate_collision_shape")
@@ -110,7 +113,7 @@ func create_cable_segment(position_x: float, position_y: float) -> CableSegment:
 static func matches(val, colors: Array) -> bool:
 	return colors.has(val)
 
-func _generate_cable_from_map():
+func _generate_cable_segments():
 	print_debug("_generate_cable_from_map")
 	
 	if not is_instance_valid(cable_map) or not is_instance_valid(cable_map.map_image):

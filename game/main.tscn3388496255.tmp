@@ -173,6 +173,8 @@ texture = ExtResource("14_2o2kd")
 adjacent_segments = [NodePath("../Cable13"), NodePath("../Cable15")]
 
 [node name="Cable2" parent="." unique_id=1123710306 instance=ExtResource("8_xkbyp")]
+process_mode = 4
+visible = false
 position = Vector2(32, 151)
 cable_map = SubResource("Resource_8ymx4")
 
@@ -252,6 +254,8 @@ texture = ExtResource("14_2o2kd")
 adjacent_segments = [NodePath("../Cable5"), NodePath("../Cable7")]
 
 [node name="Cable3" parent="." unique_id=72414112 instance=ExtResource("8_xkbyp")]
+process_mode = 4
+visible = false
 position = Vector2(278, 215)
 cable_map = SubResource("Resource_m8y2r")
 
