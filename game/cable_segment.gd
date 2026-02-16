@@ -1,19 +1,11 @@
 @tool
 class_name CableSegment extends Node2D
 
-@export_tool_button("Add Energy", "OmniLight3D") var flow_action = _add_energy
-
-func _add_energy():
-	source_drain_amount += 0.1
-
 @export_range(0, 2) var energy_level: float = 0:
 	get: return _energy_level
 	set(value): 
 		var clamped_value = clamp(value, 0, 2)
 		_energy_level = clamped_value
-
-		#print("modulate")
-
 		_get_sprite().modulate = _energy_level_to_color(clamped_value)
 
 @export var source_drain_amount: float
@@ -22,7 +14,6 @@ func _add_energy():
 var energy_color_curve: Curve = preload("uid://bojq15sjqlojl")
 
 var _energy_level: float = 0
-
 
 var _t: float = 0.0
 
@@ -72,8 +63,6 @@ func _process(delta) -> void:
 		flow_energy()
 		deplete_energy()
 
-
- 
 func _energy_level_to_color(energy_level: float) -> Color:	
 	var color_vector = Vector3(
 		1,

@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://ctwtospl3asj3"]
+
+[ext_resource type="Texture2D" uid="uid://ccy63fa7b217a" path="res://game/Aseprite/connector_green.png" id="1_tpwbj"]
+[ext_resource type="Script" uid="uid://d1kmx4gwsibqn" path="res://game/cable_dispenser.gd" id="2_50vof"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itk24"]
+atlas = ExtResource("1_tpwbj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlvpy"]
+atlas = ExtResource("1_tpwbj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtxcr"]
+atlas = ExtResource("1_tpwbj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op64f"]
+atlas = ExtResource("1_tpwbj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvgsl"]
+atlas = ExtResource("1_tpwbj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3m48"]
+atlas = ExtResource("1_tpwbj")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trhhn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itk24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlvpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtxcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op64f")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_vvgsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3m48")
+}],
+"loop": false,
+"name": &"press",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50vof"]
+size = Vector2(28, 28)
+
+[node name="CableDispenser" type="AnimatedSprite2D" unique_id=472457204]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_trhhn")
+animation = &"press"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("2_50vof")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=415861671]
+
+[node name="Collider" type="CollisionShape2D" parent="Area2D" unique_id=1580274808]
+shape = SubResource("RectangleShape2D_50vof")
+
+[node name="TargetPosition" type="Node2D" parent="." unique_id=1384456671]
+position = Vector2(0, -100)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

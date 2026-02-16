@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhqj5loo3m5u6"]
+[gd_scene format=3 uid="uid://bhqj5loo3m5u6"]
 
 [ext_resource type="Texture2D" uid="uid://ccy63fa7b217a" path="res://game/Aseprite/connector_green.png" id="1_8wxm7"]
 
@@ -52,10 +52,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="GreenSlot" type="AnimatedSprite2D"]
+[node name="GreenSlot" type="AnimatedSprite2D" unique_id=472457204]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_trhhn")
 animation = &"press"
 frame_progress = 0.9913771
 
-[node name="Contacts" type="Sprite2D" parent="."]
+[node name="Contacts" type="Sprite2D" parent="." unique_id=253491385]

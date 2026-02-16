@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dchuo6eveswkk"]
+[gd_scene format=3 uid="uid://dchuo6eveswkk"]
 
 [ext_resource type="Script" uid="uid://bfqmagewuk2u3" path="res://game/generated_cable.gd" id="1_3djp8"]
 [ext_resource type="Script" uid="uid://e131gyojdd2l" path="res://tools/CableMap.gd" id="2_la1gx"]
@@ -18,10 +18,10 @@ script = ExtResource("2_la1gx")
 map_image = SubResource("Image_8dfyj")
 metadata/_custom_type_script = "uid://e131gyojdd2l"
 
-[node name="Cable" type="Node2D"]
+[node name="Cable" type="Node2D" unique_id=1274238508]
 script = ExtResource("1_3djp8")
 cable_map = SubResource("Resource_hsn3n")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=594248604]
 stream = ExtResource("12_3i81j")
 volume_db = 20.0

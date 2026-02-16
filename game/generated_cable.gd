@@ -18,7 +18,8 @@ const sprite_width: float = 32
 const sprite_height: float = 32
 
 func update_owner(node: Node):
-	node.owner = get_tree().edited_scene_root
+	if Engine.is_editor_hint():
+		node.owner = get_tree().edited_scene_root
 
 func get_map_pixel(x: int, y: int):
 	if x < 0 or y < 0 or x >= cable_map.map_image.get_width() or y >= cable_map.map_image.get_height():

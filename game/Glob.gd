@@ -26,7 +26,20 @@ const tex_crossing_x_right: Texture2D = preload("res://game/Aseprite/three_way_x
 const tex_crossing_x_top: Texture2D = preload("res://game/Aseprite/three_way_x_top.png")
 const tex_crossing_x_bottom: Texture2D = preload("res://game/Aseprite/three_way_x_bottom.png")
 
-var is_dragging: bool = false
+# Load the custom images for the mouse cursor.
+const CURSOR_POINTER = preload("res://game/Aseprite/cable_junction2.png")
+const CURSOR_HOVER = preload("res://game/Aseprite/cable_segment_h.png")
+const CURSOR_DRAGGING = preload("res://game/Aseprite/cable_segment_v.png")
+
+
+var is_dragging: bool:
+	set(value):
+		_is_dragging = value
+		#Input.set_custom_mouse_cursor(CURSOR_POINTER if _is_dragging else CURSOR_HOVER)
+	get():
+		return _is_dragging
+
+var _is_dragging: bool = false
 
 enum Orientation {
 	LEFT, 
@@ -34,3 +47,6 @@ enum Orientation {
 	TOP,
 	BOTTOM
 }
+
+#func _ready():
+	#Input.set_custom_mouse_cursor(CURSOR_POINTER)
