@@ -26,13 +26,13 @@ func _input(event):
 				# globally store this so there can only be one dragged object at once
 				G.is_dragging = true
 				_offset = get_global_mouse_position() - global_position
-				print("dragged")
+				#print("dragged")
 		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			is_dragging = false
 
 			# this is a special case: after the draggable is rotated the mouse position may be moved out of hit shape
 			# yet we want to reamin dragging in this instance. However, we no longer can rely on _on_area_2d_mouse_exited() 
-			# to be triggered since we may already be outside. Instead, we track that state deparately and toggle hover state off
+			# to be triggered since we may already be outside. Instead, we track that state separately and toggle hover state off
 			# the next time the mouse button is released. this is what happens here
 			if _keeping_drag_after_rotating:
 				is_hovered = false
@@ -40,7 +40,7 @@ func _input(event):
 			G.is_dragging = false
 			z_index = 0
 			is_snapped = false
-			print("undragged")
+			#print("undragged")
 		if is_dragging && !_is_rotating && event.pressed && event.button_index == MOUSE_BUTTON_RIGHT:
 			var tween = get_tree().create_tween()
 

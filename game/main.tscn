@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bvvqr26g1pub1" path="res://game/BaseBoard.tscn" id="1_oa506"]
 [ext_resource type="PackedScene" uid="uid://dkmdq68t3kapj" path="res://game/Socket.tscn" id="3_vop5m"]
+[ext_resource type="Script" uid="uid://dag7jmltgorbf" path="res://game/debug_camera_control.gd" id="3_yyxey"]
 [ext_resource type="PackedScene" uid="uid://chr8jbmvrtg1a" path="res://game/Connector.tscn" id="5_g6fv7"]
 [ext_resource type="PackedScene" uid="uid://caurh7l0et8yg" path="res://game/Core.tscn" id="6_dgpao"]
 [ext_resource type="PackedScene" uid="uid://ddnm2l30qxrn7" path="res://game/CableSegment.tscn" id="7_yyxey"]
@@ -55,6 +56,7 @@ red_positions = Array[Vector2i]([Vector2i(4, 3), Vector2i(6, 9), Vector2i(7, 13)
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=307390877]
 zoom = Vector2(3, 3)
+script = ExtResource("3_yyxey")
 
 [node name="Core" parent="." unique_id=1644048759 instance=ExtResource("6_dgpao")]
 
