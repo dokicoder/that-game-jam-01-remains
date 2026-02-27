@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="CableMap" format=4 uid="uid://clvwiuaf133vl"]
+[gd_resource type="Resource" script_class="CableMap" format=3 uid="uid://clvwiuaf133vl"]
 
 [ext_resource type="Script" uid="uid://e131gyojdd2l" path="res://tools/CableMap.gd" id="1_lnrvs"]
 
 [sub_resource type="Image" id="Image_fya2r"]
 data = {
-"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
+"data": PackedByteArray(180, 132, 42, 0, 123, 58, 180, 63, 42),
 "format": "RGB8",
-"height": 10,
+"height": 3,
 "mipmaps": false,
-"width": 10
+"width": 1
 }
 
 [resource]

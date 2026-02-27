@@ -18,6 +18,8 @@ const COLOR_BACKGROUND: Color = Color("#000000")
 const sprite_width: float = 32
 const sprite_height: float = 32
 
+var connectors: Array[Connector] = []
+
 func update_owner(node: Node):
 	if Engine.is_editor_hint():
 		node.owner = get_tree().edited_scene_root
@@ -42,9 +44,8 @@ const SOME_CABLE = [COLOR_CABLE, COLOR_CONNECTOR_FEMALE, COLOR_CONNECTOR_MALE]
 func _generate_cable_from_map():
 	_generate_cable_segments()
 	_generate_collision_shape()
-	# TODO: why needed two times?
-	_generate_cable_segments()
-	_generate_collision_shape()
+
+	_increase_male_connectors()
 
 func _generate_collision_shape():
 	print("_generate_collision_shape")
@@ -119,7 +120,7 @@ static func matches(val, colors: Array) -> bool:
 	return colors.has(val)
 
 func _generate_cable_segments():
-	print_debug("_generate_cable_from_map")
+	print_debug("_generate_cable_segments")
 	
 	if not is_instance_valid(cable_map) or not is_instance_valid(cable_map.map_image):
 		print("no cable map to generate from, skipping")
@@ -299,3 +300,11 @@ func _generate_cable_segments():
 	cable_segments_root.position.y = y_center
 
 	#_generate_collision_shape()
+
+func _increase_male_connectors():
+	var cable_segments_root: Node2D = $CableSegmentsRoot;
+
+	for node in cable_segments_root.get_children():
+		if node is Connector and not node.with_contacts and randf() > 0.8:
+			print("flipped connector to male")
+			node.with_contacts = true
